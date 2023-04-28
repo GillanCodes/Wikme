@@ -6,4 +6,4 @@ require('./config/database');
 
 app.listen(process.env.PORT, () => {
     console.log(`Wikme listening to : PORT ${process.env.PORT}`)
-})
+});
