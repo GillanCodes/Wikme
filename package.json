@@ -1,0 +1,19 @@
+{
+  "name": "wikme",
+  "version": "1.0.0",
+  "description": "Selfhostable wiki",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GillanCodes/Wikme.git"
+  },
+  "author": "GillanCodes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GillanCodes/Wikme/issues"
+  },
+  "homepage": "https://github.com/GillanCodes/Wikme#readme"
+}

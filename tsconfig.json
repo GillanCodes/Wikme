@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target" : "es6",
+        "outDir" : "./server_build/",
+        "rootDir" : "./",
+        "module" : "commonjs",
+        "strict" : true,
+        "noEmitOnError" : false,
+        "typeRoots" : ["./node_modules/@types"]
+    },
+    "files" : [
+        "server.ts"
+    ],
+    "include" : [
+        ""
+    ]
+}
