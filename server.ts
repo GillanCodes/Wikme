@@ -32,6 +32,10 @@ const corsOptions:Object = {
 }
 app.use(cors(corsOptions));
 
+import authRoutes from './src/routes/auth.routes';
+
+app.use('/api/auth', authRoutes);
+
 app.listen(process.env.PORT, () => {
     console.log(`Wikme listening to : PORT ${process.env.PORT}`)
 });
