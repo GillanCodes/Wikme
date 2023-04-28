@@ -4,7 +4,7 @@
   "description": "Selfhostable wiki",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx tsc && cd server_build && node server.js"
   },
   "repository": {
     "type": "git",
