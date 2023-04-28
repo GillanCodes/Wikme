@@ -12,6 +12,7 @@
         "server.ts"
     ],
     "include" : [
-        ""
+        "./config/",
+        "./src/"
     ]
 }
