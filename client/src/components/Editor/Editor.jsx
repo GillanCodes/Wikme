@@ -25,6 +25,10 @@ export default function Editor() {
                         </div>
                         <p className='caption-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt a velit doloremque iste ab excepturi repudiandae dolor, accusamus suscipit. Voluptas impedit nam reprehenderit nemo? Soluta voluptatem nulla quidem voluptatum magnam.</p>
                     </div>
+
+                    <div className="new-block">
+                        <p className='new-block-text'>Add a new block</p>
+                    </div>
                </div>
             </div>
         </div>

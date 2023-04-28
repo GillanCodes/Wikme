@@ -1,40 +1,49 @@
 .editor-container
 {
 
-    .head
-    {
-        text-align: center;
-    }
-
-    .content
-    {
-        display: flex;
-        padding: 1em;
-
-        .side-bar
-        {
-            min-width: 200px;
-            width: 20%;
-        }
-
-        .editor
-        {
-            min-width: 400px;
-            width: 70%;
-            min-height: 90vh;
-
-            box-shadow: 5px 5px 18px 8px rgba(0,0,0,0.50);
-
-            .editor-content
-            {
-                margin: 1em 2em;
-            }
-        }
-    }
-
 }
 
-.caption {
+.editor-container .head
+{
+    text-align: center;
+}
+
+.editor-container .content
+{
+    display: flex;
+    padding: 1em;
+}
+
+.editor-container .content .editor
+{
+    min-width: 400px;
+    width: 70%;
+    min-height: 90vh;
+
+    box-shadow: 5px 5px 18px 8px rgba(0,0,0,0.50);
+}
+
+.editor-container .content .editor .editor-content
+{
+    margin: 1em 2em;
+}
+
+.editor-container .content .editor .editor-content *{
+    margin: 1.5em 0;
+}
+
+.editor-container .content .editor .editor-content .new-block
+{
+    border: 4px $outline-color solid;
+    border-radius: 10px;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.editor-container .content .editor .editor-content .caption {
 
     display: flex;
 
@@ -57,10 +66,10 @@
     }
 }
 
-.caption.is-right
+.editor-container .content .editor .editor-content .caption.is-right
 {
     flex-direction: row-reverse;
-
+    
     .image-content {
         padding-right: 0;
         padding-left: 25px;
