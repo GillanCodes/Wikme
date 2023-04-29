@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
+import { displayWiki, getWiki } from './blocks';
 
 export default function Editor() {
 
@@ -53,7 +54,10 @@ export default function Editor() {
                         <div className="block new-block" onClick={() => setModal(1)}>
                             <p className='new-block-text'>Add a new block</p>
                         </div> 
-                </div>
+
+                    </div>
+
+                        <p onClick={() => displayWiki()}>Test</p>
                 </div>
             </div>
 

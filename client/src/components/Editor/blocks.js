@@ -65,4 +65,23 @@ function deleteBlock()
 
 }
 
-export {createBlock, deleteBlock};
+function getWiki(id)
+{
+    var doc = document.getElementById(id).childNodes;
+
+    return doc;
+}
+
+function displayWiki()
+{
+    var els = getWiki('wiki');
+    
+    console.log(els);
+
+    for (let index = 0; index < els.length; index++) {
+        document.getElementById('wiki').appendChild(els[index]);
+    }
+
+}
+
+export {createBlock, deleteBlock, getWiki, displayWiki};
