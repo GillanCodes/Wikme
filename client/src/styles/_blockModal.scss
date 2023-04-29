@@ -1,0 +1,52 @@
+$size-box: 750px;
+$size-hf: 50px;
+
+
+.block-adder
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: calc(100vh/2 - 400px);
+}
+
+.block-adder .block-adder-container 
+{
+
+    background-color: #FFF;
+    border-radius: 10px;
+
+    height: $size-box;
+    width: 800px;
+
+    .head, .footer
+    {
+        padding: 10px;
+        align-items: center;
+        height: $size-hf;
+        background-color: #d8d8d8;
+    }
+
+    .head
+    {
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .body 
+    {
+        height: calc($size-box - ($size-hf*2));
+        overflow: scroll;
+    }
+
+    .footer
+    {
+        display: flex;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+}
+
+.block-adder .block-adder-container .block-adder-content
+{
+
+}

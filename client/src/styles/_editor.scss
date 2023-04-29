@@ -1,0 +1,126 @@
+.editor-container
+{
+    text-align: justify;
+}
+
+.editor-container .head
+{
+    text-align: center;
+}
+
+@media screen and (min-width: 1400px){
+    .editor-container .content
+    {
+        display: flex;
+        padding: 1em;
+        justify-content: center;
+    }
+
+    .editor-container .content .side-bar
+    {
+        display: flex;
+        position: absolute;
+        left: 0;
+        width: calc(100vw - 1000px);
+        max-width: max(0px, (100vw - 1000px)*999);
+    }
+
+    .editor-container .content .editor
+    {
+        width: 1000px;
+        min-height: 90vh;
+
+        flex-shrink: 0;
+
+        box-shadow: 5px 5px 18px 8px rgba(0,0,0,0.50);
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width: 1400px){
+    .editor-container .content
+    {
+        display: flex;
+        padding: 1em;
+        justify-content: center;
+    }
+
+    .editor-container .content .side-bar
+    {
+        display: none;
+        width: calc(100vw - 1000px);
+        max-width: max(0px, (100vw - 1000px)*999);
+    }
+
+    .editor-container .content .editor
+    {
+        max-width: 1000px;
+        width: 90vw;
+        min-height: 90vh;
+
+        flex-shrink: 0;
+
+        box-shadow: 5px 5px 18px 8px rgba(0,0,0,0.50);
+        border-radius: 5px;
+    }
+}
+
+
+.editor-container .content .editor .editor-content
+{
+    margin: 1em 2em;
+}
+
+.editor-container .content .editor .editor-content .block{
+    margin: 1.5em 0;
+}
+
+.editor-container .content .editor .editor-content .new-block
+{
+    border: 4px $outline-color solid;
+    border-radius: 10px;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.editor-container .content .editor .editor-content .caption {
+
+    display: flex;
+
+    .image-content {
+
+        height: 200px;
+        width: 200px;
+
+        padding-right: 25px;
+
+        .caption-image {
+            height: 200px;
+            width: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+    
+    // .caption-text {
+
+    // }
+}
+
+.editor-container .content .editor .editor-content .caption.is-right
+{
+    flex-direction: row-reverse;
+    
+    .image-content {
+        padding-right: 0;
+        padding-left: 25px;
+    }
+}
+
+.editor-container .content .editor .editor-content .caption.is-centered
+{
+    align-items: center;
+}
