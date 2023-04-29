@@ -13,6 +13,8 @@
     ],
     "include" : [
         "./config/",
-        "./src/"
+        "./src/",
+        "./middlewares/",
+        "./models/"
     ]
 }
