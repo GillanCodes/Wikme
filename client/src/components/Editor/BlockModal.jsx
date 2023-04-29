@@ -1,10 +1,11 @@
 import React from 'react'
+import { createBlock } from './blocks';
 
 export default function BlockModal({setModal}) {
 
     const addBlock = (type) => {
         setModal(0);
-        
+        createBlock(type, "wiki");
     }
 
     return (
@@ -23,12 +24,12 @@ export default function BlockModal({setModal}) {
                                 <p>Just a text Box</p>
                             </div>
 
-                            <div className="item">
+                            <div className="item" onClick={() => addBlock('caption')}>
                                 <h2 className='title'>Caption</h2>
                                 <p>Text Box with a image on side</p>
                             </div>
 
-                            <div className="item">
+                            <div className="item" onClick={() => addBlock('caption-right')}>
                                 <h2 className='title'>Caption Right</h2>
                                 <p>Text Box with a image on Right side</p>
                             </div>

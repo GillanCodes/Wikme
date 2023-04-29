@@ -24,8 +24,8 @@ export default function Editor() {
                 </div>
 
                 <div className="editor">
-                <div className="editor-content">
-                        <div className="block caption">
+                <div className="editor-content" id="wiki">
+                        {/* <div className="block caption">
                             <div className="image-content">
                                 <img src={`${process.env.PUBLIC_URL}/img_dev/caption.jpg`} alt="Caption" className='caption-image' />
                             </div>
@@ -48,11 +48,11 @@ export default function Editor() {
                                 <img src={`${process.env.PUBLIC_URL}/img_dev/caption2.jpg`} alt="Caption" className='caption-image' />
                             </div>
                             <p className='caption-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt a velit doloremque iste ab excepturi repudiandae dolor, accusamus suscipit. Voluptas impedit nam reprehenderit nemo? Soluta voluptatem nulla quidem voluptatum magnam.</p>
-                        </div>
+                        </div> */}
 
                         <div className="block new-block" onClick={() => setModal(1)}>
                             <p className='new-block-text'>Add a new block</p>
-                        </div>
+                        </div> 
                 </div>
                 </div>
             </div>

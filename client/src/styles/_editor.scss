@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.editor-container .content .editor
+{
+    z-index: 2;
+}
+
 @media screen and (min-width: 1400px){
     .editor-container .content
     {
