@@ -8,6 +8,12 @@ export const getWiki:RequestHandler = (req, res) => {
 
 };
 
-export const createWiki:RequestHandler = (req, res) => {
+export const createWiki:RequestHandler = async (req, res) => {
+
+    try {
+        
+    } catch (error) {
+        console.log(error);
+    }
 
 };
