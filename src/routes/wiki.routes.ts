@@ -14,3 +14,5 @@ router.post('/', createWiki);
 
 
 router.post('/:id');
+
+export default router;

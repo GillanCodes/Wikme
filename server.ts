@@ -39,8 +39,10 @@ app.get('/jwtid', requireAuth, (req, res) => {
 });
 
 import authRoutes from './src/routes/auth.routes';
+import wikiRoutes from './src/routes/wiki.routes';
 
 app.use('/api/auth', authRoutes);
+app.use('/api/wiki', wikiRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Wikme listening to : PORT ${process.env.PORT}`)
