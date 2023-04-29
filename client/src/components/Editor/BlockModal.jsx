@@ -11,18 +11,68 @@ export default function BlockModal({setModal}) {
                 </div>
                 <div className="body">
 
-                    <div className="item">
-                        <h2>Text</h2>
-                        <p>Just a text Box</p>
-                    </div>
+                   <div className="items">
+                        <div className="item">
+                            <h2 className='title'>Text</h2>
+                            <p>Just a text Box</p>
+                        </div>
 
-                    <div className="item">
-                        <h2>Images Caption</h2>
-                        <p>Text Box with a image on side</p>
-                    </div>
+                        <div className="item">
+                            <h2 className='title'>Caption</h2>
+                            <p>Text Box with a image on side</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Caption Right</h2>
+                            <p>Text Box with a image on Right side</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Text</h2>
+                            <p>Just a text Box</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Caption</h2>
+                            <p>Text Box with a image on side</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Caption Right</h2>
+                            <p>Text Box with a image on Right side</p>
+                        </div> 
 
 
+                        <div className="item">
+                            <h2 className='title'>Text</h2>
+                            <p>Just a text Box</p>
+                        </div>
 
+                        <div className="item">
+                            <h2 className='title'>Caption</h2>
+                            <p>Text Box with a image on side</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Caption Right</h2>
+                            <p>Text Box with a image on Right side</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Text</h2>
+                            <p>Just a text Box</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Caption</h2>
+                            <p>Text Box with a image on side</p>
+                        </div>
+
+                        <div className="item">
+                            <h2 className='title'>Caption Right</h2>
+                            <p>Text Box with a image on Right side</p>
+                        </div> 
+                    </div> 
 
                 </div>
                 <div className="footer">
