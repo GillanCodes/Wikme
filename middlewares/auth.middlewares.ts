@@ -4,12 +4,12 @@ import userModel from "../models/user.model";
 import * as express from 'express';
 
 
-module.exports.checkUser = async(req: express.Request, res: express.Response, next) => {
+module.exports.checkUser = async(req: express.Request, res: express.Response, next: () => void) => {
 
     let token = req.cookies.auth;
     if (token)
     {
-        jwt.verify(token, config.JWT_TOKEN, async(err, decodedToken) => {
+        jwt.verify(token, config.JWT_TOKEN, async(err: any, decodedToken: any) => {
             if (err)
             {
                 res.locals.user = null;
@@ -26,11 +26,11 @@ module.exports.checkUser = async(req: express.Request, res: express.Response, ne
     }
 }
 
-module.exports.requireAuth = (req: express.Request, res: express.Response, next) => {
+module.exports.requireAuth = (req: express.Request, res: express.Response, next: () => void) => {
     const token = req.cookies.user;
     if (token)
     {
-        jwt.verify(token, config.JWT_TOKEN, async (err, decodedToken) => {
+        jwt.verify(token, config.JWT_TOKEN, async (err: any, decodedToken: any) => {
             if (err)
             {
                 console.log(err);
