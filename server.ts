@@ -32,6 +32,12 @@ const corsOptions:Object = {
 }
 app.use(cors(corsOptions));
 
+let { checkUser, requireAuth } = require('./middlewares/auth.middlewares');
+app.use(checkUser);
+app.get('/jwtid', requireAuth, (req, res) => {
+    res.status(200).send(res.locals.user._id);
+});
+
 import authRoutes from './src/routes/auth.routes';
 
 app.use('/api/auth', authRoutes);

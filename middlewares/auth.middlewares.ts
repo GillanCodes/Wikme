@@ -1,10 +1,12 @@
 import config from "../config/config";
 import * as jwt from 'jsonwebtoken';
 import userModel from "../models/user.model";
+import * as express from 'express';
 
-module.exports.checkUser = async (req, res, next) => {
 
-    let token = req.cookie.auth;
+module.exports.checkUser = async(req: express.Request, res: express.Response, next) => {
+
+    let token = req.cookies.auth;
     if (token)
     {
         jwt.verify(token, config.JWT_TOKEN, async(err, decodedToken) => {
@@ -24,8 +26,8 @@ module.exports.checkUser = async (req, res, next) => {
     }
 }
 
-module.exports.requireAuth = (req, res, next) => {
-    const token = req.cookie.user;
+module.exports.requireAuth = (req: express.Request, res: express.Response, next) => {
+    const token = req.cookies.user;
     if (token)
     {
         jwt.verify(token, config.JWT_TOKEN, async (err, decodedToken) => {
