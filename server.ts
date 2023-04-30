@@ -39,7 +39,7 @@ app.get('/jwtid', requireAuth, (req, res) => {
 });
 
 import authRoutes from './src/routes/auth.routes';
-import userRoutes from './src/routes/auth.routes';
+import userRoutes from './src/routes/user.routes';
 import wikiRoutes from './src/routes/wiki.routes';
 
 app.use('/api/auth', authRoutes);
