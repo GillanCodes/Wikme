@@ -12,7 +12,7 @@ export default function Login() {
     axios({
       method:"post",
       withCredentials:true,
-      url: `${process.env.REACT_APP_API_URL}api/auth/login`,
+      url: `${process.env.REACT_APP_API_URL}/auth/login`,
       data : {
         log: username,
         password: password 
