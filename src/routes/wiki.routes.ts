@@ -2,6 +2,8 @@ import { Router } from "express";
 
 let router:Router = Router();
 
+//Wiki
+
 import {
     getWikis,
     getWiki,
@@ -12,7 +14,14 @@ router.get('/', getWikis);
 router.get('/:id', getWiki);
 router.post('/', createWiki);
 
+//Page
 
-router.post('/:id');
+import {
+    getPages,
+    createPage
+} from "../controllers/page.controller";
+
+router.get('/:id/page', getPages);
+router.post('/:id/page', createPage);
 
 export default router;
