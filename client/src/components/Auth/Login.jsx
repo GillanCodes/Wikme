@@ -6,7 +6,9 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const loginHandle = () => {
+  const loginHandle = (event) => {
+    event.preventDefault();
+    
     axios({
       method:"post",
       withCredentials:true,
@@ -23,7 +25,7 @@ export default function Login() {
   return (
     <div className='login-container'>
       <div className="content">
-        <form className='form' onSubmit={loginHandle}>
+        <form className='form' onSubmit={(e) => loginHandle(e)}>
           <div className="field">
             <label className="label">Username / Email</label>
             <div className="control">
@@ -36,16 +38,8 @@ export default function Login() {
               <input className='input' type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
             </div>
           </div>
-          <div className="field has-addons">
-            <div className="control">
-              <input type="text" className="input" />
-            </div>
-            <div className="control">
-              <button className='button'></button>
-            </div>
-          </div>
           <div className="field">
-            <button className="button" onClick={() => loginHandle()}>Login</button>
+            <button className="button" onClick={(e) => loginHandle(e)}>Login</button>
           </div>
         </form>
      </div>
