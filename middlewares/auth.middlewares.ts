@@ -5,7 +5,6 @@ import * as express from 'express';
 
 
 module.exports.checkUser = async(req: express.Request, res: express.Response, next: () => void) => {
-
     let token = req.cookies.auth;
     if (token)
     {
@@ -27,7 +26,7 @@ module.exports.checkUser = async(req: express.Request, res: express.Response, ne
 }
 
 module.exports.requireAuth = (req: express.Request, res: express.Response, next: () => void) => {
-    const token = req.cookies.user;
+    const token = req.cookies.auth;
     if (token)
     {
         jwt.verify(token, config.JWT_TOKEN, async (err: any, decodedToken: any) => {

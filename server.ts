@@ -34,8 +34,8 @@ app.use(cors(corsOptions));
 
 let { checkUser, requireAuth } = require('./middlewares/auth.middlewares');
 app.use(checkUser);
-app.get('/jwtid', requireAuth, (req, res) => {
-    res.status(200).send(res.locals.user._id);
+app.get('/jwtid', requireAuth, (req: express.Request, res: express.Response) => {
+    res.status(200).send(res.locals.user.id);
 });
 
 import authRoutes from './src/routes/auth.routes';
