@@ -11,16 +11,16 @@ export default function Auth() {
       <h1 className='title'>Auth</h1>
       <div className="content">
         <div className="tabs">
-          <p className={tab == 0 ? "tab active" : "tab"} onClick={() => setTab(0)}>Login</p>  
-          <p className={tab == 1 ? "tab active" : "tab"} onClick={() => setTab(1)}>Register</p>
+          <p className={tab === 0 ? "tab active" : "tab"} onClick={() => setTab(0)}>Login</p>  
+          <p className={tab === 1 ? "tab active" : "tab"} onClick={() => setTab(1)}>Register</p>
         </div>  
       </div> 
 
-      {tab == 0 && (
+      {tab === 0 && (
         <Login />
       )}
 
-      {tab == 1 && (
+      {tab === 1 && (
         <Register />
       )}
     </div>

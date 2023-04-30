@@ -8,11 +8,11 @@ export default function Login() {
 
   const loginHandle = (event) => {
     event.preventDefault();
-    
+
     axios({
       method:"post",
       withCredentials:true,
-      url: `http://localhost:5050/api/auth/login`,
+      url: `${process.env.REACT_APP_API_URL}api/auth/login`,
       data : {
         log: username,
         password: password 
