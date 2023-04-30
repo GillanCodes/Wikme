@@ -1,15 +1,36 @@
-import { RequestHandler } from "express";
+import * as express from "express";
 import wikiModel from "../../models/wiki.model";
 
-export const getWikis:RequestHandler = (req, res) => {
+export const getWikis = async (req: express.Request, res: express.Response) => {
+    
+    try {
+       if (res.locals.user) {
+            const wikis = await wikiModel.find();
+            return res.status(200).send({wikis});
+       } else {
+        return res.status(403).send('Forbidden: Not logged');
+       } 
+    } catch (error) {
+        console.log(error)
+    }
 
+}; 
+
+export const getWiki = async (req: express.Request, res: express.Response) => {
+    try {
+        if (res.locals.user) {
+            const { id } = req.params;
+            const wiki = await wikiModel.findById(id);
+            return res.status(200).send(wiki);
+        } else {
+            return res.status(403).send('Forbidden: Not logged');
+        }
+    } catch (error) {
+        console.log(error)
+    }
 };
 
-export const getWiki:RequestHandler = (req, res) => {
-
-};
-
-export const createWiki:RequestHandler = async (req, res) => {
+export const createWiki = async (req: express.Request, res: express.Response) => {
 
     try {
         if (res.locals.user) 
