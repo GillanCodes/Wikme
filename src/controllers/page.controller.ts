@@ -37,3 +37,26 @@ export const createPage = (req: express.Request, res: express.Response) => {
         console.log(error);
     }
 }
+
+export const updatePageContent = (req: express.Request, res: express.Response) => {
+    try {
+        const { id } = req.params;
+        const { content } : { content:string } = req.body;
+        if (res.locals.user)
+        {
+            pageModel.findByIdAndUpdate(id, {
+                $set: {
+                    content
+                }
+            }, {new:true, upsert: true}).then((data) => {
+                return res.status(201).send(data);
+            }).catch((error) => {
+                console.log(error)
+            })
+        } else {
+            return res.status(403).send("Forbidden : Not Logged");
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
