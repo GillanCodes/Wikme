@@ -1,9 +1,11 @@
 @import './settings';
+@import './components/components.scss';
 
 @import './modal';
 @import './blockModal';
 
 @import './editor';
+@import "./auth";
 
 
 * {
