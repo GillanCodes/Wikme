@@ -22,9 +22,33 @@ export default function Login() {
   
   return (
     <div className='login-container'>
-      <input type="text" name="unsername" id="username" onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
-      <button onClick={() => loginHandle()}>Login</button>
-    </div>
+      <div className="content">
+        <form className='form' onSubmit={loginHandle}>
+          <div className="field">
+            <label className="label">Username / Email</label>
+            <div className="control">
+              <input className='input' type="text" name="unsername" id="username" onChange={(e) => setUsername(e.target.value)} />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input className='input' type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
+            </div>
+          </div>
+          <div className="field has-addons">
+            <div className="control">
+              <input type="text" className="input" />
+            </div>
+            <div className="control">
+              <button className='button'></button>
+            </div>
+          </div>
+          <div className="field">
+            <button className="button" onClick={() => loginHandle()}>Login</button>
+          </div>
+        </form>
+     </div>
+   </div>
   )
 }

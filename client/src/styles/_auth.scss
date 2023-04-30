@@ -1,0 +1,52 @@
+.auth-container
+{
+    margin: 1em 0;
+}
+
+.auth-container .content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.auth-container .content .tabs
+{
+    display: flex;
+    width: 150px;
+    flex-direction: row;
+    justify-content: space-around;
+
+    text-align: center;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.auth-container .content .tabs .tab
+{  
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.auth-container .content .tabs .tab.active
+{
+    color: $active;
+    text-decoration: underline;
+}
+
+// .login-container, .register-container
+// {
+    
+// }
+
+// .login-container .content .form, .register-container .content .form 
+// {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+// }
+
+// .login-container .content .form .field, .register-container .content .form .field
+// {
+    
+// } 
