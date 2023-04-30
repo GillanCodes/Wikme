@@ -13,9 +13,11 @@ export default function Register() {
       withCredentials: true,
       url: `${process.env.REACT_APP_API_URL}/auth/register`,
       data:{
-        state
+        email: state.email,
+        username: state.username,
+        password: state.password
       }
-    })
+    }).then(() => window.location = window.location).catch((err) => console.log(err));
 
   }
 
