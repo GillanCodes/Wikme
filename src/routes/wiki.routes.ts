@@ -18,10 +18,12 @@ router.post('/', createWiki);
 
 import {
     getPages,
-    createPage
+    createPage,
+    updatePageContent
 } from "../controllers/page.controller";
 
 router.get('/:id/page', getPages);
 router.post('/:id/page', createPage);
+router.patch('/:id/page', updatePageContent);
 
 export default router;
