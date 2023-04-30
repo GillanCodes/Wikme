@@ -1,3 +1,5 @@
+import axios from "axios";
+
 function createTextBlock()
 {
     const textBlock = document.createElement("div")
@@ -67,21 +69,29 @@ function deleteBlock()
 
 function getWiki(id)
 {
-    var doc = document.getElementById(id).childNodes;
-
+    var doc = document.getElementById(id).innerHTML;
+    axios({
+        method:"patch",
+        withCredentials: true,
+        url: `http://localhost:5050/api/wiki/644e38a6f8ca9fd731ceb46e/page`,
+        data: {
+            content: doc
+        }
+    })
     return doc;
 }
 
 function displayWiki()
 {
-    var els = getWiki('wiki');
-    
-    console.log(els);
-
-    for (let index = 0; index < els.length; index++) {
-        document.getElementById('wiki').appendChild(els[index]);
-    }
-
+    axios({
+        method:"get",
+        withCredentials: true,
+        url: `http://localhost:5050/api/wiki/644d542d802921b371e5a01a/page`,
+    }).then((data) => {
+        var doc = data.data[0].content;
+        
+        document.getElementById('wiki').innerHTML = doc;
+    })
 }
 
 export {createBlock, deleteBlock, getWiki, displayWiki};
