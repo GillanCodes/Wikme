@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
-import { displayWiki, getWiki } from './blocks';
+import { displayWiki } from './blocks';
 
 export default function Editor() {
 
@@ -61,7 +61,7 @@ export default function Editor() {
                 </div>
             </div>
 
-            {modal == 1 && (
+            {modal === 1 && (
                 <Modal content={<BlockModal setModal={setModal} />} />
             )}
 
