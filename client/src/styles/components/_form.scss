@@ -1,0 +1,18 @@
+.form 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.field.has-addons
+{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.field.has-addons .control:first-child:not(:only-child) .button, .field.has-addons .control:first-child:not(:only-child) .input
+{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}

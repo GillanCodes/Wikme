@@ -1,0 +1,50 @@
+.button
+{
+    margin: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: .375em;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.5em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(.5em - 1px);
+    padding-left: calc(.75em - 1px);
+    padding-right: calc(.75em - 1px);
+    padding-top: calc(.5em - 1px);
+    position: relative;
+    vertical-align: top;
+
+    background-color: $white;
+    border-color: $light;
+    border-width: 1px;
+    color: $dark;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.button:hover
+{
+    border-color: $hover;
+    color: $dark;
+}
+
+.button.is-info { border-color: $info; }
+.button.is-link { border-color: $link; }
+.button.is-success { border-color: $success; }
+.button.is-warning { border-color: $warning; }
+.button.is-danger { border-color: $danger; }
