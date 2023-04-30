@@ -1,3 +1,32 @@
 $outline-color: rgba(108, 176, 255, 0.5);
-
+$active: rgb(20, 97, 241);
 $hover-color: rgb(87, 146, 255);
+
+$white: #FFF;
+$light: #dbdbdb;
+$dark: #363636;
+$black: #0a0a0a;
+
+$hover: #b5b5b5;
+
+$link: #485fc7;
+$info: #3e8ed0;
+$success: #48c78e;
+$warning: #ffe08a;
+$danger: #f14668;
+
+$link-invert: #fff;
+$link-light: #eff1fa;
+$link-dark: #3850b7;
+$info-invert: #fff;
+$info-light: #eff5fb;
+$info-dark: #296fa8;
+$success-invert: #fff;
+$success-light: #effaf5;
+$success-dark: #257953;
+$warning-invert: rgba(0, 0, 0, 0.7);
+$warning-light: #fffaeb;
+$warning-dark: #946c00;
+$danger-invert: #fff;
+$danger-light: #feecf0;
+$danger-dark: #cc0f35;
