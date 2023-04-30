@@ -34,7 +34,7 @@ app.use(cors(corsOptions));
 
 let { checkUser, requireAuth } = require('./middlewares/auth.middlewares');
 app.use(checkUser);
-app.get('/jwtid', requireAuth, (req: express.Request, res: express.Response) => {
+app.get('/api/jwtid', requireAuth, (req: express.Request, res: express.Response) => {
     res.status(200).send(res.locals.user.id);
 });
 
@@ -43,8 +43,8 @@ import userRoutes from './src/routes/user.routes';
 import wikiRoutes from './src/routes/wiki.routes';
 
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/wiki', wikiRoutes);
+app.use('/api/user', requireAuth, userRoutes);
+app.use('/api/wiki', requireAuth, wikiRoutes);
 
 app.listen(process.env.PORT, () => {
     console.log(`Wikme listening to : PORT ${process.env.PORT}`)
