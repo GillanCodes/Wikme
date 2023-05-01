@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const id = "editor";
+
 function createTextBlock()
 {
     const textBlock = document.createElement("div")
@@ -35,6 +37,7 @@ function createCaptionBlock(right)
     const text = document.createElement('p');
     text.classList.add('text-caption');
     text.innerHTML = "Caption text !";
+    text.contentEditable = true;
 
     captionBlock.appendChild(imageContent);
     captionBlock.appendChild(text);
@@ -42,24 +45,27 @@ function createCaptionBlock(right)
     return captionBlock;
 }
 
-function createBlock(type, id)
+function createBlock(type, pageId)
 {
     const el = document.getElementById(id);
     switch(type)
     {
         case 'text-only':
-            el.insertBefore(createTextBlock(), el.children[el.children.length - 1]);
+            el.appendChild(createTextBlock());
+            // el.insertBefore(createTextBlock(), el.children[el.children.length - 1]);
             break;
         case 'caption':
-            el.insertBefore(createCaptionBlock(false), el.children[el.children.length - 1]);
+            el.appendChild(createCaptionBlock(false));
+            // el.insertBefore(createCaptionBlock(false), el.children[el.children.length - 1]);
             break
         case 'caption-right':
-            el.insertBefore(createCaptionBlock(true), el.children[el.children.length - 1]);
+            el.appendChild(createCaptionBlock(true));
+            // el.insertBefore(createCaptionBlock(true), el.children[el.children.length - 1]);
             break
         default:
             break;
-
     }
+    save(pageId);
 }
 
 function deleteBlock() 
@@ -67,31 +73,39 @@ function deleteBlock()
 
 }
 
-function getWiki(id)
+var delay;
+
+function save(pageId)
 {
-    var doc = document.getElementById(id).innerHTML;
-    axios({
-        method:"patch",
-        withCredentials: true,
-        url: `http://localhost:5050/api/wiki/644e38a6f8ca9fd731ceb46e/page`,
-        data: {
-            content: doc
-        }
-    })
-    return doc;
+    clearTimeout(delay);
+    delay = setTimeout(() => {
+        var doc = document.getElementById("editor").innerHTML;
+        axios({
+            method:"patch",
+            withCredentials: true,
+            url: `http://localhost:5050/api/wiki/${pageId}/page`,
+            data: {
+                content: doc
+            }
+        });
+    }, 500)
+    
+   
 }
 
-function displayWiki()
+function displayWiki(page)
 {
-    axios({
-        method:"get",
-        withCredentials: true,
-        url: `http://localhost:5050/api/wiki/644d542d802921b371e5a01a/page`,
-    }).then((data) => {
-        var doc = data.data[0].content;
+
+    document.getElementById(id).innerHTML = page.content
+    // axios({
+    //     method:"get",
+    //     withCredentials: true,
+    //     url: `http://localhost:5050/api/wiki/644d542d802921b371e5a01a/page`,
+    // }).then((data) => {
+    //     var doc = data.data[0].content;
         
-        document.getElementById('wiki').innerHTML = doc;
-    })
+    //     document.getElementById('wiki').innerHTML = doc;
+    // })
 }
 
-export {createBlock, deleteBlock, getWiki, displayWiki};
+export {createBlock, deleteBlock, save, displayWiki};

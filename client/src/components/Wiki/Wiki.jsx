@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { isEmpty } from '../../utils';
 import { getPages } from '../../actions/page.actions';
+import Editor from "../Editor/Editor";
 
 export default function Wiki() {
 
@@ -10,6 +11,7 @@ export default function Wiki() {
   const dispatch = useDispatch();
 
   const [load, setLoad] = useState(false);
+  const [page, setPage] = useState();
 
   const pages = useSelector(state => state.pageReducer);
   
@@ -33,13 +35,18 @@ export default function Wiki() {
         <div className="side-menu">
           {load && (
             <ul>
-              {pages.map((page) => {
-                return <li>{page.name}</li>
+              {pages.map((page, key) => {
+                return <li onClick={() => setPage(key)} id={page._id}>{page.name}</li>
               })}
             </ul>
           )}
         </div>
 
+        <div className="page">
+          {load && !isEmpty(page) && (
+            <Editor page={pages[page]} />
+          )}
+        </div>
 
       </div>
     </div>

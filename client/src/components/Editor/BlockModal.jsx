@@ -1,11 +1,11 @@
 import React from 'react'
 import { createBlock } from './blocks';
 
-export default function BlockModal({setModal}) {
+export default function BlockModal({setModal, pageId}) {
 
     const addBlock = (type) => {
         setModal(0);
-        createBlock(type, "wiki");
+        createBlock(type, pageId);
     }
 
     return (
