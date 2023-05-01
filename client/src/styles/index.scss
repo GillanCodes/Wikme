@@ -32,10 +32,20 @@
 
 .main-menu.navbar-container:hover
 {
-    width: $navbar-open;
+    animation: openNav 0.2s forwards;
 }
 
 .main-menu.navbar-container
 {
-    width: $navbar-close;
+    animation: closeNav 0.2s forwards;
+}
+
+@keyframes openNav {
+   0% { width: $navbar-close; }
+   100% { width: $navbar-open; }
+}
+
+@keyframes closeNav {
+    0% { width: $navbar-open; }
+    100% { width: $navbar-close; }
 }

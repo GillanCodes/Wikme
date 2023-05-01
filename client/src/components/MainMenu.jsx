@@ -50,13 +50,21 @@ export default function MainMenu() {
                   </ul>
                 </div>
               </div> */}
+              {/* <NavLink to={"/"} className="item">
+                <i class="fa-solid fa-house"></i>
+              </NavLink> */}
               <div className="item">
-                <NavLink to={"/"}>Home</NavLink>
+                <NavLink to={"/"}>
+                  <i class="fa-solid fa-house"></i>
+                  <p>Home</p>
+                </NavLink>
               </div>
               {load ? (
                 <>
                   <div className="item">
-                    <NavLink to={"/me"}>{currentUser.username}</NavLink>
+                    <NavLink to={"/me"}> 
+                      <p>{currentUser.username}</p>
+                    </NavLink>
                   </div>
                   <div className="item" onClick={() => logoutHandle()}>
                     <p>Logout</p>
@@ -64,7 +72,9 @@ export default function MainMenu() {
                 </> 
               ) : (
                 <div className="item">
-                  <NavLink to={"/auth"}>Login/Register</NavLink>
+                  <NavLink to={"/auth"}> 
+                    <p>Login/Register</p>
+                  </NavLink>
                 </div>
               )} 
             </div>
