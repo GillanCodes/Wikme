@@ -29,6 +29,11 @@ export default function MainMenu() {
     })
   }
 
+  // const animation = (e, type) => {
+  //   if (type === "in") { e.target.classList.replace('close', 'open') }
+  //   if (type === "out") { e.target.classList.replace('open', 'close') }
+  // }
+
   return (
     <div className='main-menu navbar-container'>
         <div className="content">

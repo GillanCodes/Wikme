@@ -16,13 +16,13 @@ export default function Editor() {
             </div>
 
             <div className='content'>
-                <div className="side-bar">
+                {/* <div className="side-bar">
                     <ul>
                         <li>List</li>
                         <li>De</li>
                         <li>Fou</li>
                     </ul>
-                </div>
+                </div> */}
 
                 <div className="editor">
                 <div className="editor-content" id="wiki">

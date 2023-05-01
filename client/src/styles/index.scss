@@ -22,5 +22,20 @@
 
 .container
 {
+    width: calc(100vw - $navbar-close);
+}
+
+
+.main-menu.navbar-container:hover ~ .container {
     width: calc(100vw - $navbar-open);
+}
+
+.main-menu.navbar-container:hover
+{
+    width: $navbar-open;
+}
+
+.main-menu.navbar-container
+{
+    width: $navbar-close;
 }
