@@ -1,18 +1,19 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-export default function WikiModule() {
+export default function WikiModule({wiki}) {
   return (
-    <div className='wiki-module'>
-        <div className="wiki-module container">
-            <div className="wiki-module-content">
-                <div className="wiki-module-head">
-                    <p></p>
+    <div className='article-module'>
+        <div className="article-module-container">
+            <div className="article-module-content">
+                <div className="article-module-head">
+                    <p>{wiki.name}</p>
                 </div>
-                <div className="wiki-module-body">
-
+                <div className="article-module-body">
+                  <p>{wiki.description}</p>
                 </div>
-                <div className="wiki-module-footer">
-                    
+                <div className="article-module-footer">
+                    <NavLink to={`/wiki/${wiki._id}`}>View</NavLink>
                 </div>
             </div>
         </div>

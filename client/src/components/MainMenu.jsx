@@ -45,7 +45,7 @@ export default function MainMenu() {
                 </NavLink>
               </div>
               <div className="item">
-                <NavLink to={'/wiki'}>
+                <NavLink to={'/wikis'}>
                   <i class="fa-solid fa-book"></i>
                   <p>Wiki</p>  
                 </NavLink> 

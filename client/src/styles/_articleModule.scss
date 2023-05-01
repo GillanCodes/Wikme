@@ -1,0 +1,67 @@
+$article-height: 400px;
+$article-width: 300px;
+
+$article-hf-size: 50px;
+
+.article-module 
+{
+    height: calc($article-height + 50px);
+    width: calc($article-width + 50px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-module .article-module-container
+{
+    height: $article-height;
+    width: $article-width;
+
+    border-radius: 10px;
+}
+
+.article-module .article-module-container .article-module-content
+{
+    display: block;
+}
+
+.article-module .article-module-container .article-module-content .article-module-head
+{
+    height: $article-hf-size;
+    width: $article-width;
+    background-color: $light;
+    border-radius: 10px 10px 0 0;
+}
+
+.article-module .article-module-container .article-module-content .article-module-head p
+{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.article-module .article-module-container .article-module-content .article-module-body
+{
+    height: calc($article-height - ($article-hf-size*2));
+    width: $article-width;
+}
+
+.article-module .article-module-container .article-module-content .article-module-footer
+{
+    height: $article-hf-size;
+    width: $article-width;
+    background-color: $light;
+    border-radius: 0px 0px 10px 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1em;
+    font-weight: 600;
+}
