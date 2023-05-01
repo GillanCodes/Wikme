@@ -1,6 +1,6 @@
 import {sign} from "jsonwebtoken";
 import config from "../../config/config";
-import { RequestHandler } from "express-serve-static-core";
+import * as express from "express";
 import userModel from '../../models/user.model';
 
 const maxAge:number = 3*21*60*60*1000;
@@ -10,17 +10,17 @@ const createToken = (id:string) => {
     });
 };
 
-export const register:RequestHandler = async (req, res) => {
+export const register = async (req: express.Request, res: express.Response) => {
     const {username, email, password}: {username:string,email:string,password:string} = req.body;
     try {
         const user = await userModel.create({username, email, password});
         return res.status(201).json({user:user._id});
     } catch (error) {
         console.log(error);
-    }
-}
+    };
+};
 
-export const login:RequestHandler = async (req,res) => {
+export const login = async (req: express.Request, res: express.Response) => {
     const {log, password}: {log:string,password:string} = req.body;
     
     try {
@@ -30,10 +30,10 @@ export const login:RequestHandler = async (req,res) => {
         return res.status(200).json({user});
     } catch (error) {
         console.log(error);
-    }
+    };
 };
 
-export const logout:RequestHandler = async(req, res) => {
+export const logout = async(req: express.Request, res: express.Response) => {
     res.cookie("auth", null, {httpOnly: true, maxAge: 1});
     return res.status(200).send('logout');
 };
