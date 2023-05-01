@@ -14,3 +14,13 @@
     font-family: Arial, Helvetica, sans-serif;
     color: $dark;
 }
+
+.app
+{
+    display: flex;
+}
+
+.container
+{
+    width: calc(100vw - $navbar-open);
+}
