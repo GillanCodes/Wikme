@@ -38,31 +38,23 @@ export default function MainMenu() {
     <div className='main-menu navbar-container'>
         <div className="content">
             <div className="items">
-              {/* <div className="item has-dropdown">
-                <div className="dropdown-text">
-                  <p>Wiki</p>
-                </div>
-                <div className="dropdown">
-                  <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                  </ul>
-                </div>
-              </div> */}
-              {/* <NavLink to={"/"} className="item">
-                <i class="fa-solid fa-house"></i>
-              </NavLink> */}
               <div className="item">
                 <NavLink to={"/"}>
                   <i class="fa-solid fa-house"></i>
                   <p>Home</p>
                 </NavLink>
               </div>
+              <div className="item">
+                <NavLink to={'/wiki'}>
+                  <i class="fa-solid fa-book"></i>
+                  <p>Wiki</p>  
+                </NavLink> 
+              </div>
               {load ? (
                 <>
                   <div className="item">
-                    <NavLink to={"/me"}> 
+                    <NavLink to={"/me"}>
+                      <i class="fa-solid fa-user"></i>
                       <p>{currentUser.username}</p>
                     </NavLink>
                   </div>
