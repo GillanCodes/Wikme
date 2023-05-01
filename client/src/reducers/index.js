@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
 
 import userReducer from "./user.reducer";
+import wikiReducer from "./wiki.reducer";
 
 export default combineReducers ({
-    userReducer
+    userReducer,
+    wikiReducer
 });

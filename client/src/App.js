@@ -5,6 +5,7 @@ import './styles/index.scss'
 import axios from "axios";
 import { getUser } from "./actions/user.actions";
 import { UIdContext } from "./App.context";
+import { getWikis } from "./actions/wiki.actions";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
     if (UId)
     {
       dispatch(getUser(UId));
+      dispatch(getWikis());
     }
   }, [UId, dispatch])
 
