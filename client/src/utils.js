@@ -7,3 +7,7 @@ export const isEmpty = (value) => {
         (typeof value === "string" && value.trim().length === 0)
     );
 }
+
+export const genUId = () => {
+    return Date.now().toString(36) + Math.random().toString(36).substring(2);
+}
