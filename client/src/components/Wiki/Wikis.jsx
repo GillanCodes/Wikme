@@ -18,7 +18,8 @@ export default function Wikis() {
 
   return (
     <div className='wikis-container container'>
-       {load && (
+      <div className="wikis">
+        {load && (
         <>
           {/* <WikiModule wiki={wikis[0]} /> */}
           {wikis.map((wiki) => {
@@ -26,6 +27,8 @@ export default function Wikis() {
           })}
         </>
        )} 
+      </div>
+       
     </div>
   )
 }
