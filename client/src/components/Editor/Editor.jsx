@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
-import { displayWiki, save } from './blocks';
+import { control, deleteBlock, displayWiki, save } from './blocks';
+import { isEmpty } from "../../utils";
 
 export default function Editor({page}) {
 
     const [modal, setModal] = useState(0);
 
+    const [load, setLoad] = useState(false);
+
     useEffect(() => {
         displayWiki(page);
+        if (!isEmpty(page))
+        {
+            setLoad(true)
+        }
+        // control();
     }, [page]);
 
     useEffect(() => {
@@ -17,6 +25,13 @@ export default function Editor({page}) {
 
     const changeHandle = () => {
         save(page._id)
+    }
+
+    const deleteHandle = (pageId, itemId, event) => {
+        if (!isEmpty(itemId)){
+            deleteBlock(itemId, pageId);
+            event.target.remove();
+        }
     }
 
         
@@ -28,7 +43,24 @@ export default function Editor({page}) {
 
             <div className='content'>
                 <div className="editor">
-                    <div className="editor-content" id="editor" onInput={changeHandle} onClick={(e) => test(e)}>
+                    <div className="editor-controls" id='controls'>
+                        {load && (
+                            <>
+                                {control().map((item) => {
+                                    if (!isEmpty(item.id))
+                                    {
+                                        return(
+                                            <div className="controlBox">
+                                                <button onClick={(e) => deleteHandle(page._id, item.id, e)}>Delete</button>
+                                            </div>
+                                        )
+                                    }
+                                    
+                                })}
+                            </>
+                        )}
+                    </div>
+                    <div className="editor-content" id="editor" onInput={changeHandle}>
                         {/* <div className="block caption">
                             <div className="image-content">
                                 <img src={`${process.env.PUBLIC_URL}/img_dev/caption.jpg`} alt="Caption" className='caption-image' />

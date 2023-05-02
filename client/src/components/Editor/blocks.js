@@ -1,10 +1,12 @@
 import axios from "axios";
+import { genUId, isEmpty } from "../../utils";
 
 const id = "editor";
 
 function createTextBlock()
 {
     const textBlock = document.createElement("div")
+    textBlock.id = genUId();
     textBlock.classList = ['block', 'text'];
 
     const textContent = document.createElement('p')
@@ -20,10 +22,12 @@ function createTextBlock()
 function createCaptionBlock(right)
 {
     const captionBlock = document.createElement('div');
+    captionBlock.id = genUId();
     captionBlock.classList = ['block caption']
     if (right) {
         captionBlock.classList.add('is-right');
     }
+
 
     const image = document.createElement('img');
     image.src = `${process.env.PUBLIC_URL}/img_dev/caption2.jpg`;
@@ -68,9 +72,10 @@ function createBlock(type, pageId)
     save(pageId);
 }
 
-function deleteBlock() 
+function deleteBlock(itemId, pageId) 
 {
-
+    document.getElementById(itemId).remove();
+    save(pageId);
 }
 
 var delay;
@@ -95,17 +100,37 @@ function save(pageId)
 
 function displayWiki(page)
 {
-
-    document.getElementById(id).innerHTML = page.content
-    // axios({
-    //     method:"get",
-    //     withCredentials: true,
-    //     url: `http://localhost:5050/api/wiki/644d542d802921b371e5a01a/page`,
-    // }).then((data) => {
-    //     var doc = data.data[0].content;
-        
-    //     document.getElementById('wiki').innerHTML = doc;
-    // })
+    if (!isEmpty(page.content))
+    {
+        document.getElementById(id).innerHTML = page.content
+    }
 }
 
-export {createBlock, deleteBlock, save, displayWiki};
+
+function createControl()
+{
+    const controlBox = document.createElement('div');
+    controlBox.classList.add('control-box');
+
+    const delBtn = document.createElement('button');
+    delBtn.classList.add('button');
+    delBtn.value = "Delete Block";
+
+    controlBox.appendChild(delBtn);
+
+    return controlBox;
+}
+
+function control()
+{
+    const el = document.getElementById("controls");
+    const els = document.getElementById(id).childNodes;
+    var i = [];
+    els.forEach(child => {
+        i.push(child);
+    });
+    console.log(i);
+    return i;
+}
+
+export {createBlock, deleteBlock, save, displayWiki, control};
