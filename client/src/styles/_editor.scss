@@ -13,6 +13,33 @@
     z-index: 2;
 }
 
+.editor-container .content .editor .editor-controls 
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px -50px;
+}
+
+.editor-container .content .editor .editor-controls .controlBox
+{
+    height: 100%;
+}
+
+.editor-container .content .editor .editor-controls .controlBox .control
+{
+    height: 50px;
+    width: 50px;
+    border: none;
+    font-size: 1em;
+    border-radius: 10px;
+    background-color: $danger;
+    cursor: pointer;
+    i {
+        color: $white;
+    }
+}
+
 @media screen and (min-width: 1400px){
     .editor-container .content
     {
