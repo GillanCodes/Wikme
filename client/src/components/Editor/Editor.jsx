@@ -37,28 +37,18 @@ export default function Editor({page}) {
 
             <div className='content'>
                 <div className="editor">
-                    {/* <div className="editor-controls" id='controls'>
-                        {load && (
-                            <>
-                                {control().map((item) => {
-                                    if (!isEmpty(item.id))
-                                    {
-                                        return(
-                                            <div className="controlBox">
-                                                <button className='control' id={item.id + '-btn'} onClick={(e) => deleteHandle(page._id, item.id, e)}><i class="fa-solid fa-trash"></i></button>
-                                            </div>
-                                        )
-                                    }
-                                    
-                                })}
-                            </>
-                        )}
-                    </div> */}
                     <div className="editor-content" id="editor" onInput={changeHandle}>
                         {load && (
                             <>
                                 {page.content.map((item) => {
-                                    return <Block block={item} />
+                                    return (
+                                        <>
+                                            <Block block={item} />
+                                            <div className="controls">
+                                                <button className="control delete"><i class="fa-solid fa-trash"></i></button>
+                                            </div>
+                                        </>
+                                    )
                                 })}
                             </> 
                         )}
