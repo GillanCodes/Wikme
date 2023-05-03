@@ -167,6 +167,13 @@ function getBlock(id)
     }
 }
 
+function changeBlock(id) {
+    var index = getBlock(id);
+    if (!isEmpty(index)){
+        console.log(page[index]);
+    }
+}
+
 // function createControl()
 // {
 //     const controlBox = document.createElement('div');
@@ -192,4 +199,4 @@ function control()
     return i;
 }
 
-export {createBlock, deleteBlock, save, displayWiki, control};
+export {createBlock, deleteBlock, save, displayWiki, control, changeBlock};

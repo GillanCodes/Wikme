@@ -1,4 +1,5 @@
 import React from 'react'
+import { changeBlock } from './blocks';
 
 export default function Block({block}) {
 
@@ -6,7 +7,7 @@ export default function Block({block}) {
     case "text":
       return (
         <div className="block text-only">
-          <p>{block.content}</p>
+          <p onInput={() => changeBlock(block.UId)} contentEditable={true}>{block.content}</p>
         </div>
       );
     case "caption":
