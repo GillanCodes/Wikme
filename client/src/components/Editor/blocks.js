@@ -74,6 +74,7 @@ function createBlock(type, pageId)
 
 function deleteBlock(itemId, pageId) 
 {
+    document.getElementById(itemId + "-btn").remove();
     document.getElementById(itemId).remove();
     save(pageId);
 }

@@ -19,10 +19,6 @@ export default function Editor({page}) {
         // control();
     }, [page]);
 
-    useEffect(() => {
-        console.log('chnages')
-    }, [document.getElementById('editor')])
-
     const changeHandle = () => {
         save(page._id)
     }
@@ -38,7 +34,6 @@ export default function Editor({page}) {
     return (
         <div className='editor-container'>
             <div className="head">
-                <h1>Editor</h1>
             </div>
 
             <div className='content'>
@@ -51,7 +46,7 @@ export default function Editor({page}) {
                                     {
                                         return(
                                             <div className="controlBox">
-                                                <button onClick={(e) => deleteHandle(page._id, item.id, e)}>Delete</button>
+                                                <button className='control' id={item.id + '-btn'} onClick={(e) => deleteHandle(page._id, item.id, e)}><i class="fa-solid fa-trash"></i></button>
                                             </div>
                                         )
                                     }
@@ -61,30 +56,7 @@ export default function Editor({page}) {
                         )}
                     </div>
                     <div className="editor-content" id="editor" onInput={changeHandle}>
-                        {/* <div className="block caption">
-                            <div className="image-content">
-                                <img src={`${process.env.PUBLIC_URL}/img_dev/caption.jpg`} alt="Caption" className='caption-image' />
-                            </div>
-                            <p className='caption-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt a velit doloremque iste ab excepturi repudiandae dolor, accusamus suscipit. Voluptas impedit nam reprehenderit nemo? Soluta voluptatem nulla quidem voluptatum magnam.</p>
-                        </div>
-
-                        <div className="block text">
-                            <p><b>Lorem ipsum dolor</b>, sit amet consectetur adipisicing elit. Odit ipsa cupiditate ut id tempore suscipit fugiat iure repudiandae dignissimos, nisi iusto tempora nesciunt vero. Numquam dolorem laudantium eum. Aperiam, molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, totam fugit iste repellat assumenda accusamus ullam illum omnis error tempore itaque nisi quos unde numquam quo illo. Architecto, maiores atque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse recusandae optio accusamus eum consectetur atque tempore asperiores. Possimus pariatur reprehenderit deserunt hic voluptas mollitia reiciendis quae dolore, doloremque unde nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit minus laboriosam velit magni labore optio error laborum nihil, voluptatem similique inventore ipsa molestias reiciendis repellendus unde! Dolores aspernatur quidem sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nostrum, quidem laborum, sequi dolorem atque reprehenderit dolor perferendis, quae illo molestias tempora blanditiis. Rerum, doloribus sapiente sit nostrum ex quam!</p>
-                        </div>
-
-                        <div className="block caption is-right is-centered">
-                            <div className="image-content">
-                                <img src={`${process.env.PUBLIC_URL}/img_dev/caption1.jpg`} alt="Caption" className='caption-image' />
-                            </div>
-                            <p className='caption-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt a velit doloremque iste ab excepturi repudiandae dolor, accusamus suscipit. Voluptas impedit nam reprehenderit nemo? Soluta voluptatem nulla quidem voluptatum magnam.</p>
-                        </div>
-
-                        <div className="block caption">
-                            <div className="image-content">
-                                <img src={`${process.env.PUBLIC_URL}/img_dev/caption2.jpg`} alt="Caption" className='caption-image' />
-                            </div>
-                            <p className='caption-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt a velit doloremque iste ab excepturi repudiandae dolor, accusamus suscipit. Voluptas impedit nam reprehenderit nemo? Soluta voluptatem nulla quidem voluptatum magnam.</p>
-                        </div> */}
+                        
                     </div>
 
                     <div className="editor-content">
