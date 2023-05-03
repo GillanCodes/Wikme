@@ -83,10 +83,6 @@ function deleteBlock(itemId, pageId)
     save(pageId);
 }
 
-var delay;
-
-
-
 function displayWiki(page)
 {
     if (!isEmpty(page.content))
@@ -118,6 +114,7 @@ function changeBlock(type, id, changedContent) {
     }
 }
 
+var delay;
 function save(pageId) {
     clearTimeout(delay);
     delay = setTimeout(() => {

@@ -16,7 +16,7 @@ export default function Editor({page}) {
         {
             initPage(page.content);
             setLoad(true);
-        };
+        }
     }, [page]);
 
     const changeHandle = () => {
