@@ -65,10 +65,10 @@ function createBlock(type, pageId)
             break;
         case 'caption':
             createCaptionBlock(false);
-            break
+            break;
         case 'caption-right':
             createCaptionBlock(true);
-            break
+            break;
         default:
             break;
     }
@@ -77,8 +77,9 @@ function createBlock(type, pageId)
 
 function deleteBlock(itemId, pageId) 
 {
-    document.getElementById(itemId + "-btn").remove();
-    document.getElementById(itemId).remove();
+    var index = getBlock(itemId);
+    page.splice(index, 1);
+    console.log(page);
     save(pageId);
 }
 

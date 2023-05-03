@@ -15,19 +15,12 @@ export default function Editor({page}) {
         if (!isEmpty(page))
         {
             initPage(page.content);
-            setLoad(true)
-        }
+            setLoad(true);
+        };
     }, [page]);
 
     const changeHandle = () => {
         save(page._id)
-    }
-
-    const deleteHandle = (pageId, itemId, event) => {
-        if (!isEmpty(itemId)){
-            deleteBlock(itemId, pageId);
-            event.target.remove();
-        }
     }
         
     return (
@@ -44,8 +37,10 @@ export default function Editor({page}) {
                                     return (
                                         <>
                                             <Block block={item} />
-                                            <div className="controls">
-                                                <button className="control delete"><i class="fa-solid fa-trash"></i></button>
+                                            <div className="controls-container">
+                                                <div className="controls">
+                                                    <button className="control delete" onClick={() => deleteBlock(item.UId, page._id)}><i class="fa-solid fa-trash"></i></button>
+                                                </div>
                                             </div>
                                         </>
                                     )
