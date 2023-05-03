@@ -85,32 +85,7 @@ function deleteBlock(itemId, pageId)
 
 var delay;
 
-function save(pageId) {
 
-    // console.log(page)
-    
-    // const els = document.getElementById(id).children;
-    // const childs = [...els];
-
-    // var temp = [];
-
-    
-    // console.log(childs);
-
-    clearTimeout(delay);
-    delay = setTimeout(() => {
-        var doc = document.getElementById("editor").innerHTML;
-        axios({
-            method:"patch",
-            withCredentials: true,
-            url: `http://localhost:5050/api/wiki/${pageId}/page`,
-            data: {
-                content: page
-            }
-        });
-    }, 500)
-
-}
 
 function displayWiki(page)
 {
@@ -143,5 +118,19 @@ function changeBlock(type, id, changedContent) {
     }
 }
 
+function save(pageId) {
+    clearTimeout(delay);
+    delay = setTimeout(() => {
+        var doc = document.getElementById("editor").innerHTML;
+        axios({
+            method:"patch",
+            withCredentials: true,
+            url: `http://localhost:5050/api/wiki/${pageId}/page`,
+            data: {
+                content: page
+            }
+        });
+    }, 500)
+}
 
-export {initPage, createBlock, deleteBlock, save, displayWiki, changeBlock};
+export {initPage, createBlock, deleteBlock, displayWiki, changeBlock, save};
