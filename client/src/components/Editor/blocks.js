@@ -3,10 +3,13 @@ import { genUId, isEmpty } from "../../utils";
 
 const id = "editor";
 
+var page = [];
+
 function createTextBlock()
 {
+    var UId = genUId();
     const textBlock = document.createElement("div")
-    textBlock.id = genUId();
+    textBlock.id = UId;
     textBlock.classList = ['block', 'text'];
 
     const textContent = document.createElement('p')
@@ -15,14 +18,20 @@ function createTextBlock()
 
     textBlock.appendChild(textContent);
 
+    page.push({
+        UId: UId,
+        type: "text",
+        content: "Test !"
+    })
+
     return textBlock;
-    // console.log(typeof textBlock);
 } 
 
 function createCaptionBlock(right)
 {
+    var UId = genUId()
     const captionBlock = document.createElement('div');
-    captionBlock.id = genUId();
+    captionBlock.id = UId;
     captionBlock.classList = ['block caption']
     if (right) {
         captionBlock.classList.add('is-right');
@@ -46,6 +55,14 @@ function createCaptionBlock(right)
     captionBlock.appendChild(imageContent);
     captionBlock.appendChild(text);
     
+    page.push({
+        UId: UId,
+        type: "caption",
+        content: "Test !",
+        caption: "/img_dev/caption2.jpg",
+        isRight: right
+    });
+
     return captionBlock;
 }
 
@@ -81,8 +98,18 @@ function deleteBlock(itemId, pageId)
 
 var delay;
 
-function save(pageId)
-{
+function save(pageId) {
+
+    // console.log(page)
+    
+    // const els = document.getElementById(id).children;
+    // const childs = [...els];
+
+    // var temp = [];
+
+    
+    // console.log(childs);
+
     clearTimeout(delay);
     delay = setTimeout(() => {
         var doc = document.getElementById("editor").innerHTML;
@@ -91,7 +118,32 @@ function save(pageId)
             withCredentials: true,
             url: `http://localhost:5050/api/wiki/${pageId}/page`,
             data: {
-                content: doc
+                content: page
+            }
+        });
+    }, 500)
+
+}
+
+function saveOld(pageId)
+{
+    var els = document.getElementsByClassName('block');
+    els = [...els];
+    var childs = [];
+    els.map((child) => {
+        return childs.push(child.innerHTML)
+    })
+    console.log(childs)
+ 
+    clearTimeout(delay);
+    delay = setTimeout(() => {
+        var doc = document.getElementById("editor").innerHTML;
+        axios({
+            method:"patch",
+            withCredentials: true,
+            url: `http://localhost:5050/api/wiki/${pageId}/page`,
+            data: {
+                content: childs
             }
         });
     }, 500)
@@ -107,20 +159,27 @@ function displayWiki(page)
     }
 }
 
-
-function createControl()
+function getBlock(id)
 {
-    const controlBox = document.createElement('div');
-    controlBox.classList.add('control-box');
-
-    const delBtn = document.createElement('button');
-    delBtn.classList.add('button');
-    delBtn.value = "Delete Block";
-
-    controlBox.appendChild(delBtn);
-
-    return controlBox;
+    if (!isEmpty(page) && !isEmpty(id))
+    {
+        return page.map((x) => x.UId).indexOf(id);
+    }
 }
+
+// function createControl()
+// {
+//     const controlBox = document.createElement('div');
+//     controlBox.classList.add('control-box');
+
+//     const delBtn = document.createElement('button');
+//     delBtn.classList.add('button');
+//     delBtn.value = "Delete Block";
+
+//     controlBox.appendChild(delBtn);
+
+//     return controlBox;
+// }
 
 function control()
 {
@@ -130,7 +189,6 @@ function control()
     els.forEach(child => {
         i.push(child);
     });
-    console.log(i);
     return i;
 }
 

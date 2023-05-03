@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
 import { control, deleteBlock, displayWiki, save } from './blocks';
 import { isEmpty } from "../../utils";
+import Block from './Block';
 
 export default function Editor({page}) {
 
@@ -11,7 +12,7 @@ export default function Editor({page}) {
     const [load, setLoad] = useState(false);
 
     useEffect(() => {
-        displayWiki(page);
+        // displayWiki(page);
         if (!isEmpty(page))
         {
             setLoad(true)
@@ -56,7 +57,13 @@ export default function Editor({page}) {
                         )}
                     </div>
                     <div className="editor-content" id="editor" onInput={changeHandle}>
-                        
+                        {load && (
+                            <>
+                                {page.content.map((item) => {
+                                    return <Block block={item} />
+                                })}
+                            </> 
+                        )}
                     </div>
 
                     <div className="editor-content">

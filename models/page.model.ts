@@ -1,16 +1,16 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, Schema, Types, model } from "mongoose";
 
 export interface IPage extends Document
 {
     name:string
     wikiId:string,
-    content:string
+    content:Types.Array<Object>
 };
 
 const pageSchema = new Schema<IPage>({
     name: {type:String, required:true, minlength:1, maxlength:255},
     wikiId: {type:String, required:true},
-    content: {type:String}
+    content: {type:[Object]} 
 });
 
 const pageModel = model<IPage>('page', pageSchema);
