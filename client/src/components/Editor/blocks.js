@@ -5,6 +5,12 @@ const id = "editor";
 
 var page = [];
 
+function initPage(items)
+{
+    console.log(items)
+    page = items;
+}
+
 function createTextBlock()
 {
     var UId = genUId();
@@ -199,4 +205,4 @@ function control()
     return i;
 }
 
-export {createBlock, deleteBlock, save, displayWiki, control, changeBlock};
+export {initPage, createBlock, deleteBlock, save, displayWiki, control, changeBlock};

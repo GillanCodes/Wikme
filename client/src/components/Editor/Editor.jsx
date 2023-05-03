@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
-import { control, deleteBlock, displayWiki, save } from './blocks';
+import { control, deleteBlock, displayWiki, initPage, save } from './blocks';
 import { isEmpty } from "../../utils";
 import Block from './Block';
 
@@ -15,6 +15,7 @@ export default function Editor({page}) {
         // displayWiki(page);
         if (!isEmpty(page))
         {
+            initPage(page.content);
             setLoad(true)
         }
         // control();
