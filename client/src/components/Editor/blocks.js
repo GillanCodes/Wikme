@@ -131,32 +131,6 @@ function save(pageId) {
 
 }
 
-function saveOld(pageId)
-{
-    var els = document.getElementsByClassName('block');
-    els = [...els];
-    var childs = [];
-    els.map((child) => {
-        return childs.push(child.innerHTML)
-    })
-    console.log(childs)
- 
-    clearTimeout(delay);
-    delay = setTimeout(() => {
-        var doc = document.getElementById("editor").innerHTML;
-        axios({
-            method:"patch",
-            withCredentials: true,
-            url: `http://localhost:5050/api/wiki/${pageId}/page`,
-            data: {
-                content: childs
-            }
-        });
-    }, 500)
-    
-   
-}
-
 function displayWiki(page)
 {
     if (!isEmpty(page.content))
@@ -180,29 +154,5 @@ function changeBlock(id) {
     }
 }
 
-// function createControl()
-// {
-//     const controlBox = document.createElement('div');
-//     controlBox.classList.add('control-box');
 
-//     const delBtn = document.createElement('button');
-//     delBtn.classList.add('button');
-//     delBtn.value = "Delete Block";
-
-//     controlBox.appendChild(delBtn);
-
-//     return controlBox;
-// }
-
-function control()
-{
-    const el = document.getElementById("controls");
-    const els = document.getElementById(id).childNodes;
-    var i = [];
-    els.forEach(child => {
-        i.push(child);
-    });
-    return i;
-}
-
-export {initPage, createBlock, deleteBlock, save, displayWiki, control, changeBlock};
+export {initPage, createBlock, deleteBlock, save, displayWiki, changeBlock};
