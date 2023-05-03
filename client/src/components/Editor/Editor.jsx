@@ -12,13 +12,11 @@ export default function Editor({page}) {
     const [load, setLoad] = useState(false);
 
     useEffect(() => {
-        // displayWiki(page);
         if (!isEmpty(page))
         {
             initPage(page.content);
             setLoad(true)
         }
-        // control();
     }, [page]);
 
     const changeHandle = () => {
