@@ -1,5 +1,4 @@
 export const isEmpty = (value) => {
-    console.log(typeof value)
     return (
         value === undefined ||
         value === null ||
