@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
-import { control, deleteBlock, displayWiki, initPage, save } from './blocks';
+import { deleteBlock, initPage, save } from './blocks';
 import { isEmpty } from "../../utils";
 import Block from './Block';
 
@@ -29,7 +29,6 @@ export default function Editor({page}) {
             event.target.remove();
         }
     }
-
         
     return (
         <div className='editor-container'>
@@ -38,7 +37,7 @@ export default function Editor({page}) {
 
             <div className='content'>
                 <div className="editor">
-                    <div className="editor-controls" id='controls'>
+                    {/* <div className="editor-controls" id='controls'>
                         {load && (
                             <>
                                 {control().map((item) => {
@@ -54,7 +53,7 @@ export default function Editor({page}) {
                                 })}
                             </>
                         )}
-                    </div>
+                    </div> */}
                     <div className="editor-content" id="editor" onInput={changeHandle}>
                         {load && (
                             <>

@@ -11,83 +11,63 @@ function initPage(items)
     page = items;
 }
 
-function createTextBlock()
+function createTextBlock(type)
 {
-    var UId = genUId();
-    const textBlock = document.createElement("div")
-    textBlock.id = UId;
-    textBlock.classList = ['block', 'text'];
-
-    const textContent = document.createElement('p')
-    textContent.innerHTML = "New Block !";
-    textContent.contentEditable = true;
-
-    textBlock.appendChild(textContent);
-
-    page.push({
-        UId: UId,
-        type: "text",
-        content: "Test !"
-    })
-
-    return textBlock;
+    switch(type)
+    {
+        case "title":
+            page.push({
+                UId: genUId(),
+                type: "title",
+                content: "Test !"
+            });
+            return;
+        case "subtitle":
+            page.push({
+                UId: genUId(),
+                type: "subtitle",
+                content: "Test !"
+            });
+            return;
+        default:
+            page.push({
+                UId: genUId(),
+                type: "text",
+                content: "Test !"
+            });
+            return;
+    }
 } 
 
 function createCaptionBlock(right)
-{
-    var UId = genUId()
-    const captionBlock = document.createElement('div');
-    captionBlock.id = UId;
-    captionBlock.classList = ['block caption']
-    if (right) {
-        captionBlock.classList.add('is-right');
-    }
-
-
-    const image = document.createElement('img');
-    image.src = `${process.env.PUBLIC_URL}/img_dev/caption2.jpg`;
-    image.className = 'caption-image';
-    image.alt = "Caption"
-    
-    const imageContent = document.createElement('div')
-    imageContent.className = 'image-content';
-    imageContent.appendChild(image);
-
-    const text = document.createElement('p');
-    text.classList.add('text-caption');
-    text.innerHTML = "Caption text !";
-    text.contentEditable = true;
-
-    captionBlock.appendChild(imageContent);
-    captionBlock.appendChild(text);
-    
+{    
     page.push({
-        UId: UId,
+        UId: genUId(),
         type: "caption",
         content: "Test !",
         caption: "/img_dev/caption2.jpg",
         isRight: right
     });
-
-    return captionBlock;
 }
 
 function createBlock(type, pageId)
 {
-    const el = document.getElementById(id);
     switch(type)
     {
         case 'text-only':
-            el.appendChild(createTextBlock());
-            // el.insertBefore(createTextBlock(), el.children[el.children.length - 1]);
+            createTextBlock();
+            break;
+        case 'title':
+            createTextBlock('title');
+            break;
+        case 'subtitle':
+            createTextBlock('subtitle');
             break;
         case 'caption':
-            el.appendChild(createCaptionBlock(false));
-            // el.insertBefore(createCaptionBlock(false), el.children[el.children.length - 1]);
+            createCaptionBlock(false);
             break
         case 'caption-right':
-            el.appendChild(createCaptionBlock(true));
-            // el.insertBefore(createCaptionBlock(true), el.children[el.children.length - 1]);
+            createCaptionBlock(true);
             break
         default:
             break;
@@ -147,10 +127,18 @@ function getBlock(id)
     }
 }
 
-function changeBlock(id) {
+function changeBlock(type, id, changedContent) {
     var index = getBlock(id);
-    if (!isEmpty(index)){
-        console.log(page[index]);
+    switch(type)
+    {
+        case 'text':
+            return page[index].content = changedContent;
+        case 'caption':
+            page[index].content = changedContent.text;
+            page[index].caption = changedContent.image;
+            return;
+        default:
+            break
     }
 }
 

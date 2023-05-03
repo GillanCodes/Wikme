@@ -19,6 +19,16 @@ export default function BlockModal({setModal, pageId}) {
                     <div className="body">
 
                     <div className="items">
+                            <div className="item" id='title' onClick={() => addBlock("title")}>
+                                <h2 className='title'>Title</h2>
+                                <p>Bigger Text</p>
+                            </div>
+
+                            <div className="item" onClick={() => addBlock('subtitle')}>
+                                <h2 className='title'>Sub Title</h2>
+                                <p>A Smaller Text</p>
+                            </div>
+                            
                             <div className="item" id='text-only' onClick={() => addBlock("text-only")}>
                                 <h2 className='title'>Text</h2>
                                 <p>Just a text Box</p>
