@@ -23,13 +23,9 @@ export const postImage = async (req: any, res: express.Response) => {
     }
 
     const fileName = `${genUId()}.jpg`;
-
-    console.log(req.file.buffer);
-
     fs.writeFile(`${config.CDN_PATH}/${fileName}`, req.file.buffer, (err) => {
         if (err) console.log(err);
     });
-
     imageModel.create({
         ownerId: res.locals.user._id,
         path: fileName
