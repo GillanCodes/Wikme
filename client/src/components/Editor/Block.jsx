@@ -28,7 +28,7 @@ export default function Block({block, fileHandle}) {
         <div class={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId}>
           <div class="image-content">
             {!isEmpty(block.caption) ? (
-              <img src={block.caption} class="caption-image" alt="Caption" />
+              <img onClick={fileHandle} src={block.caption} class="caption-image" alt="Caption" />
             ) : (
               <>
                 {!isEmpty(fileHandle) && (

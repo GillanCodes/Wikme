@@ -114,6 +114,13 @@ function changeBlock(type, id, changedContent) {
     }
 }
 
+function setCaptionImage(id, path, pageId)
+{
+    var index = getBlock(id);
+    page[index].caption = `${process.env.REACT_APP_CDN_URL}/uploads/${path}`
+    save(pageId);
+}
+
 var delay;
 function save(pageId) {
     clearTimeout(delay);
@@ -130,4 +137,4 @@ function save(pageId) {
     }, 500)
 }
 
-export {initPage, createBlock, deleteBlock, displayWiki, changeBlock, save};
+export {initPage, createBlock, deleteBlock, displayWiki, changeBlock, setCaptionImage, save};

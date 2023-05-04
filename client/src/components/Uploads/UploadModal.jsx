@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from '../../utils';
 import { postImage } from '../../actions/image.actions';
+import { setCaptionImage } from '../Editor/blocks';
 
-export default function UploadModal({setModal, imageClickAction}) {
+export default function UploadModal({setModal, currentBlock, pageId}) {
   
   const [load, setLoad] = useState(false);
   const [picture, setPicture] = useState();
@@ -27,6 +28,12 @@ export default function UploadModal({setModal, imageClickAction}) {
     dispatch(postImage(data));
   }
 
+  const imageClickAction = (path) => {
+    // console.log(currentBlock, path);
+    setCaptionImage(currentBlock, path, pageId);
+    setModal(0);
+  }
+
   return (
     <div className='image-manager'>
         <div className="image-manager-container">
@@ -45,7 +52,7 @@ export default function UploadModal({setModal, imageClickAction}) {
                           {imagesData.reverse().map((image) => {
                             return (
                               <div className="image-box">
-                                <img onClick={!isEmpty(imageClickAction) ? imageClickAction : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
+                                <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
                               </div>
                             )
                           })}
