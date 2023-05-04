@@ -5,8 +5,13 @@ import * as fs from "fs";
 import genUId from "../utils/UId";
 import imageModel from "../../models/image.model";
 
-export const getImages = (req: express.Request, res: express.Response) => {
-
+export const getImages = async (req: express.Request, res: express.Response) => {
+    try {
+        const images = await imageModel.find({ownerId: res.locals.user._id});
+        return res.status(200).send(images);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const postImage = async (req: any, res: express.Response) => {
