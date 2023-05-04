@@ -35,14 +35,14 @@ export default function Editor({page}) {
                             <>
                                 {page.content.map((item) => {
                                     return (
-                                        <>
+                                        <div className='box'>
                                             <Block block={item} />
                                             <div className="controls-container">
                                                 <div className="controls">
                                                     <button className="control delete" onClick={() => deleteBlock(item.UId, page._id)}><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                             </div>
-                                        </>
+                                        </div>
                                     )
                                 })}
                             </> 

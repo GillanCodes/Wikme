@@ -21,9 +21,16 @@
     margin: 10px 0px 0px -50px;
 }
 
+.editor-container .content .editor .box
+{
+    display: flex;
+    align-items: center;
+}
+
 .controls-container
 {
     position: fixed;
+
 }
 
 .controls-container .controls
@@ -108,8 +115,15 @@
     margin: 1em 2em;
 }
 
-.editor-container .content .editor .editor-content .block{
-    margin: 1.5em 0;
+.editor-container .content .editor .editor-content .box .block
+{
+    margin: 0.5em 0;
+    width: 100%;
+}
+
+.editor-container .content .editor .editor-content .box .block *:focus
+{
+    outline: none;
 }
 
 .editor-container .content .editor .editor-content .new-block
@@ -123,7 +137,7 @@
     cursor: pointer;
 }
 
-.editor-container .content .editor .editor-content .caption {
+.editor-container .content .editor .editor-content .box .caption {
 
     display: flex;
 
@@ -142,12 +156,12 @@
         }
     }
     
-    // .caption-text {
-
-    // }
+    .text-caption {
+        width: calc(100% - 200px);
+    }
 }
 
-.editor-container .content .editor .editor-content .caption.is-right
+.editor-container .content .editor .editor-content .box .caption.is-right
 {
     flex-direction: row-reverse;
     
@@ -157,7 +171,7 @@
     }
 }
 
-.editor-container .content .editor .editor-content .caption.is-centered
+.editor-container .content .editor .editor-content .box .caption.is-centered
 {
     align-items: center;
 }
