@@ -1,5 +1,6 @@
 import React from 'react'
 import { changeBlock } from './blocks';
+import { isEmpty } from '../../utils';
 
 export default function Block({block}) {
 
@@ -26,7 +27,11 @@ export default function Block({block}) {
       return (
         <div class={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId}>
           <div class="image-content">
-            <img src={block.caption} class="caption-image" alt="Caption" />
+            {!isEmpty(block.caption) ? (
+              <img src={block.caption} class="caption-image" alt="Caption" />
+            ) : (
+              <p>Image</p>
+            )}
           </div>
           <p class="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true}>{block.content}</p>
         </div>
