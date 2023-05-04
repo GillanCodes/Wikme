@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from '../../utils';
+import { postImage } from '../../actions/image.actions';
 
-export default function UploadModal({setModal}) {
+export default function UploadModal({setModal, imageClickAction}) {
   
   const [load, setLoad] = useState(false);
   const [picture, setPicture] = useState();
 
   const imagesData = useSelector(state => state.imagesReducer);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(imagesData);
@@ -19,6 +22,9 @@ export default function UploadModal({setModal}) {
 
   const imageAddHandle = () => {
     console.log(picture)
+    var data = new FormData();
+    data.append("picture", picture);
+    dispatch(postImage(data));
   }
 
   return (
@@ -36,10 +42,10 @@ export default function UploadModal({setModal}) {
                       </div>
                       {load && (
                         <>
-                          {imagesData.map((image) => {
+                          {imagesData.reverse().map((image) => {
                             return (
                               <div className="image-box">
-                                <img src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
+                                <img onClick={!isEmpty(imageClickAction) ? imageClickAction : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
                               </div>
                             )
                           })}

@@ -1,4 +1,4 @@
-import { GET_IMAGES } from "../actions/image.actions";
+import { GET_IMAGES, UPLOAD_IMAGE } from "../actions/image.actions";
 
 const initialState = {};
 
@@ -8,6 +8,8 @@ export default function imagesReducer(state = initialState, action)
     {
         case GET_IMAGES:
             return action.payload;
+        case UPLOAD_IMAGE:
+            return [...state, action.payload];
         default:
             return state;
     }
