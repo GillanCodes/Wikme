@@ -2,7 +2,7 @@ import React from 'react'
 import { changeBlock } from './blocks';
 import { isEmpty } from '../../utils';
 
-export default function Block({block}) {
+export default function Block({block, fileHandle}) {
 
   switch(block.type){
     case "title":
@@ -30,7 +30,11 @@ export default function Block({block}) {
             {!isEmpty(block.caption) ? (
               <img src={block.caption} class="caption-image" alt="Caption" />
             ) : (
-              <p>Image</p>
+              <>
+                {!isEmpty(fileHandle) && (
+                  <p onClick={fileHandle}>Images</p>
+                )}
+              </>
             )}
           </div>
           <p class="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true}>{block.content}</p>

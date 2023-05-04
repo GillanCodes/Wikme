@@ -4,6 +4,7 @@ import BlockModal from './BlockModal'
 import { deleteBlock, initPage, save } from './blocks';
 import { isEmpty } from "../../utils";
 import Block from './Block';
+import UploadModal from '../Uploads/UploadModal';
 
 export default function Editor({page}) {
 
@@ -22,6 +23,11 @@ export default function Editor({page}) {
     const changeHandle = () => {
         save(page._id)
     }
+
+    const fileHandle = () => {
+        if (modal === 2) setModal(0);
+        if (modal !== 2) setModal(2);
+    }
         
     return (
         <div className='editor-container'>
@@ -36,7 +42,7 @@ export default function Editor({page}) {
                                 {page.content.map((item) => {
                                     return (
                                         <div className='box'>
-                                            <Block block={item} />
+                                            <Block block={item} fileHandle={fileHandle} />
                                             <div className="controls-container">
                                                 <div className="controls">
                                                     <button className="control delete" onClick={() => deleteBlock(item.UId, page._id)}><i class="fa-solid fa-trash"></i></button>
@@ -59,6 +65,10 @@ export default function Editor({page}) {
 
             {modal === 1 && (
                 <Modal content={<BlockModal setModal={setModal} pageId={page._id} />} />
+            )}
+
+            {modal === 2 && (
+                <Modal content={<UploadModal setModal={setModal} />} />
             )}
 
         </div>

@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 export default function Modal({content, modalId}) {
   return (
     <div className='modal' id={modalId ? modalId.toString() : null}>
