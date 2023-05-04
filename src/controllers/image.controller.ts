@@ -3,6 +3,7 @@ import config from "../../config/config";
 
 import * as fs from "fs";
 import genUId from "../utils/UId";
+import imageModel from "../../models/image.model";
 
 export const getImages = (req: express.Request, res: express.Response) => {
 
@@ -23,5 +24,12 @@ export const postImage = async (req: any, res: express.Response) => {
     fs.writeFile(`${config.CDN_PATH}/${fileName}`, req.file.buffer, (err) => {
         if (err) console.log(err);
     });
+
+    imageModel.create({
+        ownerId: res.locals.user._id,
+        path: fileName
+    }).then((data) => {
+        res.status(201).send(data);
+    }).catch(err => console.log(err));
 
 }
