@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { isEmpty } from '../../utils';
-import { getPages } from '../../actions/page.actions';
+import { createPage, getPages } from '../../actions/page.actions';
 import Editor from "../Editor/Editor";
 
 export default function Wiki() {
@@ -34,6 +34,10 @@ export default function Wiki() {
     }
   }, [pages, wikiData]);
 
+  const createPageHandle = () => {
+    dispatch(createPage({name: newPage.name, id}))
+  }
+
   return (
     <div className='wiki-container container'>
       <div className="wiki-content content">
@@ -52,7 +56,7 @@ export default function Wiki() {
               {newPage.isOpen && (
                 <div className='item'>
                   <input type="text" placeholder="Page's name" className="input" onChange={(e) => setNewPage({...newPage, name:e.target.value})} />
-                  <button className='button'>Create Page</button>
+                  <button className='button' onClick={() => createPageHandle()}>Create Page</button>
                 </div>
               )}
             {load && (
