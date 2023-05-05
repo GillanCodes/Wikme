@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../../utils";
 import WikiModule from './WikiModule';
+import { createWiki } from '../../actions/wiki.actions';
 
 export default function Wikis() {
   
   const wikis = useSelector((state) => state.wikiReducer);
   const [load, setLoad] = useState(false);
-
   const [state, setState] = useState({name: "", description: ""})
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!isEmpty(wikis))
@@ -19,7 +21,7 @@ export default function Wikis() {
   }, [wikis]);
 
   const createWikiHandle = () => {
-    console.log(state);
+    dispatch(createWiki({name: state.name, desc: state.description}));
   }
 
   return (
@@ -33,8 +35,8 @@ export default function Wikis() {
                   </div>
                   <div className="article-module-body">
                     <div className="form">
-                      <input type="text" className="input" value={state.name} onChange={(e) => setState({...state, name: e.target.value})} />
-                      <input type="text" className="input" value={state.description} onChange={(e) => setState({...state, description: e.target.value})} />
+                      <input type="text" className="input" placeholder="Wiki's name" value={state.name} onChange={(e) => setState({...state, name: e.target.value})} />
+                      <input type="text" className="input" placeholder="Wiki's Description" value={state.description} onChange={(e) => setState({...state, description: e.target.value})} />
                     </div>
                   </div>
                   <div className="article-module-footer">

@@ -1,4 +1,4 @@
-import { GET_WIKIS } from "../actions/wiki.actions";
+import { CREATE_WIKI, GET_WIKIS } from "../actions/wiki.actions";
 
 const initialState = {};
 
@@ -8,6 +8,11 @@ export default function wikiReducer(state = initialState, action)
     {
         case GET_WIKIS:
             return action.payload;
+        case CREATE_WIKI:
+            return [
+                ...state,
+                action.payload
+            ]
         default:
             return state;
     }
