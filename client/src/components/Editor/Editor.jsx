@@ -13,7 +13,6 @@ export default function Editor({page}) {
     const [load, setLoad] = useState(false);
 
     const [currentBlock, setCurrentBlock] = useState();
-    const [selcImage, setSelcImage] = useState();
 
     useEffect(() => {
         if (!isEmpty(page))

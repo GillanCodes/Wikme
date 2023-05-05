@@ -79,7 +79,6 @@ function deleteBlock(itemId, pageId)
 {
     var index = getBlock(itemId);
     page.splice(index, 1);
-    console.log(page);
     save(pageId);
 }
 
