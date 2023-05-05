@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from '../../utils';
+import { isEmpty, toTimestamp } from '../../utils';
 import { postImage } from '../../actions/image.actions';
 import { setCaptionImage } from '../Editor/blocks';
 
@@ -49,10 +49,10 @@ export default function UploadModal({setModal, currentBlock, pageId}) {
                       </div>
                       {load && (
                         <>
-                          {imagesData.sort((a,b) => a.createdAt - b.createdAt).map((image) => {
+                          {imagesData.sort((a,b) => (toTimestamp(b.createdAt) - toTimestamp(a.createdAt))).map((image) => {
+                            console.log(new Date(image.createdAt).getTime())
                             return (
                               <div className="image-box">
-                                <p>{image.createdAt}</p>
                                 <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
                               </div>
                             )
