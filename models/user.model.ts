@@ -18,7 +18,7 @@ const userSchema = new Schema<IUser>({
     username: {type: String, required:true, unique:true, maxlength:24, minlength:3},
     email: {type: String, required: true, validate: isEmail},
     password: {type: String, required: true, minlength:5,maxlength:255}
-});
+}, {timestamps:true});
 
 userSchema.pre<IUser>('save', async function(this: IUser, next) {
     const salt:string = await genSalt();

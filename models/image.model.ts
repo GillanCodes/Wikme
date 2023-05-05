@@ -9,7 +9,7 @@ export interface IImage extends Document
 const imageSchema = new Schema<IImage>({
     ownerId: {type:String, required:true},
     path: {type:String, required:true}
-});
+}, {timestamps: true});
 
 const imageModel = model<IImage>('image', imageSchema);
 export default imageModel;
