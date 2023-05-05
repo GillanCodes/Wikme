@@ -14,6 +14,7 @@ export default function Wiki() {
   const [pageKey, setPageKey] = useState();
 
   const pages = useSelector(state => state.pageReducer);
+  const wikiData = useSelector(state => state.wikiReducer);
   
   useEffect(() => {
     if (!isEmpty(id))
@@ -36,13 +37,25 @@ export default function Wiki() {
     <div className='wiki-container container'>
       <div className="wiki-content content">
         <div className="side-menu">
-          {load && (
-            <ul className='items'>
-              {pages.map((page, key) => {
-                return <li className={key === pageKey ? "item active" : "item"} onClick={() => setPageKey(key)} id={page._id}>{page.name}</li>
-              })}
-            </ul>
-          )}
+          <div className="content">
+            {load && (
+              <>
+                {wikiData.map((wiki) => {
+                  if (wiki._id === id)
+                  {
+                    return (
+                      <h2 className='wiki-title'>{wiki.name}</h2>
+                    )
+                  }
+                })}
+                <ul className='items'>
+                  {pages.map((page, key) => {
+                    return <li className={key === pageKey ? "item active" : "item"} onClick={() => setPageKey(key)} id={page._id}>{page.name}</li>
+                  })}
+                </ul>
+              </>
+            )}
+          </div>
         </div>
 
         <div className="page">

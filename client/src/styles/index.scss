@@ -21,24 +21,26 @@
 .app
 {
     display: flex;
+    flex-direction: column;
 }
 
 .container
 {
-    width: calc(100vw - $navbar-close);
+    // width: calc(100vw - $navbar-close);
+    margin-top: $navbar-height;
 }
 
 
-.main-menu.navbar-container:hover ~ .container {
+.side-menu:hover ~ .container {
     width: calc(100vw - $navbar-open);
 }
 
-.main-menu.navbar-container:hover
+.side-menu:hover
 {
     animation: openNav 0.2s forwards;
 }
 
-.main-menu.navbar-container
+.side-menu
 {
     animation: closeNav 0.2s forwards;
 }
