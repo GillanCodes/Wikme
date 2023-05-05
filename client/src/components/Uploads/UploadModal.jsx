@@ -49,9 +49,10 @@ export default function UploadModal({setModal, currentBlock, pageId}) {
                       </div>
                       {load && (
                         <>
-                          {imagesData.reverse().map((image) => {
+                          {imagesData.sort((a,b) => a.createdAt - b.createdAt).map((image) => {
                             return (
                               <div className="image-box">
+                                <p>{image.createdAt}</p>
                                 <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
                               </div>
                             )
