@@ -59,7 +59,7 @@ export default function Wiki() {
                   })}
               </>
             )}
-            <li className='item' onClick={() => setNewPage({isOpen: !newPage.isOpen})}>New Page</li>
+            <li className='item' onClick={() => setNewPage({isOpen: !newPage.isOpen})}>New Page {newPage.isOpen ? <i class="fa-solid fa-arrow-down"></i> : <i class="fa-solid fa-arrow-up"></i>}</li>
               {newPage.isOpen && (
                 <div className='item'>
                   <input type="text" placeholder="Page's name" className="input" onChange={(e) => setNewPage({...newPage, name:e.target.value})} />
