@@ -12,6 +12,7 @@ export default function Wiki() {
 
   const [load, setLoad] = useState(false);
   const [pageKey, setPageKey] = useState();
+  const [newPage, setNewPage] = useState({isOpen: false, name:""});
 
   const pages = useSelector(state => state.pageReducer);
   const wikiData = useSelector(state => state.wikiReducer);
@@ -24,37 +25,44 @@ export default function Wiki() {
   }, [id]);
 
   useEffect(() => {
-    if (!isEmpty(pages) && !isEmpty(wikiData))
+    if (!isEmpty(pages))
     {
       if (!isEmpty(pages[0])){
         setPageKey(0);
       }
       setLoad(true);
     }
-  }, [pages, wikiData])
+  }, [pages, wikiData]);
 
   return (
     <div className='wiki-container container'>
       <div className="wiki-content content">
         <div className="side-menu">
           <div className="content">
+            {!isEmpty(wikiData) && wikiData.map((wiki) => {
+              if (wiki._id === id)
+              {
+                return (
+                  <h2 className='wiki-title'>{wiki.name}</h2>
+                )
+              }
+            })}
+            <ul className='items'>
+              <li className='item' onClick={() => setNewPage({isOpen: !newPage.isOpen})}>New Page</li>
+              {newPage.isOpen && (
+                <div className='item'>
+                  <input type="text" placeholder="Page's name" className="input" onChange={(e) => setNewPage({...newPage, name:e.target.value})} />
+                  <button className='button'>Create Page</button>
+                </div>
+              )}
             {load && (
-              <>
-                {wikiData.map((wiki) => {
-                  if (wiki._id === id)
-                  {
-                    return (
-                      <h2 className='wiki-title'>{wiki.name}</h2>
-                    )
-                  }
-                })}
-                <ul className='items'>
+              <>    
                   {pages.map((page, key) => {
                     return <li className={key === pageKey ? "item active" : "item"} onClick={() => setPageKey(key)} id={page._id}>{page.name}</li>
                   })}
-                </ul>
               </>
             )}
+            </ul>
           </div>
         </div>
 
