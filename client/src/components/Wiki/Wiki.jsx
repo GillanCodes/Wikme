@@ -52,13 +52,6 @@ export default function Wiki() {
               }
             })}
             <ul className='items'>
-              <li className='item' onClick={() => setNewPage({isOpen: !newPage.isOpen})}>New Page</li>
-              {newPage.isOpen && (
-                <div className='item'>
-                  <input type="text" placeholder="Page's name" className="input" onChange={(e) => setNewPage({...newPage, name:e.target.value})} />
-                  <button className='button' onClick={() => createPageHandle()}>Create Page</button>
-                </div>
-              )}
             {load && (
               <>    
                   {pages.map((page, key) => {
@@ -66,6 +59,13 @@ export default function Wiki() {
                   })}
               </>
             )}
+            <li className='item' onClick={() => setNewPage({isOpen: !newPage.isOpen})}>New Page</li>
+              {newPage.isOpen && (
+                <div className='item'>
+                  <input type="text" placeholder="Page's name" className="input" onChange={(e) => setNewPage({...newPage, name:e.target.value})} />
+                  <button className='button' onClick={() => createPageHandle()}>Create Page</button>
+                </div>
+              )}
             </ul>
           </div>
         </div>
