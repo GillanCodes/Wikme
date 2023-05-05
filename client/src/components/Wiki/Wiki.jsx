@@ -24,14 +24,14 @@ export default function Wiki() {
   }, [id]);
 
   useEffect(() => {
-    if (!isEmpty(pages))
+    if (!isEmpty(pages) && !isEmpty(wikiData))
     {
       if (!isEmpty(pages[0])){
         setPageKey(0);
       }
       setLoad(true);
     }
-  }, [pages])
+  }, [pages, wikiData])
 
   return (
     <div className='wiki-container container'>
