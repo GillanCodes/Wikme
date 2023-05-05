@@ -8,19 +8,19 @@ export default function Block({block, fileHandle}) {
     case "title":
       return (
         <div className="block title" id={block.UId}>
-          <h1 onInput={(e) => changeBlock(block.type, block.UId, e.target.innerText)} contentEditable={true}>{block.content}</h1>
+          <h1 onInput={(e) => changeBlock(block.type, block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</h1>
         </div>
       )
     case "subtitle":
       return (
         <div className="block subtitle" id={block.UId}>
-          <h2 onInput={(e) => changeBlock(block.type, block.UId, e.target.innerText)} contentEditable={true}>{block.content}</h2>
+          <h2 onInput={(e) => changeBlock(block.type, block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</h2>
         </div>
       )
     case "text":
       return (
         <div className="block text-only" id={block.UId}>
-          <p onInput={(e) => changeBlock(block.type, block.UId, e.target.innerText)} contentEditable={true}>{block.content}</p>
+          <p onInput={(e) => changeBlock(block.type, block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
         </div>
       );
     case "caption":
@@ -37,7 +37,7 @@ export default function Block({block, fileHandle}) {
               </>
             )}
           </div>
-          <p class="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true}>{block.content}</p>
+          <p class="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
         </div>
       )
     default:
