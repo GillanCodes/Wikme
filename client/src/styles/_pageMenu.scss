@@ -57,3 +57,7 @@ $page-menu-width: 250px;
     }
 }
 
+.page-menu .container .content .body .items .item.active
+{
+    text-decoration: underline;
+}
