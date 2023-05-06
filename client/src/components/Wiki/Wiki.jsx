@@ -56,44 +56,6 @@ export default function Wiki() {
   return (
     <div className='wiki-container container'>
       <div className="wiki-content content">
-        {/* <div className="side-menu">
-          <div className="content">
-            {!isEmpty(wikiData) && wikiData.map((wiki) => {
-              if (wiki._id === id)
-              {
-                return (
-                  <h2 className='wiki-title'>{wiki.name}</h2>
-                )
-              }
-            })}
-            <ul className='items'>
-            {load && (
-              <>    
-                  {pages.map((page, key) => {
-                    return (
-                      <>
-                        <li className={key === pageKey ? "item active" : "item"} onClick={() => setPageKey(key)} id={page._id}> 
-                          <p className='text'>{page.name}</p>
-                          <button className="button is-success">
-                            <i className="fa-solid fa-gear setting"></i>
-                          </button>
-                        </li>
-                      </>
-                    )
-                  })}
-              </>
-            )}
-            <li className='item' onClick={() => setNewPage({isOpen: !newPage.isOpen})}>New Page {newPage.isOpen ? <i class="fa-solid fa-arrow-down"></i> : <i class="fa-solid fa-arrow-up"></i>}</li>
-              {newPage.isOpen && (
-                <div className='form'>
-                  <input type="text" placeholder="Page's name" className="input" onChange={(e) => setNewPage({...newPage, name:e.target.value})} />
-                  <button className='button' onClick={() => createPageHandle()}>Create Page</button>
-                </div>
-              )}
-            </ul>
-          </div>
-        </div> */}
-
         {load && (
           <PageMenu pages={pages} wiki={currentWiki} createPageHandle={createPageHandle} setNewPage={setNewPage} newPage={newPage} />
         )}
@@ -103,7 +65,6 @@ export default function Wiki() {
             <Editor page={pages[pageKey]} />
           )}
         </div>
-
       </div>
     </div>
   )
