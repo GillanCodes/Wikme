@@ -62,7 +62,7 @@ export const updatePageContent = (req: express.Request, res: express.Response) =
 }
 
 export const pageUpdate = (req: express.Request, res: Express.Response) => {
-    
+
 }
 
 export const deletePage = async (req: express.Request, res: express.Response) => {
@@ -71,7 +71,7 @@ export const deletePage = async (req: express.Request, res: express.Response) =>
         if (res.locals.user)
         {
             var page = await pageModel.deleteOne({_id: id});
-            return res.status(201).send(page);
+            return res.status(201).send({id});
         } 
     } catch (error) {
         console.log(error);   
