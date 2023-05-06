@@ -61,6 +61,10 @@ export const updatePageContent = (req: express.Request, res: express.Response) =
     }
 }
 
+export const pageUpdate = (req: express.Request, res: Express.Response) => {
+    
+}
+
 export const deletePage = async (req: express.Request, res: express.Response) => {
     try {
         const { id } = req.params;
