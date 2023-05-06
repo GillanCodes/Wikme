@@ -60,3 +60,16 @@ export const updatePageContent = (req: express.Request, res: express.Response) =
         console.log(error);
     }
 }
+
+export const deletePage = async (req: express.Request, res: express.Response) => {
+    try {
+        const { id } = req.params;
+        if (res.locals.user)
+        {
+            var page = await pageModel.deleteOne({_id: id});
+            return res.status(201).send(page);
+        } 
+    } catch (error) {
+        console.log(error);   
+    }
+}
