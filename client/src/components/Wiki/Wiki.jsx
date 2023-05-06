@@ -60,7 +60,7 @@ export default function Wiki() {
   return (
     <div className='wiki-container container'>
       <div className="wiki-content content">
-        {load && wikiLoad && (
+        {wikiLoad && (
           <PageMenu 
             pages={pages} 
             wiki={currentWiki} 
