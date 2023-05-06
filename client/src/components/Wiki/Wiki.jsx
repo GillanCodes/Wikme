@@ -5,6 +5,8 @@ import { isEmpty } from '../../utils';
 import { createPage, getPages } from '../../actions/page.actions';
 import Editor from "../Editor/Editor";
 import PageMenu from './PageMenu';
+import Modal from '../Modules/Modal';
+import PageModal from './PageModal';
 
 export default function Wiki() {
 
@@ -12,6 +14,7 @@ export default function Wiki() {
   const dispatch = useDispatch();
 
   const [load, setLoad] = useState(false);
+  const [wikiLoad, setWikiLoad] = useState(false);
   const [pageKey, setPageKey] = useState();
   const [newPage, setNewPage] = useState("");
   const [currentWiki, setCurrentWiki] = useState();
@@ -42,6 +45,7 @@ export default function Wiki() {
           return setCurrentWiki(wiki);
         }
       })
+      setWikiLoad(true);
     }
   }, [pages, wikiData]);
 
@@ -56,8 +60,16 @@ export default function Wiki() {
   return (
     <div className='wiki-container container'>
       <div className="wiki-content content">
-        {load && (
-          <PageMenu pages={pages} wiki={currentWiki} createPageHandle={createPageHandle} setNewPage={setNewPage} newPage={newPage} />
+        {load && wikiLoad && (
+          <PageMenu 
+            pages={pages} 
+            wiki={currentWiki} 
+            createPageHandle={createPageHandle} 
+            setNewPage={setNewPage} 
+            newPage={newPage}
+            setPageKey={setPageKey}
+            pageKey={pageKey}
+          />
         )}
 
         <div className="page">
