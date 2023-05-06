@@ -61,8 +61,20 @@ export const updatePageContent = (req: express.Request, res: express.Response) =
     }
 }
 
-export const pageUpdate = (req: express.Request, res: Express.Response) => {
-
+export const pageUpdate = (req: express.Request, res: express.Response) => {
+    try {
+        const { id } = req.params;
+        const { name } : {name:string} = req.body;
+        pageModel.findByIdAndUpdate(id, {
+            $set: {
+                name
+            }
+        }, {new:true, upsert: true}).then((data) => {
+            return res.status(201).send(data);
+        }).catch(err => console.log(err));
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 export const deletePage = async (req: express.Request, res: express.Response) => {
