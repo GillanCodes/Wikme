@@ -24,6 +24,5 @@ import {
 
 router.get('/:id/page', getPages);
 router.post('/:id/page', createPage);
-router.patch('/:id/page', updatePageContent);
 
 export default router;
