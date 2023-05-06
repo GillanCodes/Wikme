@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const GET_PAGES = "GET_PAGES";
 export const CREATE_PAGE = "CREATE_PAGE";
+export const DELETE_PAGE = "DELETE_PAGE";
 
 export const getPages = (wikiId) => {
     return(dispatch) => {
@@ -26,6 +27,18 @@ export const createPage = ({name, id}) => {
             }
         }).then((res) => {
             dispatch({type: CREATE_PAGE, payload: res.data});
+        }).catch(err => console.log(err));
+    }
+}
+
+export const deletePage = (id) => {
+    return(dispatch) => {
+        return axios({
+            method:"delete",
+            withCredentials:true,
+            url: `${process.env.REACT_APP_API_URL}/page/${id}`
+        }).then((res) =>{
+            dispatch({type: DELETE_PAGE, payload: res.data});
         }).catch(err => console.log(err));
     }
 }
