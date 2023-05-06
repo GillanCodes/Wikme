@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_PAGES = "GET_PAGES";
 export const CREATE_PAGE = "CREATE_PAGE";
 export const DELETE_PAGE = "DELETE_PAGE";
+export const UPDATE_PAGE = "UPDATE_PAGE";
 
 export const getPages = (wikiId) => {
     return(dispatch) => {
@@ -39,6 +40,21 @@ export const deletePage = (id) => {
             url: `${process.env.REACT_APP_API_URL}/page/${id}`
         }).then((res) =>{
             dispatch({type: DELETE_PAGE, payload: res.data});
+        }).catch(err => console.log(err));
+    }
+}
+
+export const updatePage = ({id, name}) => {
+    return (dispatch) => {
+        return axios({
+            method: 'patch',
+            withCredentials: true,
+            url: `${process.env.REACT_APP_API_URL}/page/${id}/`,
+            data: {
+                name
+            }
+        }).then((res) => {
+            dispatch({type: UPDATE_PAGE, payload: res.data})
         }).catch(err => console.log(err));
     }
 }

@@ -1,4 +1,4 @@
-import { CREATE_PAGE, DELETE_PAGE, GET_PAGES } from "../actions/page.actions";
+import { CREATE_PAGE, DELETE_PAGE, GET_PAGES, UPDATE_PAGE } from "../actions/page.actions";
 
 const initialState = {};
 
@@ -15,6 +15,15 @@ export default function pageReducer(state = initialState, action)
             ]
         case DELETE_PAGE:
             return state.filter((page) => page._id !== action.payload.id);
+        case UPDATE_PAGE: 
+            return state.map((page) => {
+                if (page._id === action.payload._id)
+                {
+                    return action.payload;
+                } else {
+                    return page;
+                }
+            })
         default:
             return state;
     }

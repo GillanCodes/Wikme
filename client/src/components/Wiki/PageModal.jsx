@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { deletePage } from '../../actions/page.actions';
+import { deletePage, updatePage } from '../../actions/page.actions';
 
 export default function PageModal({setModal, pageModal}) {
 
     const dispatch = useDispatch();
+
+    const [pageName, setPageName] = useState(pageModal.page.name);
 
     const deletePageHandle = () => {
         setModal({...pageModal, isOpen:false});
@@ -12,7 +14,8 @@ export default function PageModal({setModal, pageModal}) {
     }
 
     const renamePageHandle = () => {
-
+        setModal({...pageModal, isOpen:false});
+        dispatch(updatePage({id:pageModal.page._id,name: pageName}));
     }
 
     return (
@@ -25,8 +28,8 @@ export default function PageModal({setModal, pageModal}) {
                     <div className="body">
                         <div className="items">
                             <div className="form">
-                                <input type="text" className="input" placeholder="Page's name" value={pageModal.page.name} />
-                                <button className="button is-success">Save</button>
+                                <input type="text" className="input" placeholder="Page's name" value={pageName} onChange={(e) => setPageName(e.target.value)} />
+                                <button className="button is-success" onClick={() => renamePageHandle()}>Save</button>
                             </div>
                             <div className="form">
                                 <div className="button is-danger" onClick={() => deletePageHandle()}>Delete</div>
