@@ -21,10 +21,13 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
   }, [imagesData]);
 
   const imageAddHandle = () => {
-    console.log(picture)
     var data = new FormData();
     data.append("picture", picture);
-    dispatch(postImage(data));
+    if (picture !== undefined)
+    {
+      dispatch(postImage(data));
+      setPicture(undefined);
+    }
   }
 
   const imageClickAction = (path) => {
