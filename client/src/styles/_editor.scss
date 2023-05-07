@@ -175,3 +175,23 @@
 {
     align-items: center;
 }
+
+.editor-container .content .editor .editor-content .box .block.images
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        margin: 0px 5px;
+        min-width: 25%;
+        max-width: 50%;
+        max-height: 500px;
+        height:  fit-content;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+}
