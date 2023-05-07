@@ -15,6 +15,8 @@ export default function Wiki() {
 
   const [load, setLoad] = useState(false);
   const [wikiLoad, setWikiLoad] = useState(false);
+  const [dispatched, setDispatched] = useState(false);
+
   const [pageKey, setPageKey] = useState();
   const [newPage, setNewPage] = useState("");
   const [currentWiki, setCurrentWiki] = useState();
@@ -26,16 +28,17 @@ export default function Wiki() {
     if (!isEmpty(id))
     {
       dispatch(getPages(id));
+      setDispatched(true);
     }
   }, [id]);
 
   useEffect(() => {
-    if (!isEmpty(pages))
+    if (!isEmpty(pages) && dispatched)
     {
       if (!isEmpty(pages[0])){
         setPageKey(0);
-        setLoad(true);
       }
+      setLoad(true);
     }
     if (!isEmpty(wikiData))
     {
