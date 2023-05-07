@@ -1,13 +1,10 @@
 import axios from "axios";
 import { genUId, isEmpty } from "../../utils";
 
-const id = "editor";
-
 var page = [];
 
 function initPage(items)
 {
-    console.log(items)
     page = items;
 }
 
@@ -82,14 +79,6 @@ function deleteBlock(itemId, pageId)
     save(pageId);
 }
 
-function displayWiki(page)
-{
-    if (!isEmpty(page.content))
-    {
-        document.getElementById(id).innerHTML = page.content
-    }
-}
-
 function getBlock(id)
 {
     if (!isEmpty(page) && !isEmpty(id))
@@ -136,4 +125,4 @@ function save(pageId) {
     }, 500)
 }
 
-export {initPage, createBlock, deleteBlock, displayWiki, changeBlock, setCaptionImage, save};
+export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, save};
