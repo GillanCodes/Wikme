@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Modal from '../Modules/Modal';
 import PageModal from './PageModal';
+import { isEmpty } from '../../utils';
 
 export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey}) {
 
@@ -19,7 +20,7 @@ export default function PageMenu({pages, wiki, createPageHandle, setNewPage, new
                         </div>
                         <div className="body">
                             <div className="items">
-                                {pages.map((item, key) => {
+                                {!isEmpty(pages) && pages.map((item, key) => {
                                     return (
                                         <div className={pageKey === key ? 'item active' : 'item'}>
                                             <button className='button' onClick={() => setPageModal({...pageModal, isOpen:true, page:item})}> 
