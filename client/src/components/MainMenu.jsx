@@ -40,13 +40,13 @@ export default function MainMenu() {
             <div className="items">
               <div className="item">
                 <NavLink to={"/"}>
-                  <i class="fa-solid fa-house"></i>
+                  <i className="fa-solid fa-house"></i>
                   <p>Home</p>
                 </NavLink>
               </div>
               <div className="item">
                 <NavLink to={'/wikis'}>
-                  <i class="fa-solid fa-book"></i>
+                  <i className="fa-solid fa-book"></i>
                   <p>Wiki</p>  
                 </NavLink> 
               </div>
@@ -54,7 +54,7 @@ export default function MainMenu() {
                 <>
                   <div className="item">
                     <NavLink to={"/me"}>
-                      <i class="fa-solid fa-user"></i>
+                      <i className="fa-solid fa-user"></i>
                       <p>{currentUser.username}</p>
                     </NavLink>
                   </div>

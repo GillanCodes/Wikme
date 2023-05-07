@@ -25,10 +25,10 @@ export default function Block({block, fileHandle, setImageKey}) {
       );
     case "caption":
       return (
-        <div class={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId} key={block.UId}>
-          <div class="image-content">
+        <div className={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId} key={block.UId}>
+          <div className="image-content">
             {!isEmpty(block.caption) ? (
-              <img onClick={fileHandle} src={block.caption} class="caption-image" alt="Caption" />
+              <img onClick={fileHandle} src={block.caption} className="caption-image" alt="Caption" />
             ) : (
               <>
                 {!isEmpty(fileHandle) && (
@@ -37,7 +37,7 @@ export default function Block({block, fileHandle, setImageKey}) {
               </>
             )}
           </div>
-          <p class="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
+          <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
         </div>
       )
     case "images":

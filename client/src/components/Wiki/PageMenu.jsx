@@ -32,7 +32,7 @@ export default function PageMenu({pages, wiki, createPageHandle, setNewPage, new
                                 })}
                                 <div className="item">
                                     <button className="button is-success" onClick={() => createPageHandle()}>
-                                        <i class="fa-solid fa-plus"></i>
+                                        <i className="fa-solid fa-plus"></i>
                                     </button>
                                     <input type="text" className="input" placeholder="New Page's name" value={newPage} onChange={(e) => setNewPage(e.target.value)}/>
                                 </div>
