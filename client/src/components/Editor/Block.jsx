@@ -40,6 +40,14 @@ export default function Block({block, fileHandle}) {
           <p class="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
         </div>
       )
+    case "images":
+      return (
+        <div className="block images">
+          {block.content.map((img) => {
+            return <img src={img} alt="test" />
+          })}
+        </div>
+      )
     default:
       break;
   }

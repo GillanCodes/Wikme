@@ -47,7 +47,18 @@ function createCaptionBlock(right)
     });
 }
 
-function createBlock(type, pageId)
+function createImageBlock(number)
+{
+    // if (isEmpty(images)) return "Empty images"
+    // if (typeof images !== "object") return "Wrong type";
+    page.push({
+        type: "images",
+        size: number,
+        content: [`${process.env.REACT_APP_CDN_URL}uploads/lhbvfts8xm8mfgqwd4d.jpg`, `${process.env.REACT_APP_CDN_URL}uploads/lhbvfts8xm8mfgqwd4d.jpg`]
+    });
+}
+
+function createBlock(type, pageId, imageSize)
 {
     switch(type)
     {
@@ -65,6 +76,9 @@ function createBlock(type, pageId)
             break;
         case 'caption-right':
             createCaptionBlock(true);
+            break;
+        case "images":
+            createImageBlock(imageSize);
             break;
         default:
             break;

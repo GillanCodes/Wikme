@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createBlock } from './blocks';
 
 export default function BlockModal({setModal, pageId}) {
 
+    const [imageSize, setImageSize] = useState(1);
+
     const addBlock = (type) => {
         setModal(0);
-        createBlock(type, pageId);
+        if (type !== "images") return createBlock(type, pageId);
+
+        if (type === "images") return createBlock(type, pageId, imageSize);
     }
 
     return (
@@ -42,6 +46,12 @@ export default function BlockModal({setModal, pageId}) {
                             <div className="item" onClick={() => addBlock('caption-right')}>
                                 <h2 className='title'>Caption Right</h2>
                                 <p>Text Box with a image on Right side</p>
+                            </div>
+
+                            <div className="item" >
+                                <h2 className='title'>Images</h2>
+                                <input type="range" max={4} min={1} value={imageSize} onChange={(e) => setImageSize(e.target.value)}/> <br />
+                                <button className='button is-info' onClick={() => addBlock('images')}>Add {imageSize} images</button>
                             </div>
                         </div> 
 
