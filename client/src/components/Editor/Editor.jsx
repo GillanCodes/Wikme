@@ -45,9 +45,9 @@ export default function Editor({page}) {
                     <div className="editor-content" id="editor" onInput={changeHandle}>
                         {load && (
                             <>
-                                {page.content.map((item) => {
+                                {page.content.map((item, key) => {
                                     return (
-                                        <div className='box'>
+                                        <div className='box' key={key}>
                                             <Block block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
                                             <div className="controls-container">
                                                 <div className="controls">

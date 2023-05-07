@@ -18,11 +18,11 @@ export default function PageMenu({pages, wiki, createPageHandle, setNewPage, new
                         <div className="head">
                             <h2 className='title'>{wiki.name}</h2>
                         </div>
-                        <div className="body">
+                        <div className="body" key={"pages-list-body"}>
                             <div className="items">
                                 {!isEmpty(pages) && pages.map((item, key) => {
                                     return (
-                                        <div className={pageKey === key ? 'item active' : 'item'}>
+                                        <div className={pageKey === key ? 'item active' : 'item'} key={key}>
                                             <button className='button' onClick={() => setPageModal({...pageModal, isOpen:true, page:item})}> 
                                                 <i className="fa-solid fa-gear setting"></i>
                                             </button>
