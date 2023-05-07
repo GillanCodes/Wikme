@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty, toTimestamp } from '../../utils';
 import { postImage } from '../../actions/image.actions';
-import { setCaptionImage } from '../Editor/blocks';
+import { setCaptionImage, setImages } from '../Editor/blocks';
 
-export default function UploadModal({setModal, currentBlock, pageId}) {
+export default function UploadModal({setModal, currentBlock, pageId, imageKey}) {
   
   const [load, setLoad] = useState(false);
   const [picture, setPicture] = useState();
@@ -14,7 +14,6 @@ export default function UploadModal({setModal, currentBlock, pageId}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(imagesData);
     if (!isEmpty(imagesData))
     {
       setLoad(true);
@@ -29,8 +28,18 @@ export default function UploadModal({setModal, currentBlock, pageId}) {
   }
 
   const imageClickAction = (path) => {
-    // console.log(currentBlock, path);
-    setCaptionImage(currentBlock, path, pageId);
+    switch (currentBlock.type)
+    {
+      case 'caption':
+        setCaptionImage(currentBlock.UId, path, pageId);
+        break;
+      case 'images':
+        console.log(currentBlock)
+        setImages(currentBlock.UId, path, pageId, imageKey);
+        break;
+      default:
+        break;
+    }
     setModal(0);
   }
 
@@ -50,7 +59,6 @@ export default function UploadModal({setModal, currentBlock, pageId}) {
                       {load && (
                         <>
                           {imagesData.sort((a,b) => (toTimestamp(b.createdAt) - toTimestamp(a.createdAt))).map((image) => {
-                            console.log(new Date(image.createdAt).getTime())
                             return (
                               <div className="image-box">
                                 <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
@@ -60,32 +68,6 @@ export default function UploadModal({setModal, currentBlock, pageId}) {
                         </>
                       )}
                     </div>
-                    {/* <div className="items">
-                        <div className="item" id='title' onClick={() => addBlock("title")}>
-                            <h2 className='title'>Title</h2>
-                            <p>Bigger Text</p>
-                        </div>
-
-                        <div className="item" onClick={() => addBlock('subtitle')}>
-                            <h2 className='title'>Sub Title</h2>
-                            <p>A Smaller Text</p>
-                        </div>
-                        
-                        <div className="item" id='text-only' onClick={() => addBlock("text-only")}>
-                            <h2 className='title'>Text</h2>
-                            <p>Just a text Box</p>
-                        </div>
-
-                        <div className="item" onClick={() => addBlock('caption')}>
-                            <h2 className='title'>Caption</h2>
-                            <p>Text Box with a image on side</p>
-                        </div>
-
-                        <div className="item" onClick={() => addBlock('caption-right')}>
-                            <h2 className='title'>Caption Right</h2>
-                            <p>Text Box with a image on Right side</p>
-                        </div>
-                    </div>  */}
                 </div>
                 <div className="footer">
                     <button onClick={() => setModal(0)}>Close</button>

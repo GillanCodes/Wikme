@@ -13,6 +13,7 @@ export default function Editor({page}) {
     const [load, setLoad] = useState(false);
 
     const [currentBlock, setCurrentBlock] = useState();
+    const [imageKey, setImageKey] = useState();
 
     useEffect(() => {
         if (!isEmpty(page))
@@ -26,11 +27,11 @@ export default function Editor({page}) {
         save(page._id)
     }
 
-    const fileHandle = (blockId) => {
+    const fileHandle = (block) => {
         if (modal === 2) setModal(0);
         if (modal !== 2) {
             setModal(2); 
-            setCurrentBlock(blockId);
+            setCurrentBlock(block);
         }
     }
         
@@ -47,7 +48,7 @@ export default function Editor({page}) {
                                 {page.content.map((item) => {
                                     return (
                                         <div className='box'>
-                                            <Block block={item} fileHandle={() => fileHandle(item.UId)} />
+                                            <Block block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
                                             <div className="controls-container">
                                                 <div className="controls">
                                                     <button className="control delete" onClick={() => deleteBlock(item.UId, page._id)}><i class="fa-solid fa-trash"></i></button>
@@ -73,7 +74,7 @@ export default function Editor({page}) {
             )}
 
             {modal === 2 && (
-                <Modal content={<UploadModal setModal={setModal} currentBlock={currentBlock} pageId={page._id} />} />
+                <Modal content={<UploadModal setModal={setModal} currentBlock={currentBlock} pageId={page._id} imageKey={imageKey} />} />
             )}
 
         </div>

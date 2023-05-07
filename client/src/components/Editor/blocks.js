@@ -51,10 +51,15 @@ function createImageBlock(number)
 {
     // if (isEmpty(images)) return "Empty images"
     // if (typeof images !== "object") return "Wrong type";
+    var tempContent = [];
+    for (let index = 0; index < number; index++) {
+        tempContent.push("empty_content");
+    }
+
     page.push({
+        UId: genUId(),
         type: "images",
-        size: number,
-        content: [`${process.env.REACT_APP_CDN_URL}uploads/lhbvfts8xm8mfgqwd4d.jpg`, `${process.env.REACT_APP_CDN_URL}uploads/lhbvfts8xm8mfgqwd4d.jpg`]
+        content: tempContent
     });
 }
 
@@ -123,6 +128,14 @@ function setCaptionImage(id, path, pageId)
     save(pageId);
 }
 
+function setImages(id, path, pageId, key)
+{
+    var index = getBlock(id);
+    page[index].content[key] = `${process.env.REACT_APP_CDN_URL}/uploads/${path}`;
+    save(pageId);
+}
+
+
 var delay;
 function save(pageId) {
     clearTimeout(delay);
@@ -139,4 +152,4 @@ function save(pageId) {
     }, 500)
 }
 
-export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, save};
+export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, setImages, save};

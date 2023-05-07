@@ -2,30 +2,30 @@ import React from 'react'
 import { changeBlock } from './blocks';
 import { isEmpty } from '../../utils';
 
-export default function Block({block, fileHandle}) {
+export default function Block({block, fileHandle, setImageKey}) {
 
   switch(block.type){
     case "title":
       return (
-        <div className="block title" id={block.UId}>
+        <div className="block title" id={block.UId} key={block.UId}>
           <h1 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</h1>
         </div>
       )
     case "subtitle":
       return (
-        <div className="block subtitle" id={block.UId}>
+        <div className="block subtitle" id={block.UId} key={block.UId}>
           <h2 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</h2>
         </div>
       )
     case "text":
       return (
-        <div className="block text-only" id={block.UId}>
+        <div className="block text-only" id={block.UId} key={block.UId}>
           <p onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
         </div>
       );
     case "caption":
       return (
-        <div class={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId}>
+        <div class={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId} key={block.UId}>
           <div class="image-content">
             {!isEmpty(block.caption) ? (
               <img onClick={fileHandle} src={block.caption} class="caption-image" alt="Caption" />
@@ -42,9 +42,11 @@ export default function Block({block, fileHandle}) {
       )
     case "images":
       return (
-        <div className="block images">
-          {block.content.map((img) => {
-            return <img src={img} alt="test" />
+        <div className="block images" id={block.UId} key={block.UId}>
+          {block.content.map((img, key) => {
+            if (img === "empty_content") return ( <p onClick={() => {fileHandle(); setImageKey(key)} }>New Image</p> )
+            return ( <img src={img} alt="test" /> )
+
           })}
         </div>
       )
