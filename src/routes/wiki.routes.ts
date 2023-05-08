@@ -8,13 +8,15 @@ import {
     getWikis,
     getWiki,
     createWiki,
-    updateWiki
+    updateWiki,
+    deleteWiki
 } from '../controllers/wiki.controller';
 
 router.get('/', getWikis);
 router.get('/:id', getWiki);
 router.post('/', createWiki);
 router.patch('/:id', updateWiki);
+router.delete('/:id', deleteWiki)
 
 //Page
 

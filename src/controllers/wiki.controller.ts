@@ -72,3 +72,13 @@ export const updateWiki = (req: express.Request, res: express.Response) => {
         console.log(error);
     }
 }
+
+export const deleteWiki = async (req: express.Request, res: express.Response) => {
+    try {
+        const { id } = req.params;
+        var wiki = await wikiModel.findByIdAndDelete(id)
+        return res.status(201).send({id});
+    } catch (error) {
+        console.log(error);
+    }
+}
