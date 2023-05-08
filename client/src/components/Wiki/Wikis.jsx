@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../../utils";
 import WikiModule from './WikiModule';
 import { createWiki } from '../../actions/wiki.actions';
+import Modal from '../Modules/Modal';
+import WikiModal from './WikiModal';
 
 export default function Wikis() {
   
   const wikis = useSelector((state) => state.wikiReducer);
   const [load, setLoad] = useState(false);
   const [state, setState] = useState({name: "", description: ""})
+
+  const [modal, setModal] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -47,10 +51,13 @@ export default function Wikis() {
         </div>
         {load && (
         <>
-          {/* <WikiModule wiki={wikis[0]} /> */}
           {wikis.map((wiki) => {
-            return ( <WikiModule wiki={wiki} /> )
+            return ( <WikiModule wiki={wiki} setModal={setModal} /> )
           })}
+
+          {modal === 1 && (
+            <Modal content={<WikiModal setModal={setModal} />} />
+          )}
         </>
        )} 
       </div>
