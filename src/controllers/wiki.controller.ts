@@ -53,3 +53,22 @@ export const createWiki = async (req: express.Request, res: express.Response) =>
     }
 
 };
+
+export const updateWiki = (req: express.Request, res: express.Response) => {
+    try {
+        const { id } = req.params;
+        const {name, description} : {name:string, description:string} = req.body;
+        wikiModel.findByIdAndUpdate(id, {
+            $set: {
+                name,
+                description
+            }
+        }, {new: true, upsert:true}).then((data) => {
+            return res.status(201).send(data);
+        }).catch((error) => {
+            console.log(error)
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}

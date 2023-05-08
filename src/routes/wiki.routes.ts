@@ -7,12 +7,14 @@ let router:Router = Router();
 import {
     getWikis,
     getWiki,
-    createWiki
+    createWiki,
+    updateWiki
 } from '../controllers/wiki.controller';
 
 router.get('/', getWikis);
 router.get('/:id', getWiki);
 router.post('/', createWiki);
+router.patch('/:id', updateWiki);
 
 //Page
 
