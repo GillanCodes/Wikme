@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function WikiModule({wiki}) {
+export default function WikiModule({wiki, setModal}) {
   return (
     <div className='article-module'>
         <div className="article-module-container">
@@ -14,6 +14,7 @@ export default function WikiModule({wiki}) {
                 </div>
                 <div className="article-module-footer">
                     <NavLink to={`/wiki/${wiki._id}`}>View</NavLink>
+                    <p onClick={() => setModal(1)}>Edit</p>
                 </div>
             </div>
         </div>
