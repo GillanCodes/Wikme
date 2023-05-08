@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 
-export default function WikiModal({setModal}) {
+export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
 
     const dispatch = useDispatch();
+
+    const [name, setName] = useState(currentWiki.name);
+    const [desc, setDesc] = useState(currentWiki.description);
+
+    const saveHandle = () => {
+        
+    }
 
     return (
         <div className='wiki-modal'>
             <div className="wiki-modal-container">
                 <div className="wiki-modal-content">
                     <div className="head">
-                        <h2></h2>
+                        <h2>{currentWiki.name}</h2>
                     </div>
                     <div className="body">
                         <div className="items">
                             <div className="form">
-                                <input type="text" className="input" placeholder="Page's name" />
+                                <input type="text" className="input" placeholder="Wiki's name" value={name} onChange={(e) => setName(e.target.value)} />
+                                <input type="text" className="input" placeholder="Wiki's description" value={desc} onChange={(e) => setDesc(e.target.value)} />
                                 <button className="button is-success">Save</button>
                             </div>
                             <div className="form">

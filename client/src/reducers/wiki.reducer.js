@@ -1,4 +1,4 @@
-import { CREATE_WIKI, GET_WIKIS } from "../actions/wiki.actions";
+import { CREATE_WIKI, GET_WIKIS, UPDATE_WIKI } from "../actions/wiki.actions";
 
 const initialState = {};
 
@@ -13,6 +13,16 @@ export default function wikiReducer(state = initialState, action)
                 ...state,
                 action.payload
             ]
+        case UPDATE_WIKI:
+            return state.map((wiki) => {
+                if (wiki._id === action.payload._id)
+                {
+                    return action.payload;
+                } else {
+                    return wiki;
+                }
+            })
+            break;
         default:
             return state;
     }

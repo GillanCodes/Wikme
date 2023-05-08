@@ -13,6 +13,7 @@ export default function Wikis() {
   const [state, setState] = useState({name: "", description: ""})
 
   const [modal, setModal] = useState(0);
+  const [currentWiki, setCurrentWiki] = useState();
 
   const dispatch = useDispatch();
 
@@ -52,11 +53,11 @@ export default function Wikis() {
         {load && (
         <>
           {wikis.map((wiki) => {
-            return ( <WikiModule wiki={wiki} setModal={setModal} /> )
+            return ( <WikiModule wiki={wiki} setModal={setModal} setCurrentWiki={setCurrentWiki} /> )
           })}
 
           {modal === 1 && (
-            <Modal content={<WikiModal setModal={setModal} />} />
+            <Modal content={<WikiModal setModal={setModal} currentWiki={currentWiki} setCurrentWiki={setCurrentWiki} />} />
           )}
         </>
        )} 
