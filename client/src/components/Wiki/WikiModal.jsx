@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
+import { deleteWiki, updateWiki } from '../../actions/wiki.actions';
 
 export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
 
@@ -9,7 +10,14 @@ export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
     const [desc, setDesc] = useState(currentWiki.description);
 
     const saveHandle = () => {
-        
+        dispatch(updateWiki({id: currentWiki._id, name, desc}));
+        setModal(0);
+    }
+
+    const deleteHandle = () => {
+        dispatch(deleteWiki(currentWiki._id));
+        setCurrentWiki(null);
+        setModal(0);
     }
 
     return (
@@ -24,10 +32,10 @@ export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
                             <div className="form">
                                 <input type="text" className="input" placeholder="Wiki's name" value={name} onChange={(e) => setName(e.target.value)} />
                                 <input type="text" className="input" placeholder="Wiki's description" value={desc} onChange={(e) => setDesc(e.target.value)} />
-                                <button className="button is-success">Save</button>
+                                <button className="button is-success" onClick={() => saveHandle()}>Save</button>
                             </div>
                             <div className="form">
-                                <div className="button is-danger">Delete</div>
+                                <div className="button is-danger" onClick={() => deleteHandle()}>Delete</div>
                             </div>
                         </div> 
                     </div>

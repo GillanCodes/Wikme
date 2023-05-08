@@ -1,3 +1,4 @@
+import { DELETE_PAGE } from "../actions/page.actions";
 import { CREATE_WIKI, GET_WIKIS, UPDATE_WIKI } from "../actions/wiki.actions";
 
 const initialState = {};
@@ -23,6 +24,8 @@ export default function wikiReducer(state = initialState, action)
                 }
             })
             break;
+        case DELETE_PAGE:
+            return state.filter((wiki) => wiki._id !== action.payload._id)
         default:
             return state;
     }
