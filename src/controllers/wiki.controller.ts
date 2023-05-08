@@ -1,5 +1,6 @@
 import * as express from "express";
 import wikiModel from "../../models/wiki.model";
+import pageModel from "../../models/page.model";
 
 export const getWikis = async (req: express.Request, res: express.Response) => {
     
@@ -77,6 +78,7 @@ export const deleteWiki = async (req: express.Request, res: express.Response) =>
     try {
         const { id } = req.params;
         var wiki = await wikiModel.findByIdAndDelete(id)
+        var pages = await pageModel.deleteMany({wikiId: id});
         return res.status(201).send({id});
     } catch (error) {
         console.log(error);
