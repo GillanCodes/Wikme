@@ -42,7 +42,7 @@ function createCaptionBlock(right)
         UId: genUId(),
         type: "caption",
         content: "Test !",
-        caption: "/img_dev/caption2.jpg",
+        caption: "",
         isRight: right
     });
 }
