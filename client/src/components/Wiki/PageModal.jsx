@@ -37,7 +37,7 @@ export default function PageModal({setModal, pageModal}) {
                         </div> 
                     </div>
                     <div className="footer">
-                        <button onClick={() => setModal({...pageModal, isOpen:false})}>Close</button>
+                        <button className='button is-link' onClick={() => setModal({...pageModal, isOpen:false})}>Close</button>
                     </div>
                 </div>
             </div>

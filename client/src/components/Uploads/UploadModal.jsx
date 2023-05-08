@@ -73,7 +73,7 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
                     </div>
                 </div>
                 <div className="footer">
-                    <button onClick={() => setModal(0)}>Close</button>
+                    <button className='button is-link' onClick={() => setModal(0)}>Close</button>
                 </div>
 
             </div>
