@@ -39,7 +39,6 @@ export default function Editor({page}) {
         <div className='editor-container'>
             <div className="head">
             </div>
-
             <div className='content'>
                 <div className="editor">
                     <div className="editor-content" id="editor" onInput={changeHandle}>
@@ -51,7 +50,6 @@ export default function Editor({page}) {
                                             <Block block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
                                             <div className="controls-container">
                                                 <div className="controls">
-                                                    {console.log(arr.length === key+1)}
                                                     {key !== 0 && (<button className='control arrow' onClick={() => blockUp(key, page._id)}><i class="fa-solid fa-arrow-up"></i></button>)}
                                                     <button className="control delete" onClick={() => deleteBlock(item.UId, page._id)}><i className="fa-solid fa-trash"></i></button>
                                                     {arr.length !== key+1 && (<button className='control arrow' onClick={() => blockDown(key, page._id)}><i class="fa-solid fa-arrow-down"></i></button>)}
