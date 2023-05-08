@@ -32,7 +32,9 @@ export default function Block({block, fileHandle, setImageKey}) {
             ) : (
               <>
                 {!isEmpty(fileHandle) && (
-                  <p onClick={fileHandle}>Images</p>
+                  <div className="image-form">
+                    <p onClick={fileHandle}>Images</p>
+                  </div>
                 )}
               </>
             )}
@@ -44,7 +46,11 @@ export default function Block({block, fileHandle, setImageKey}) {
       return (
         <div className="block images" id={block.UId} key={block.UId}>
           {block.content.map((img, key) => {
-            if (img === "empty_content") return ( <p onClick={() => {fileHandle(); setImageKey(key); } }>New Image</p> )
+            if (img === "empty_content") return ( 
+              <div className="image-form" onClick={() => {fileHandle(); setImageKey(key); } }>
+                <p>New Image</p> 
+              </div>
+            )
             return ( <img src={img} alt="test" onClick={() => { fileHandle(); setImageKey(key); }} /> )
 
           })}

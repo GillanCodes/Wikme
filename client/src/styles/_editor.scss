@@ -154,6 +154,12 @@
             object-fit: cover;
             border-radius: 10px;
         }
+
+        .caption-image:hover
+        {
+            outline: 1px solid $info;
+            cursor: pointer;
+        }
     }
     
     .text-caption {
@@ -192,6 +198,39 @@
         height:  fit-content;
         object-fit: cover;
         border-radius: 10px;
+        cursor: pointer;
     }
 
+}
+
+.image-form 
+{
+    min-width: 200px;
+    min-height: 200px;
+    height: 100%;
+    width: 100%;
+
+    margin: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: 2px solid $info;
+    border-radius: 10px;
+
+    p 
+    {
+        font-weight: 600;
+    }
+}
+
+.image-form:hover
+{
+    outline: 1px solid $info;
+    cursor: pointer;
+    p
+    {
+        text-decoration: underline;
+    }
 }
