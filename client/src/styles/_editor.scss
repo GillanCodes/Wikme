@@ -36,8 +36,12 @@
 .controls-container .controls
 {
     margin: 0px 0px 0px -100px;
+    display: flex;
+    flex-direction: column;
 }
 
+.controls-container .controls .control.delete { background-color: $danger; }
+.controls-container .controls .control.arrow { background-color: $info; }
 .controls-container .controls .control
 {
     height: 50px;
@@ -45,7 +49,6 @@
     border: none;
     font-size: 1em;
     border-radius: 10px;
-    background-color: $danger;
     cursor: pointer;
     i {
         color: $white;

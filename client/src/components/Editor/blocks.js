@@ -1,5 +1,7 @@
 import axios from "axios";
 import { genUId, isEmpty } from "../../utils";
+import { updateContent } from "../../actions/page.actions";
+import store from "../../index";
 
 var page = [];
 
@@ -88,14 +90,7 @@ function createBlock(type, pageId, imageSize)
         default:
             break;
     }
-    save(pageId);
-}
-
-function deleteBlock(itemId, pageId) 
-{
-    var index = getBlock(itemId);
-    page.splice(index, 1);
-    save(pageId);
+    saveNoDelay(pageId);
 }
 
 function getBlock(id)
@@ -125,31 +120,53 @@ function setCaptionImage(id, path, pageId)
 {
     var index = getBlock(id);
     page[index].caption = `${process.env.REACT_APP_CDN_URL}/uploads/${path}`
-    save(pageId);
+    saveNoDelay(pageId);
 }
 
 function setImages(id, path, pageId, key)
 {
     var index = getBlock(id);
     page[index].content[key] = `${process.env.REACT_APP_CDN_URL}/uploads/${path}`;
-    save(pageId);
+    saveNoDelay(pageId);
 }
 
+function swapElements (array, key, newplace)
+{
+    let temp = array[key];
+    array[key] = array[newplace];
+    array[newplace] = temp;
+}
+
+
+function blockUp(key, pageId)
+{
+    swapElements(page, key, key-1);
+    saveNoDelay(pageId);
+}
+
+function blockDown(key, pageId)
+{
+    swapElements(page, key, key+1);
+    saveNoDelay(pageId);
+}
+
+function deleteBlock(itemId, pageId) 
+{
+    var index = getBlock(itemId);
+    page.splice(index, 1);
+    saveNoDelay(pageId);
+}
 
 var delay;
 function save(pageId) {
     clearTimeout(delay);
     delay = setTimeout(() => {
-        var doc = document.getElementById("editor").innerHTML;
-        axios({
-            method:"patch",
-            withCredentials: true,
-            url: `http://localhost:5050/api/wiki/${pageId}/page`,
-            data: {
-                content: page
-            }
-        });
+        store.dispatch(updateContent(pageId, page));
     }, 500)
 }
 
-export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, setImages, save};
+function saveNoDelay(pageId) {
+    store.dispatch(updateContent(pageId, page));
+}
+
+export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, setImages, blockUp, blockDown, save};

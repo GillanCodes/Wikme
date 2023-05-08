@@ -19,3 +19,5 @@ root.render(
       <App />
     </Provider>
 );
+
+export default store; 

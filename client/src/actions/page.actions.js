@@ -4,6 +4,7 @@ export const GET_PAGES = "GET_PAGES";
 export const CREATE_PAGE = "CREATE_PAGE";
 export const DELETE_PAGE = "DELETE_PAGE";
 export const UPDATE_PAGE = "UPDATE_PAGE";
+export const UPDATE_CONTENT = "UPDATE_CONTENT";
 
 export const getPages = (wikiId) => {
     return(dispatch) => {
@@ -55,6 +56,21 @@ export const updatePage = ({id, name}) => {
             }
         }).then((res) => {
             dispatch({type: UPDATE_PAGE, payload: res.data})
+        }).catch(err => console.log(err));
+    }
+}
+
+export const updateContent = (id, page) => {
+    return (dispatch) => {
+        return axios({
+            method:"patch",
+            withCredentials: true,
+            url: `http://localhost:5050/api/wiki/${id}/page`,
+            data: {
+                content: page
+            }
+        }).then((res) => {
+            dispatch({type: UPDATE_CONTENT, payload: res.data})
         }).catch(err => console.log(err));
     }
 }

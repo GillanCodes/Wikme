@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Modal from '../Modules/Modal'
 import BlockModal from './BlockModal'
-import { deleteBlock, initPage, save } from './blocks';
+import { blockDown, blockUp, deleteBlock, initPage, save } from './blocks';
 import { isEmpty } from "../../utils";
 import Block from './Block';
 import UploadModal from '../Uploads/UploadModal';
@@ -45,13 +45,16 @@ export default function Editor({page}) {
                     <div className="editor-content" id="editor" onInput={changeHandle}>
                         {load && (
                             <>
-                                {page.content.map((item, key) => {
+                                {page.content.map((item, key, arr) => {
                                     return (
                                         <div className='box' key={key}>
                                             <Block block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
                                             <div className="controls-container">
                                                 <div className="controls">
+                                                    {console.log(arr.length === key+1)}
+                                                    {key !== 0 && (<button className='control arrow' onClick={() => blockUp(key, page._id)}><i class="fa-solid fa-arrow-up"></i></button>)}
                                                     <button className="control delete" onClick={() => deleteBlock(item.UId, page._id)}><i className="fa-solid fa-trash"></i></button>
+                                                    {arr.length !== key+1 && (<button className='control arrow' onClick={() => blockDown(key, page._id)}><i class="fa-solid fa-arrow-down"></i></button>)}
                                                 </div>
                                             </div>
                                         </div>
