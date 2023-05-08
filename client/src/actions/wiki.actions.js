@@ -50,12 +50,14 @@ export const updateWiki = ({id, name, desc}) =>  {
 }
 
 export const deleteWiki = (id) => {
+    console.log(id);
     return(dispatch) => {
         return axios({
             method: 'delete',
             withCredentials: true,
             url: `${process.env.REACT_APP_API_URL}/wiki/${id}`,
         }).then((res) => {
+            console.log(res.data)
             dispatch({type: DELETE_WIKI, payload: res.data});
         }).catch(err => console.log(err));
     }
