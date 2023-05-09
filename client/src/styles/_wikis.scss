@@ -4,3 +4,19 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.wiki-container .wiki-content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: calc(100vh - 50px);
+    overflow: hidden;
+}
+
+.page
+{
+    flex-grow: 10;
+    overflow: scroll;
+    height: calc(100vh - 50px);
+}
