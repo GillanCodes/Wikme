@@ -2,6 +2,8 @@ import React from 'react'
 import { changeBlock } from './blocks';
 import { isEmpty } from '../../utils';
 
+import * as DOMPurify from "dompurify";
+
 export default function Block({block, fileHandle, setImageKey}) {
 
   switch(block.type){
@@ -20,7 +22,7 @@ export default function Block({block, fileHandle, setImageKey}) {
     case "text":
       return (
         <div className="block text-only" id={block.UId} key={block.UId}>
-          <p onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
+          <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
         </div>
       );
     case "caption":
@@ -39,7 +41,7 @@ export default function Block({block, fileHandle, setImageKey}) {
               </>
             )}
           </div>
-          <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerText, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</p>
+          <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerHTML, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
         </div>
       )
     case "images":
