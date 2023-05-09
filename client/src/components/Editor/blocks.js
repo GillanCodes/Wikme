@@ -18,21 +18,21 @@ function createTextBlock(type)
             page.push({
                 UId: genUId(),
                 type: "title",
-                content: "Test !"
+                content: "New title"
             });
             return;
         case "subtitle":
             page.push({
                 UId: genUId(),
                 type: "subtitle",
-                content: "Test !"
+                content: "New subtitle"
             });
             return;
         default:
             page.push({
                 UId: genUId(),
                 type: "text",
-                content: "Test !"
+                content: "New text block"
             });
             return;
     }
