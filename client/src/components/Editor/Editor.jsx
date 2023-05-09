@@ -50,6 +50,7 @@ export default function Editor({page}) {
                                     {page.content.map((item, key, arr) => {
                                         return (
                                             <div className='box' key={key}>
+                                                <p className='block-nb'>#{key+1}</p>
                                                 <Block block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
                                             </div>
                                         )

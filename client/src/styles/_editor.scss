@@ -27,33 +27,11 @@
     align-items: center;
 }
 
-.controls-container
+.block-nb
 {
     position: absolute;
-
-}
-
-.controls-container .controls
-{
-    margin: 0px 0px 0px 1000px;
-    display: flex;
-    flex-direction: row;
-}
-
-.controls-container .controls .control.delete { background-color: $danger; }
-.controls-container .controls .control.arrow { background-color: $info; }
-.controls-container .controls .control
-{
-    height: 50px;
-    width: 50px;
-    border: none;
-    font-size: 1em;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 1;
-    i {
-        color: $white;
-    }
+    margin-left: -70px;
+    font-size: 1.2em;
 }
 
 @media screen and (min-width: 1400px){
