@@ -32,8 +32,8 @@ export default function Block({block, fileHandle, setImageKey}) {
             ) : (
               <>
                 {!isEmpty(fileHandle) && (
-                  <div className="image-form">
-                    <p onClick={fileHandle}>Images</p>
+                  <div className="image-form" onClick={fileHandle}>
+                    <p>Images</p>
                   </div>
                 )}
               </>
