@@ -161,7 +161,14 @@ var delay;
 function save(pageId) {
     clearTimeout(delay);
     delay = setTimeout(() => {
-        store.dispatch(updateContent(pageId, page));
+        return axios({
+            method:"patch",
+            withCredentials: true,
+            url: `http://localhost:5050/api/wiki/${pageId}/page`,
+            data: {
+                content: page
+            }
+        });
     }, 500)
 }
 
