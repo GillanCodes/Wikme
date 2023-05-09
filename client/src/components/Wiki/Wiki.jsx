@@ -5,8 +5,6 @@ import { isEmpty } from '../../utils';
 import { createPage, getPages } from '../../actions/page.actions';
 import Editor from "../Editor/Editor";
 import PageMenu from './PageMenu';
-import Modal from '../Modules/Modal';
-import PageModal from './PageModal';
 
 export default function Wiki() {
 
@@ -74,12 +72,9 @@ export default function Wiki() {
             pageKey={pageKey}
           />
         )}
-
-        <div className="page">
-          {load && !isEmpty(pageKey) && (
-            <Editor page={pages[pageKey]} />
-          )}
-        </div>
+        {load && !isEmpty(pageKey) && (
+          <Editor page={pages[pageKey]} />
+        )}
       </div>
     </div>
   )

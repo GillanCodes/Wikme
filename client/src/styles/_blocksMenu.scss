@@ -1,0 +1,62 @@
+$blocks-menu-width: 250px;
+
+.blocks-menu
+{
+    margin: 10px 10px 10px 20px;
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 90px);
+
+    width: $blocks-menu-width;
+
+    background-color: $light;
+}
+
+.blocks-menu .container
+{
+
+}
+
+.blocks-menu .container .content
+{
+
+}
+
+.blocks-menu .container .content .head
+{
+    text-align: center;
+}
+
+.blocks-menu .container .content .body
+{
+
+}
+
+.blocks-menu .container .content .body
+{
+
+}
+
+.blocks-menu .container .content .body .items .item
+{
+    padding: 10px 5px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    .button
+    {
+        margin-right: 10px;
+    }
+}
+
+.blocks-menu .container .content .body .items .item.active
+{
+    text-decoration: underline;
+}
