@@ -19,6 +19,11 @@ $blocks-menu-width: 250px;
 .blocks-menu .container .content .head
 {
     text-align: center;
+    .input
+    {
+        margin-top: 10px;
+        width: calc($blocks-menu-width - 20px);
+    }
 }
 
 .blocks-menu .container .content .body .items
