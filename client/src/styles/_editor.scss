@@ -218,3 +218,18 @@
         text-decoration: underline;
     }
 }
+
+.block.code {
+    margin: 5px;
+}
+
+.block.code .code-container
+{
+    padding: 25px;
+    border-radius: 10px;
+    background-color: black;
+    p
+    {
+        color: $light;
+    }
+}

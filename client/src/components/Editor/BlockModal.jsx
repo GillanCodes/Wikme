@@ -48,10 +48,15 @@ export default function BlockModal({setModal, pageId}) {
                                 <p>Text Box with a image on Right side</p>
                             </div>
 
-                            <div className="item" >
+                            <div className="item">
                                 <h2 className='title'>Images</h2>
                                 <input type="range" max={4} min={1} value={imageSize} onChange={(e) => setImageSize(e.target.value)}/> <br />
                                 <button className='button is-info' onClick={() => addBlock('images')}>Add {imageSize} images</button>
+                            </div>
+
+                            <div className="item" onClick={() => addBlock("code")}>
+                                <h2 className='title'>Code Block</h2>
+                                <p>Display code inside your wiki</p>
                             </div>
                         </div> 
 

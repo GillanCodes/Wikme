@@ -28,6 +28,13 @@ function createTextBlock(type)
                 content: "New subtitle"
             });
             return;
+        case "code":
+            page.push({
+                UId: genUId(),
+                type: "code",
+                content: "var empty = true;\n<br>if(empty)\n<br>{\n<br>&nbsp;&nbsp;&nbsp;&nbsp; this.code().fill();\n<br>}\n<br>return this.code();"
+            });
+            return;
         default:
             page.push({
                 UId: genUId(),
@@ -77,6 +84,9 @@ function createBlock(type, pageId, imageSize)
             break;
         case 'subtitle':
             createTextBlock('subtitle');
+            break;
+        case 'code':
+            createTextBlock('code');
             break;
         case 'caption':
             createCaptionBlock(false);

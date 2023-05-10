@@ -44,6 +44,14 @@ export default function Block({block, fileHandle, setImageKey}) {
           <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerHTML, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
         </div>
       )
+    case "code":
+      return (
+        <div className="block code">
+          <div className="code-container">
+            <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
+          </div>
+        </div>
+      )
     case "images":
       return (
         <div className="block images" id={block.UId} key={block.UId}>
