@@ -10,19 +10,19 @@ export default function Block({block, fileHandle, setImageKey}) {
     case "title":
       return (
         <div className="block title" id={block.UId} key={block.UId}>
-          <h1 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</h1>
+          <h1 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true} spellCheck="false">{block.content}</h1>
         </div>
       )
     case "subtitle":
       return (
         <div className="block subtitle" id={block.UId} key={block.UId}>
-          <h2 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true}>{block.content}</h2>
+          <h2 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true} spellCheck="false">{block.content}</h2>
         </div>
       )
     case "text":
       return (
         <div className="block text-only" id={block.UId} key={block.UId}>
-          <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
+          <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
         </div>
       );
     case "caption":
@@ -41,14 +41,14 @@ export default function Block({block, fileHandle, setImageKey}) {
               </>
             )}
           </div>
-          <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerHTML, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
+          <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerHTML, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
         </div>
       )
     case "code":
       return (
         <div className="block code">
           <div className="code-container">
-            <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}}></p>
+            <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
           </div>
         </div>
       )
