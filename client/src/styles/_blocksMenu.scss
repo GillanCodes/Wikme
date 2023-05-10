@@ -25,6 +25,8 @@ $blocks-menu-width: 250px;
 {
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    height: calc(100vh - 190px);
 }
 
 .blocks-menu .container .content .body .items .item
