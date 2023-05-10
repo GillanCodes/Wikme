@@ -48,7 +48,8 @@ export default function Block({block, fileHandle, setImageKey}) {
       return (
         <div className="block code">
           <div className="code-container">
-            <p onInput={(e) => changeBlock("text", block.UId, e.target.innerHTML)} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
+            <p className="lang" spellCheck="false" contentEditable={true} suppressContentEditableWarning={"true"} onInput={(e) => changeBlock('code', block.UId, {content : block.content, lang: e.target.innerText})}>{block.lang}</p>
+            <p onInput={(e) => changeBlock('code', block.UId, {content: e.target.innerHTML, lang: block.lang})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
           </div>
         </div>
       )

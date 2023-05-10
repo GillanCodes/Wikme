@@ -32,6 +32,7 @@ function createTextBlock(type)
             page.push({
                 UId: genUId(),
                 type: "code",
+                lang: "none",
                 content: "var empty = true;\n<br>if(empty)\n<br>{\n<br>&nbsp;&nbsp;&nbsp;&nbsp; this.code().fill();\n<br>}\n<br>return this.code();"
             });
             return;
@@ -120,6 +121,10 @@ function changeBlock(type, id, changedContent) {
         case 'caption':
             page[index].content = changedContent.text;
             page[index].caption = changedContent.image;
+            return;
+        case 'code':
+            page[index].content = changedContent.content;
+            page[index].lang = changedContent.lang;
             return;
         default:
             break
