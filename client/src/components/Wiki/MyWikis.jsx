@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty } from "../../utils";
 import WikiModule from './WikiModule';
 import { createWiki } from '../../actions/wiki.actions';
 import Modal from '../Modules/Modal';
 import WikiModal from './Modals/WikiModal';
+import { UIdContext } from '../../App.context';
 
 export default function MyWikis() {
   
@@ -16,6 +17,8 @@ export default function MyWikis() {
   const [currentWiki, setCurrentWiki] = useState();
 
   const dispatch = useDispatch();
+
+  const UId = useContext(UIdContext);
 
   useEffect(() => {
     if (!isEmpty(wikis))
@@ -54,7 +57,9 @@ export default function MyWikis() {
         {load && (
         <>
           {wikis.map((wiki) => {
-            return ( <WikiModule wiki={wiki} setModal={setModal} setCurrentWiki={setCurrentWiki} /> )
+            if (wiki.ownerId === UId){
+              return ( <WikiModule wiki={wiki} setModal={setModal} setCurrentWiki={setCurrentWiki} /> )
+            }
           })}
 
           {modal === 1 && (
