@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { isEmpty } from '../../utils';
 import { createPage, getPages } from '../../actions/page.actions';
 import Editor from "./Editor/Editor";
 import PageMenu from './Menus/PageMenu';
+import { UIdContext } from '../../App.context';
+import Viewer from './Viewer/Viewer';
 
 export default function Wiki() {
 
@@ -21,6 +23,7 @@ export default function Wiki() {
 
   const pages = useSelector(state => state.pageReducer);
   const wikiData = useSelector(state => state.wikiReducer);
+  const UId = useContext(UIdContext);
   
   useEffect(() => {
     if (!isEmpty(id))
@@ -43,10 +46,11 @@ export default function Wiki() {
       wikiData.map((wiki) => {
         if (wiki._id === id)
         {
-          return setCurrentWiki(wiki);
+          setCurrentWiki(wiki);
+          setWikiLoad(true);
+          return;
         }
       })
-      setWikiLoad(true);
     }
   }, [pages, wikiData]);
 
@@ -61,20 +65,44 @@ export default function Wiki() {
   return (
     <div className='wiki-container container'>
       <div className="wiki-content content">
-        {wikiLoad && (
-          <PageMenu 
-            pages={pages} 
-            wiki={currentWiki} 
-            createPageHandle={createPageHandle} 
-            setNewPage={setNewPage} 
-            newPage={newPage}
-            setPageKey={setPageKey}
-            pageKey={pageKey}
-          />
+        {wikiLoad ? (
+          <>
+            {currentWiki.ownerId === UId ? (
+              <>
+                <PageMenu 
+                  pages={pages} 
+                  wiki={currentWiki} 
+                  createPageHandle={createPageHandle} 
+                  setNewPage={setNewPage} 
+                  newPage={newPage}
+                  setPageKey={setPageKey}
+                  pageKey={pageKey}
+                  />
+                {load && !isEmpty(pageKey) && (
+                  <Editor page={pages[pageKey]} />
+                )}
+              </>
+            ) : (
+              <>
+                {currentWiki.isPublic ? (
+                  <>
+                    <Viewer />
+                  </>
+                ) : (
+                  <>
+                    <p>This wiki does not exist or is private</p> 
+                    {/* TODO : Error page */}
+                  </>
+                )}
+              </>
+            )} 
+          </>
+        ): (
+          <>
+            <p>This wiki does not exist or is not public</p>
+          </>
         )}
-        {load && !isEmpty(pageKey) && (
-          <Editor page={pages[pageKey]} />
-        )}
+        
       </div>
     </div>
   )
