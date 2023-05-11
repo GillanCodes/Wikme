@@ -6,6 +6,7 @@ import MainMenu from "../MainMenu";
 import MyWikis from "../Wiki/MyWikis";
 import Wiki from "../Wiki/Wiki";
 import Profile from "../User/Profile";
+import Wikis from "../Wiki/Wikis";
 
 export default function index() {
   return (
@@ -15,6 +16,7 @@ export default function index() {
             <Route path="/" Component={HomePage} />
             <Route path="/auth" Component={Auth} />
             <Route path="/page" Component={Page} />
+            <Route path="/wikis" Component={Wikis} />
             <Route path="/wiki/:id" Component={Wiki} />
             
             <Route path="/me/wikis" Component={MyWikis} />

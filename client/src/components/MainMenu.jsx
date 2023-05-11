@@ -48,9 +48,15 @@ export default function MainMenu() {
               {load ? (
                 <>
                   <div className="item">
+                    <NavLink to={'/wikis'}>
+                      <i className="fa-solid fa-book"></i>
+                      <p>Wikis</p>  
+                    </NavLink> 
+                  </div>
+                  <div className="item">
                     <NavLink to={'/me/wikis'}>
                       <i className="fa-solid fa-book"></i>
-                      <p>Wiki</p>  
+                      <p>My Wikis</p>  
                     </NavLink> 
                   </div>
                   <div className="item">
