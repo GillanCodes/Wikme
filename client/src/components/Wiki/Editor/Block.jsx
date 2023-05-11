@@ -1,5 +1,5 @@
 import React from 'react'
-import { changeBlock } from './blocks';
+import { changeBlock } from './blocks_ressources';
 import { isEmpty } from '../../../utils';
 
 import * as DOMPurify from "dompurify";
@@ -12,13 +12,13 @@ export default function Block({block, fileHandle, setImageKey}) {
         <div className="block title" id={block.UId} key={block.UId}>
           <h1 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true} spellCheck="false">{block.content}</h1>
         </div>
-      )
+      );
     case "subtitle":
       return (
         <div className="block subtitle" id={block.UId} key={block.UId}>
           <h2 onInput={(e) => changeBlock("text", block.UId, e.target.innerText)} contentEditable={true} suppressContentEditableWarning={true} spellCheck="false">{block.content}</h2>
         </div>
-      )
+      );
     case "text":
       return (
         <div className="block text-only" id={block.UId} key={block.UId}>
@@ -43,7 +43,7 @@ export default function Block({block, fileHandle, setImageKey}) {
           </div>
           <p className="text-caption" onInput={(e) => changeBlock(block.type, block.UId, {text: e.target.innerHTML, image: block.caption})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
         </div>
-      )
+      );
     case "code":
       return (
         <div className="block code">
@@ -52,7 +52,7 @@ export default function Block({block, fileHandle, setImageKey}) {
             <p onInput={(e) => changeBlock('code', block.UId, {content: e.target.innerHTML, lang: block.lang})} contentEditable={true} suppressContentEditableWarning={true} dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(block.content)}} spellCheck="false"></p>
           </div>
         </div>
-      )
+      );
     case "images":
       return (
         <div className="block images" id={block.UId} key={block.UId}>
@@ -66,7 +66,7 @@ export default function Block({block, fileHandle, setImageKey}) {
 
           })}
         </div>
-      )
+      );
     default:
       break;
   }

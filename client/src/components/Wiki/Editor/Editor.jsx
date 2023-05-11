@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { initPage, save } from './blocks';
+import { initPage, save } from './blocks_ressources';
 import { isEmpty } from "../../../utils";
 import Block from './Block';
 

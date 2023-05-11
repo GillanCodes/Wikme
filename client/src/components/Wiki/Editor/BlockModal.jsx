@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { createBlock } from './blocks';
+import { createBlock } from './blocks_ressources';
 
 export default function BlockModal({setModal, pageId}) {
 

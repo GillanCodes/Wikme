@@ -86,7 +86,16 @@ export default function Wiki() {
               <>
                 {currentWiki.isPublic ? (
                   <>
-                    <Viewer />
+                    <PageMenu 
+                      pages={pages} 
+                      wiki={currentWiki} 
+                      createPageHandle={createPageHandle} 
+                      setNewPage={setNewPage} 
+                      newPage={newPage}
+                      setPageKey={setPageKey}
+                      pageKey={pageKey}
+                    />
+                    <Viewer page={pages[pageKey]} />
                   </>
                 ) : (
                   <>

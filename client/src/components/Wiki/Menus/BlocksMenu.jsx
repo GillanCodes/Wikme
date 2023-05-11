@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { blockDown, blockUp, deleteBlock } from '../Editor/blocks';
+import { blockDown, blockUp, deleteBlock } from '../Editor/blocks_ressources';
 import { isEmpty } from '../../../utils';
 
 export default function BlocksMenu({page}) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty, toTimestamp } from '../../../utils';
 import { postImage } from '../../../actions/image.actions';
-import { setCaptionImage, setImages } from '../Editor/blocks';
+import { setCaptionImage, setImages } from '../Editor/blocks_ressources';
 
 export default function UploadModal({setModal, currentBlock, pageId, imageKey}) {
   
