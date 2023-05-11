@@ -77,6 +77,7 @@ export default function Wiki() {
                   newPage={newPage}
                   setPageKey={setPageKey}
                   pageKey={pageKey}
+                  editable={true}
                   />
                 {load && !isEmpty(pageKey) && (
                   <Editor page={pages[pageKey]} />
@@ -89,11 +90,9 @@ export default function Wiki() {
                     <PageMenu 
                       pages={pages} 
                       wiki={currentWiki} 
-                      createPageHandle={createPageHandle} 
-                      setNewPage={setNewPage} 
-                      newPage={newPage}
                       setPageKey={setPageKey}
                       pageKey={pageKey}
+                      editable={false}
                     />
                     <Viewer page={pages[pageKey]} />
                   </>

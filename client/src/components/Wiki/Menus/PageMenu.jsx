@@ -3,7 +3,7 @@ import Modal from '../../Modules/Modal';
 import PageModal from '../Modals/PageModal';
 import { isEmpty } from '../../../utils';
 
-export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey}) {
+export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey, editable}) {
 
     const [pageModal, setPageModal] = useState({
         isOpen: false,
@@ -23,19 +23,24 @@ export default function PageMenu({pages, wiki, createPageHandle, setNewPage, new
                                 {!isEmpty(pages) && pages.map((item, key) => {
                                     return (
                                         <div className={pageKey === key ? 'item active' : 'item'} key={key}>
-                                            <button className='button' onClick={() => setPageModal({...pageModal, isOpen:true, page:item})}> 
-                                                <i className="fa-solid fa-gear setting"></i>
-                                            </button>
+                                            {editable && (
+                                                <button className='button' onClick={() => setPageModal({...pageModal, isOpen:true, page:item})}> 
+                                                    <i className="fa-solid fa-gear setting"></i>
+                                                </button>
+                                            )} 
                                             <p onClick={() => setPageKey(key)}>{item.name}</p>
                                         </div>
                                     )
                                 })}
-                                <div className="item">
-                                    <button className="button is-success" onClick={() => createPageHandle()}>
-                                        <i className="fa-solid fa-plus"></i>
-                                    </button>
-                                    <input type="text" className="input" placeholder="New Page's name" value={newPage} onChange={(e) => setNewPage(e.target.value)}/>
-                                </div>
+                                {editable && (
+                                    <div className="item">
+                                        <button className="button is-success" onClick={() => createPageHandle()}>
+                                            <i className="fa-solid fa-plus"></i>
+                                        </button>
+                                        <input type="text" className="input" placeholder="New Page's name" value={newPage} onChange={(e) => setNewPage(e.target.value)}/>
+                                    </div>
+                                )}
+                                
                             </div>
                         </div>
                         <div className="foot">
