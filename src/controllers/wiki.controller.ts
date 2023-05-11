@@ -6,7 +6,7 @@ export const getWikis = async (req: express.Request, res: express.Response) => {
     
     try {
        if (res.locals.user) {
-            const wikis = await wikiModel.find({ownerId: res.locals.user.id});
+            const wikis = await wikiModel.find({$or: [{ownerId: res.locals.user.id}, {isPublic: true}]});
             return res.status(200).send(wikis);
        } else {
         return res.status(403).send('Forbidden: Not logged');
