@@ -8,9 +8,10 @@ export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
 
     const [name, setName] = useState(currentWiki.name);
     const [desc, setDesc] = useState(currentWiki.description);
+    const [isPublic, setIsPublic] = useState(currentWiki.isPublic);
 
     const saveHandle = () => {
-        dispatch(updateWiki({id: currentWiki._id, name, desc}));
+        dispatch(updateWiki({id: currentWiki._id, name, desc, isPublic}));
         setModal(0);
     }
 
@@ -32,6 +33,7 @@ export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
                             <div className="form">
                                 <input type="text" className="input" placeholder="Wiki's name" value={name} onChange={(e) => setName(e.target.value)} />
                                 <input type="text" className="input" placeholder="Wiki's description" value={desc} onChange={(e) => setDesc(e.target.value)} />
+                                <label>Public <input type="checkbox" name="" id="" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} /></label>
                                 <button className="button is-success" onClick={() => saveHandle()}>Save</button>
                             </div>
                             <div className="form">

@@ -33,7 +33,7 @@ export const createWiki = ({name, desc}) => {
     }
 }
 
-export const updateWiki = ({id, name, desc}) =>  {
+export const updateWiki = ({id, name, desc, isPublic}) =>  {
     return(dispatch) => {
         return axios({
             method: 'patch',
@@ -41,7 +41,8 @@ export const updateWiki = ({id, name, desc}) =>  {
             url: `${process.env.REACT_APP_API_URL}/wiki/${id}`,
             data : {
                 name,
-                description: desc
+                description: desc,
+                isPublic
             }
         }).then((res) => {
             dispatch({type: UPDATE_WIKI, payload: res.data});
