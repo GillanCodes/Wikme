@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Modal from '../Modules/Modal'
-import BlockModal from './BlockModal'
-import { blockDown, blockUp, deleteBlock, initPage, save } from './blocks';
-import { isEmpty } from "../../utils";
+import React, { useEffect, useState } from 'react'
+import { initPage, save } from './blocks';
+import { isEmpty } from "../../../utils";
 import Block from './Block';
-import UploadModal from '../Uploads/UploadModal';
-import BlocksMenu from '../Wiki/BlocksMenu';
+
+import BlocksMenu from '../Menus/BlocksMenu';
+
+import Modal from '../../Modules/Modal'
+import UploadModal from '../Modals/UploadModal';
+import BlockModal from './BlockModal'
 
 export default function Editor({page}) {
 

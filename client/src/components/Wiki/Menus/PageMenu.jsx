@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Modal from '../Modules/Modal';
-import PageModal from './PageModal';
-import { isEmpty } from '../../utils';
+import Modal from '../../Modules/Modal';
+import PageModal from '../Modals/PageModal';
+import { isEmpty } from '../../../utils';
 
 export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey}) {
 

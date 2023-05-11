@@ -1,7 +1,7 @@
 import axios from "axios";
-import { genUId, isEmpty } from "../../utils";
-import { updateContent } from "../../actions/page.actions";
-import store from "../../index";
+import { genUId, isEmpty } from "../../../utils";
+import { updateContent } from "../../../actions/page.actions";
+import store from "../../../index";
 
 var page = [];
 

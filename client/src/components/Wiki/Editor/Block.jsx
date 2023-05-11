@@ -1,6 +1,6 @@
 import React from 'react'
 import { changeBlock } from './blocks';
-import { isEmpty } from '../../utils';
+import { isEmpty } from '../../../utils';
 
 import * as DOMPurify from "dompurify";
 

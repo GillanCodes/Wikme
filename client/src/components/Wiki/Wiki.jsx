@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { isEmpty } from '../../utils';
 import { createPage, getPages } from '../../actions/page.actions';
-import Editor from "../Editor/Editor";
-import PageMenu from './PageMenu';
+import Editor from "./Editor/Editor";
+import PageMenu from './Menus/PageMenu';
 
 export default function Wiki() {
 

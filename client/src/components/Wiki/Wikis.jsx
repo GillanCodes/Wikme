@@ -4,7 +4,7 @@ import { isEmpty } from "../../utils";
 import WikiModule from './WikiModule';
 import { createWiki } from '../../actions/wiki.actions';
 import Modal from '../Modules/Modal';
-import WikiModal from './WikiModal';
+import WikiModal from './Modals/WikiModal';
 
 export default function Wikis() {
   

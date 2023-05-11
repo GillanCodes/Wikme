@@ -1,7 +1,7 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Page from "../Page";
 import HomePage from "../HomePage";
-import Editor from "../Editor/Editor";
+import Editor from "../Wiki/Editor/Editor";
 import Auth from "../Auth/Auth";
 import MainMenu from "../MainMenu";
 import Wikis from "../Wiki/Wikis";

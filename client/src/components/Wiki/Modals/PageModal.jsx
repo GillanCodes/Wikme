@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { deletePage, updatePage } from '../../actions/page.actions';
+import { deletePage, updatePage } from '../../../actions/page.actions';
 
 export default function PageModal({setModal, pageModal}) {
 

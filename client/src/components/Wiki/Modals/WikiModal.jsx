@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { deleteWiki, updateWiki } from '../../actions/wiki.actions';
+import { deleteWiki, updateWiki } from '../../../actions/wiki.actions';
 
 export default function WikiModal({setModal, currentWiki, setCurrentWiki}) {
 
