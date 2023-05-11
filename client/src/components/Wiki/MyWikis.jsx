@@ -6,7 +6,7 @@ import { createWiki } from '../../actions/wiki.actions';
 import Modal from '../Modules/Modal';
 import WikiModal from './Modals/WikiModal';
 
-export default function Wikis() {
+export default function MyWikis() {
   
   const wikis = useSelector((state) => state.wikiReducer);
   const [load, setLoad] = useState(false);
@@ -31,6 +31,7 @@ export default function Wikis() {
 
   return (
     <div className='wikis-container container'>
+      <h1 className='title'>My Wikis</h1>
       <div className="wikis">
         <div className='article-module'>
           <div className="article-module-container">
