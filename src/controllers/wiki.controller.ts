@@ -58,11 +58,12 @@ export const createWiki = async (req: express.Request, res: express.Response) =>
 export const updateWiki = (req: express.Request, res: express.Response) => {
     try {
         const { id } = req.params;
-        const {name, description} : {name:string, description:string} = req.body;
+        const {name, description, isPublic} : {name:string, description:string, isPublic:boolean} = req.body;
         wikiModel.findByIdAndUpdate(id, {
             $set: {
                 name,
-                description
+                description,
+                isPublic
             }
         }, {new: true, upsert:true}).then((data) => {
             return res.status(201).send(data);
