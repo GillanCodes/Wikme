@@ -53,7 +53,7 @@ export default function Editor({page}) {
                                         return (
                                             <div className='box' key={key}>
                                                 <p className='block-nb'>#{key+1}</p>
-                                                <Block block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
+                                                <Block editable={true} block={item} fileHandle={() => fileHandle(item)} setImageKey={setImageKey} />
                                             </div>
                                         )
                                     })}

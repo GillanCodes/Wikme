@@ -16,7 +16,7 @@ export default function Viewer({page}) {
                                         return (
                                             <div className='box' key={key}>
                                                 <p className='block-nb'>#{key+1}</p>
-                                                <Block block={item} />
+                                                <Block block={item} editable={false} />
                                             </div>
                                         )
                                     })}
