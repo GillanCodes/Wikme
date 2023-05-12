@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import Modal from '../../Modules/Modal';
 import PageModal from '../Modals/PageModal';
 import { isEmpty } from '../../../utils';
+import { NavLink } from 'react-router-dom';
 
-export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey, editable}) {
+export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey, editable, isOwner}) {
 
     const [pageModal, setPageModal] = useState({
         isOpen: false,
@@ -16,7 +17,11 @@ export default function PageMenu({pages, wiki, createPageHandle, setNewPage, new
                 <div className="container">
                     <div className="content">
                         <div className="head">
-                            <h2 className='title'>{wiki.name}</h2>
+                            <h2 className='title'>
+                                {wiki.name} 
+                                {isOwner && !editable && (<NavLink to={`/wiki/${wiki._id}`} className={"button is-dark"}>Edit</NavLink>)} 
+                                {isOwner && editable && (<NavLink to={`/wiki/${wiki._id}/view`} className={"button is-dark"}>View</NavLink>)} 
+                            </h2>
                         </div>
                         <div className="body" key={"pages-list-body"}>
                             <div className="items">

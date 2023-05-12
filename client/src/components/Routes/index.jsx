@@ -18,7 +18,7 @@ export default function index() {
             <Route path="/page" Component={Page} />
             <Route path="/wikis" Component={Wikis} />
             <Route path="/wiki/:id" Component={Wiki} />
-            
+            <Route path="/wiki/:id/view" element={<Wiki isViewer={true} />} />
             <Route path="/me/wikis" Component={MyWikis} />
             <Route path="/me/profile" Component={Profile} />
 

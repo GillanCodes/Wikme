@@ -8,7 +8,7 @@ import PageMenu from './Menus/PageMenu';
 import { UIdContext } from '../../App.context';
 import Viewer from './Viewer/Viewer';
 
-export default function Wiki() {
+export default function Wiki({isViewer}) {
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -67,50 +67,66 @@ export default function Wiki() {
       <div className="wiki-content content">
         {wikiLoad ? (
           <>
-            {currentWiki.ownerId === UId ? (
+            {isViewer ? (
               <>
                 <PageMenu 
                   pages={pages} 
                   wiki={currentWiki} 
-                  createPageHandle={createPageHandle} 
-                  setNewPage={setNewPage} 
-                  newPage={newPage}
                   setPageKey={setPageKey}
                   pageKey={pageKey}
-                  editable={true}
-                  />
-                {load && !isEmpty(pageKey) && (
-                  <Editor page={pages[pageKey]} />
-                )}
+                  editable={false}
+                  isOwner={currentWiki.ownerId === UId}
+                />
+                <Viewer page={pages[pageKey]} />
               </>
             ) : (
               <>
-                {currentWiki.isPublic ? (
-                  <>
-                    <PageMenu 
-                      pages={pages} 
-                      wiki={currentWiki} 
-                      setPageKey={setPageKey}
-                      pageKey={pageKey}
-                      editable={false}
+              {currentWiki.ownerId === UId ? (
+                <>
+                  <PageMenu 
+                    pages={pages} 
+                    wiki={currentWiki} 
+                    createPageHandle={createPageHandle} 
+                    setNewPage={setNewPage} 
+                    newPage={newPage}
+                    setPageKey={setPageKey}
+                    pageKey={pageKey}
+                    editable={true}
+                    isOwner={currentWiki.ownerId === UId}
                     />
-                    <Viewer page={pages[pageKey]} />
-                  </>
+                  {load && !isEmpty(pageKey) && (
+                    <Editor page={pages[pageKey]} />
+                  )}
+                </>
                 ) : (
                   <>
-                    <p>This wiki does not exist or is private</p> 
-                    {/* TODO : Error page */}
+                    {currentWiki.isPublic ? (
+                      <>
+                        <PageMenu 
+                          pages={pages} 
+                          wiki={currentWiki} 
+                          setPageKey={setPageKey}
+                          pageKey={pageKey}
+                          editable={false}
+                        />
+                        <Viewer page={pages[pageKey]} />
+                      </>
+                    ) : (
+                      <>
+                        <p>This wiki does not exist or is private</p> 
+                        {/* TODO : Error page */}
+                      </>
+                    )}
                   </>
-                )}
+                )} 
               </>
-            )} 
+            )}
           </>
         ): (
           <>
             <p>This wiki does not exist or is not public</p>
           </>
         )}
-        
       </div>
     </div>
   )
