@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit: 50
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(cookieParser());
 
-let whiteList = [undefined, 'http://localhost:3000', 'localhost:3000'];
+let whiteList = [undefined, 'http://localhost:5051', 'localhost:3000'];
 const corsOptions:Object = {
     origin : function (origin:string, cb:Callback) {
         if (whiteList.indexOf(origin) !== -1)
