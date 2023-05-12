@@ -4,7 +4,7 @@ import { isEmpty } from '../../../utils';
 
 import * as DOMPurify from "dompurify";
 
-export default function Block({block, editable, fileHandle, setImageKey}) {
+export default function Block({block, editable, fileHandle, setImageKey, setImageModal}) {
 
   switch(block.type){
     case "title":
@@ -30,7 +30,7 @@ export default function Block({block, editable, fileHandle, setImageKey}) {
         <div className={block.isRight ? "block caption is-right" : "block caption"}  id={block.UId} key={block.UId}>
           <div className="image-content">
             {!isEmpty(block.caption) ? (
-              <img onClick={editable ? fileHandle : null} src={block.caption} className="caption-image" alt="Caption" />
+              <img onClick={editable ? fileHandle : () => setImageModal(block.caption)} src={block.caption} className="caption-image" alt="Caption" />
             ) : (
               <>
                 {!isEmpty(fileHandle) && (
@@ -62,7 +62,7 @@ export default function Block({block, editable, fileHandle, setImageKey}) {
                 <p>New Image</p> 
               </div>
             )
-            return ( <img src={img} alt="test" onClick={editable ? () => { fileHandle(); setImageKey(key); } : null} /> )
+            return ( <img src={img} alt="test" onClick={editable ? () => { fileHandle(); setImageKey(key); } : () => setImageModal(img)} /> )
           })}
         </div>
       );
