@@ -6,7 +6,7 @@ import ImageModal from './ImageModal';
 
 export default function Viewer({page}) {
 
-  const [modal, setModal] = useState(0);
+  const [modal, setModal] = useState(null);
 
   return (
     <div className="page">
