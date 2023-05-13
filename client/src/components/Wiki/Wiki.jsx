@@ -36,9 +36,6 @@ export default function Wiki({isViewer}) {
   useEffect(() => {
     if (!isEmpty(pages) && dispatched)
     {
-      if (!isEmpty(pages[0])){
-        setPageKey(0);
-      }
       setLoad(true);
     }
     if (!isEmpty(wikiData))
@@ -53,6 +50,12 @@ export default function Wiki({isViewer}) {
       })
     }
   }, [pages, wikiData]);
+  
+  useEffect(() => {
+      if (dispatched){
+        setPageKey(0);
+      }
+  }, [dispatched])
 
   const createPageHandle = () => {
     if (!isEmpty(newPage))
