@@ -25,6 +25,8 @@ export default function BlocksMenu({page}) {
                         <div className="item" onClick={() => {if (selcBlock.key === key) {setSelcBlock({...selcBlock, key: null}) } else { setSelcBlock({...selcBlock, key: key})} }}>
                           {block.type === "images" ? (
                             <p>#{key+1} {block.type} - {block.content.length} pictures</p>
+                          ) : block.type === "banner" ? (
+                            <p>#{key+1} {block.type} - {block.type}</p>
                           ) : (
                             <p>#{key+1} {block.type} - {block.content.slice(0, 10)}...</p>
                           )}
@@ -48,10 +50,12 @@ export default function BlocksMenu({page}) {
                     return (
                       <div className="item" onClick={() => {if (selcBlock.key === key) {setSelcBlock({...selcBlock, key: null}) } else { setSelcBlock({...selcBlock, key: key})} }}>
                         {block.type === "images" ? (
-                          <p>#{key+1} {block.type} - {block.content.length} pictures</p>
-                        ) : (
-                          <p>#{key+1} {block.type} - {block.content.slice(0, 10)}...</p>
-                        )}
+                            <p>#{key+1} {block.type} - {block.content.length} pictures</p>
+                          ) : block.type === "banner" ? (
+                            <p>#{key+1} {block.type} - {block.type}</p>
+                          ) : (
+                            <p>#{key+1} {block.type} - {block.content.slice(0, 10)}...</p>
+                          )}
     
                         {selcBlock.key === key && (
                           <div className="controls">

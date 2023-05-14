@@ -73,6 +73,25 @@ function createImageBlock(number)
     });
 }
 
+function createBannerBlock(hasText)
+{
+    if (hasText)
+    {
+        page.push({
+            UId: genUId(),
+            type: "text-banner",
+            content: "Text",
+            image: "empty"
+        });
+    } else {
+        page.push({
+            UId: genUId(),
+            type: "banner",
+            image: "empty"
+        });
+    }
+}
+
 function createBlock(type, pageId, imageSize)
 {
     switch(type)
@@ -97,6 +116,12 @@ function createBlock(type, pageId, imageSize)
             break;
         case "images":
             createImageBlock(imageSize);
+            break;
+        case 'banner':
+            createBannerBlock(false);
+            break;
+        case 'text-banner':
+            createBannerBlock(true);
             break;
         default:
             break;
@@ -126,6 +151,13 @@ function changeBlock(type, id, changedContent) {
             page[index].content = changedContent.content;
             page[index].lang = changedContent.lang;
             return;
+        case 'banner':
+            page[index].image = changedContent.image;
+            return;
+        case 'text-banner':
+            page[index].image = changedContent.image;
+            page[index].content = changedContent.text;
+            return;
         default:
             break
     }
@@ -142,6 +174,13 @@ function setImages(id, path, pageId, key)
 {
     var index = getBlock(id);
     page[index].content[key] = `${process.env.REACT_APP_CDN_URL}/uploads/${path}`;
+    saveNoDelay(pageId);
+}
+
+function setBannerImage(id, path, pageId)
+{
+    var index = getBlock(id);
+    page[index].image = path;
     saveNoDelay(pageId);
 }
 
@@ -191,4 +230,4 @@ function saveNoDelay(pageId) {
     store.dispatch(updateContent(pageId, page));
 }
 
-export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, setImages, blockUp, blockDown, save};
+export {initPage, createBlock, deleteBlock, changeBlock, setCaptionImage, setImages, setBannerImage, blockUp, blockDown, save};

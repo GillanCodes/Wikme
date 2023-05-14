@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty, toTimestamp } from '../../../utils';
 import { postImage } from '../../../actions/image.actions';
-import { setCaptionImage, setImages } from '../Editor/blocks_ressources';
+import { setBannerImage, setCaptionImage, setImages } from '../Editor/blocks_ressources';
 
 export default function UploadModal({setModal, currentBlock, pageId, imageKey}) {
   
@@ -37,8 +37,13 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
         setCaptionImage(currentBlock.UId, path, pageId);
         break;
       case 'images':
-        console.log(currentBlock)
         setImages(currentBlock.UId, path, pageId, imageKey);
+        break;
+      case 'banner':
+        setBannerImage(currentBlock.UId, path, pageId);
+        break;
+      case 'text-banner':
+        setBannerImage(currentBlock.UId, path, pageId);
         break;
       default:
         break;

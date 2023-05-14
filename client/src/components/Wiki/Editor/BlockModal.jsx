@@ -58,6 +58,16 @@ export default function BlockModal({setModal, pageId}) {
                                 <h2 className='title'>Code Block</h2>
                                 <p>Display code inside your wiki</p>
                             </div>
+                            
+                            <div className="item" onClick={() => addBlock('banner')}>
+                                <h2 className='title'>Banner</h2>
+                                <p>Add a full width image</p>
+                            </div>
+
+                            <div className="item" onClick={() => addBlock("text-banner")}>
+                                <h2 className='title'>Text Banner</h2>
+                                <p>Add a full width image with text</p>
+                            </div>
                         </div> 
 
                     </div>

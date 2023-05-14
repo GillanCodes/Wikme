@@ -66,6 +66,19 @@ export default function Block({block, editable, fileHandle, setImageKey, setImag
           })}
         </div>
       );
+    case "banner":
+      return(
+        <div className="block banner">
+          <img src={`${process.env.REACT_APP_CDN_URL}/uploads/${block.image}`} alt="banner" onClick={editable ? fileHandle : () => setImageModal(block.image)} />
+        </div>
+      );
+    case "text-banner":
+      return (
+          <div className="block banner">
+            <h2>{block.content}</h2>
+            <img src={`${process.env.REACT_APP_CDN_URL}/uploads/${block.image}` } alt="banner" onClick={editable ? fileHandle : () => setImageModal(block.image)} />
+          </div>
+      );
     default:
       break;
   }
