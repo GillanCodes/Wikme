@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { isEmpty, toTimestamp } from '../../../utils';
-import { postImage } from '../../../actions/image.actions';
+import { deleteImage, postImage } from '../../../actions/image.actions';
 import { setBannerImage, setCaptionImage, setImages } from '../Editor/blocks_ressources';
 
 export default function UploadModal({setModal, currentBlock, pageId, imageKey}) {
@@ -51,8 +51,8 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
     setModal(0);
   }
 
-  const deleteImageHandle = () => {
-
+  const deleteImageHandle = (id, path) => {
+    dispatch(deleteImage(id, path));
   }
 
   return (
@@ -76,7 +76,7 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
                                 <div className="image-content">
                                   <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
                                 </div>
-                                <p className='delete-btn' onClick={deleteImageHandle}>Delete</p>
+                                <p className='delete-btn' onClick={() => deleteImageHandle(image._id, image.path)}>Delete</p>
                               </div>
                             )
                           })}

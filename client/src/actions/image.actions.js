@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const GET_IMAGES = "GET_IMAGES";
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
+export const DELETE_IMAGE = "DELETE_IMAGE";
 
 export const getImages = () => {
     return(dispatch) => {
@@ -27,3 +28,19 @@ export const postImage = (file) => {
         })
     }
 }
+
+export const deleteImage = (id, path) => {
+    return(dispatch) => {
+        return axios({
+            method:"delete",
+            withCredentials:true,
+            url:`${process.env.REACT_APP_API_URL}/image/`,
+            data: {
+                id, 
+                path
+            }
+        }).then((res) => {
+            dispatch({type: DELETE_IMAGE, payload: res.data});
+        }).catch(err => console.log(err));
+    };
+};
