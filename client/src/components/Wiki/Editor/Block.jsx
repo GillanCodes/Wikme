@@ -75,7 +75,7 @@ export default function Block({block, editable, fileHandle, setImageKey, setImag
     case "text-banner":
       return (
           <div className="block banner">
-            <h2 className='banner-text' contentEditable={editable} suppressContentEditableWarning={true} spellCheck={false}>{block.content}</h2>
+            <h2 className='banner-text' contentEditable={editable} suppressContentEditableWarning={true} spellCheck={false} onInput={editable ? (e) => changeBlock('text-banner', block.UId, {image: block.image, text: e.target.innerText}) : null}>{block.content}</h2>
             <img src={`${process.env.REACT_APP_CDN_URL}/uploads/${block.image}` } alt="banner" onClick={editable ? fileHandle : () => setImageModal(block.image)} />
           </div>
       );
