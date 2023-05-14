@@ -32,5 +32,15 @@ export const postImage = async (req: any, res: express.Response) => {
     }).then((data) => {
         res.status(201).send(data);
     }).catch(err => console.log(err));
+}
 
+export const deleteImage = (req: express.Request, res: express.Response) => {
+    try {
+        const {id, path} : {id:string, path:string} = req.body;
+        fs.rm(`${config.CDN_PATH}/${path}`, (error) => {
+            imageModel.findByIdAndDelete(id).then(() => res.status(201).send({id, path}))
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }
