@@ -50,19 +50,42 @@ $img-width: 200px;
 
         .image-box {
             margin: 1em;
-            height: $img-height;
+            height: calc($img-height + 35px);
             width: $img-width;
             overflow: hidden;
 
-            img {
+            .image-content img {
                 height: $img-height;
                 width: $img-width;
                 object-fit: cover;
                 border-radius: 15px;
             }
+
+            .delete-btn 
+            {
+                color: $dark;
+                background-color: rgba(255, 27, 27, 0.514);
+                border-radius: 5px;
+                width: $img-width;
+                text-align: center;
+                cursor: pointer;
+                margin-top: 5px;
+                padding: 5px 0px; 
+                
+                -webkit-user-select: none; /* Safari */        
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE10+/Edge */
+                user-select: none; /* Standard */
+            }
         }
 
-        .image-box:hover:not(:first-child)
+        .image-content
+        {
+            height: $img-height;
+            width: $img-width;
+        }
+
+        .image-content:hover
         {
             filter: brightness(0.5);
             cursor: pointer;
@@ -82,9 +105,6 @@ $img-width: 200px;
             -moz-user-select: none; /* Firefox */
             -ms-user-select: none; /* IE10+/Edge */
             user-select: none; /* Standard */
-
-            
-
         }
 
         .item:hover{

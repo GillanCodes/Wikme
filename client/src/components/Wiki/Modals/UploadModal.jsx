@@ -51,6 +51,10 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
     setModal(0);
   }
 
+  const deleteImageHandle = () => {
+
+  }
+
   return (
     <div className='image-manager'>
         <div className="image-manager-container">
@@ -69,7 +73,10 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
                           {imagesData.sort((a,b) => (toTimestamp(b.createdAt) - toTimestamp(a.createdAt))).map((image) => {
                             return (
                               <div className="image-box">
-                                <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
+                                <div className="image-content">
+                                  <img onClick={() => !isEmpty(imageClickAction) ? imageClickAction(image.path) : null} src={`${process.env.REACT_APP_CDN_URL}/uploads/${image.path}`} /> 
+                                </div>
+                                <p className='delete-btn' onClick={deleteImageHandle}>Delete</p>
                               </div>
                             )
                           })}
