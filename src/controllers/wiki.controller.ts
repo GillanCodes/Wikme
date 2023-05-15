@@ -1,6 +1,7 @@
 import * as express from "express";
 import wikiModel from "../../models/wiki.model";
 import pageModel from "../../models/page.model";
+import { createWikiErrors } from "../utils/errors.utils";
 
 export const getWikis = async (req: express.Request, res: express.Response) => {
     
@@ -44,10 +45,11 @@ export const createWiki = async (req: express.Request, res: express.Response) =>
             }).then((data) => {
                 return res.status(201).send(data)
             }).catch((err) => {
-                console.log(err);
+                const errors = createWikiErrors(err);
+                res.status(200).send({errors});
             })
         } else {
-            
+           
         }
     } catch (error) {
         console.log(error);

@@ -18,6 +18,7 @@ export const register = async (req: express.Request, res: express.Response) => {
         return res.status(201).json({user:user._id});
     } catch (error) {
         const errors = registerErrors(error);
+        res.status(200).send({errors});
     };
 };
 

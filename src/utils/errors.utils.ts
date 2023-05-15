@@ -34,3 +34,24 @@ export const registerErrors = (error:any) => {
     
     return errors;
 }
+
+export const createWikiErrors = (error:any) => {
+    let errors = {name: "", desc: ""};
+
+    if (error.message.includes('name') && error.message.includes('maximum'))
+    {
+        errors.name = "Name is too long !";
+    }
+    
+    if (error.message.includes('name') && error.message.includes('required'))
+    {
+        errors.name = "Wiki need a name";
+    }
+
+    if (error.message.includes('description') && error.message.includes('maximum'))
+    {
+        errors.desc = "Description is too long";
+    }
+
+    return errors;
+}
