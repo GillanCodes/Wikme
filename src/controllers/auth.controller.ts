@@ -2,6 +2,7 @@ import {sign} from "jsonwebtoken";
 import config from "../../config/config";
 import * as express from "express";
 import userModel from '../../models/user.model';
+import { loginErrors } from "../utils/errors.utils";
 
 const maxAge:number = 3*21*60*60*1000;
 const createToken = (id:string) => {
@@ -29,7 +30,8 @@ export const login = async (req: express.Request, res: express.Response) => {
         res.cookie('auth', token, {httpOnly: true, maxAge});
         return res.status(200).json({user});
     } catch (error) {
-        console.log(error);
+        const errors = loginErrors(error);
+        res.status(201).send({errors});
     };
 };
 
