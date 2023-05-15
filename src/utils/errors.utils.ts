@@ -1,3 +1,5 @@
+import { errors } from "puppeteer";
+
 export const loginErrors = (error:any) => {
     let errors = {logs: "", password: ""};
 
@@ -51,6 +53,22 @@ export const createWikiErrors = (error:any) => {
     if (error.message.includes('description') && error.message.includes('maximum'))
     {
         errors.desc = "Description is too long";
+    }
+
+    return errors;
+}
+
+export const createPageErrors = (error:any) => {
+    let errors = {name: ""};
+
+    if (error.message.includes('name') && error.message.includes('maximum'))
+    {
+        errors.name = "Page's name is too long !"
+    }
+    
+    if (error.message.includes('name') && error.message.includes('required'))
+    {
+        errors.name = "Page's name is required !"
     }
 
     return errors;

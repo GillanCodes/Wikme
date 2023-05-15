@@ -1,5 +1,6 @@
 import * as express from 'express';
 import pageModel from '../../models/page.model';
+import { createPageErrors } from '../utils/errors.utils';
 
 export const getPages = async (req: express.Request, res: express.Response) => {
     try {
@@ -28,7 +29,8 @@ export const createPage = (req: express.Request, res: express.Response) => {
             }).then((data) => {
                 return res.status(201).send(data);
             }).catch((error) => {
-                return console.log(error);
+                const errors = createPageErrors(error);
+                return console.log(errors);
             })
         } else {
             return res.status(403).send("Forbidden : Not Logged");
