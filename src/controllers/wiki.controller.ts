@@ -1,7 +1,7 @@
 import * as express from "express";
 import wikiModel from "../../models/wiki.model";
 import pageModel from "../../models/page.model";
-import { createWikiErrors } from "../utils/errors.utils";
+import { createWikiErrors, updateWikiErrors } from "../utils/errors.utils";
 
 export const getWikis = async (req: express.Request, res: express.Response) => {
     
@@ -61,6 +61,14 @@ export const updateWiki = (req: express.Request, res: express.Response) => {
     try {
         const { id } = req.params;
         const {name, description, isPublic} : {name:string, description:string, isPublic:boolean} = req.body;
+        if (name.length > 25) {
+            const errors = updateWikiErrors("toolong_name");
+            return res.status(200).send({errors});
+        }
+        if (description.length > 255) {
+            const errors = updateWikiErrors("toolong_desc");
+            return res.status(200).send({errors});
+        }
         wikiModel.findByIdAndUpdate(id, {
             $set: {
                 name,

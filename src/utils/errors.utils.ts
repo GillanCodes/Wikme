@@ -58,6 +58,16 @@ export const createWikiErrors = (error:any) => {
     return errors;
 }
 
+export const updateWikiErrors = (error:any) => {
+    let errors = {name: "", desc: ""};
+
+    if (error === "toolong_name") errors.name = "Wiki's name is too long !";
+    if (error === "toolong_desc") errors.desc = "Wiki's description is too long !";
+
+
+    return errors;
+}
+
 export const createPageErrors = (error:any) => {
     let errors = {name: ""};
 
