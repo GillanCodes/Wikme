@@ -94,3 +94,19 @@ export const updatePageErrors = (error:any) => {
 
     return errors;   
 };
+
+export const uploadErrors = (error:any) => {
+    let errors = {type: "", size: ""};
+
+    if (error.message.includes('invalid_type'))
+    {
+        errors.type = "Type is not supported"
+    }
+
+    if (error.message.includes('max_size')) 
+    {
+        errors.size = "File size is too big"
+    }
+
+    return errors;
+}

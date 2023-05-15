@@ -4,6 +4,7 @@ import config from "../../config/config";
 import * as fs from "fs";
 import genUId from "../utils/UId";
 import imageModel from "../../models/image.model";
+import { uploadErrors } from "../utils/errors.utils";
 
 export const getImages = async (req: express.Request, res: express.Response) => {
     try {
@@ -16,10 +17,11 @@ export const getImages = async (req: express.Request, res: express.Response) => 
 
 export const postImage = async (req: any, res: express.Response) => {
     try {
-        if (req.file.mimetype !==  "image/jpg" && req.file.mimetype !== "image/png" && req.file.mimetype !== "image/jpeg") throw Error('Invalide Type ! ');
-        if (req.file.size > 500000) throw Error('Max Size !');
-    } catch (error) {
-        console.log(error);
+        if (req.file.mimetype !==  "image/jpg" && req.file.mimetype !== "image/png" && req.file.mimetype !== "image/jpeg") throw Error('invalid_type');
+        if (req.file.size > 500000) throw Error('max_size');
+    } catch (error:any) {
+        const errors = uploadErrors(error)
+        return res.status(200).send({errors});
     }
 
     const fileName = `${genUId()}.jpg`;
@@ -31,7 +33,7 @@ export const postImage = async (req: any, res: express.Response) => {
         path: fileName
     }).then((data) => {
         res.status(201).send(data);
-    }).catch(err => console.log(err));
+    });
 }
 
 export const deleteImage = (req: express.Request, res: express.Response) => {
