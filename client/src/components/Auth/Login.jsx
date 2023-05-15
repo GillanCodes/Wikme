@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { isEmpty } from "../../utils";
 
 export default function Login() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState();
 
   const loginHandle = (event) => {
     event.preventDefault();
@@ -18,13 +20,22 @@ export default function Login() {
         password: password 
       }
     }).then((res) => {
-      window.location = '/';
+      if (res.data.errors)
+        setErrors(res.data.errors);
+      else 
+        window.location = '/';
     }).catch((err) =>  console.log(err));
   }
   
   return (
     <div className='login-container'>
       <div className="content">
+        {!isEmpty(errors) && (
+          <div className="errors">
+            {!isEmpty(errors.password) && ( <p>{errors.password}</p> )}
+            {!isEmpty(errors.logs) && ( <p>{errors.logs}</p> )}
+          </div>
+        )}
         <form className='form' onSubmit={(e) => loginHandle(e)}>
           <div className="field">
             <label className="label">Username / Email</label>

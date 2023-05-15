@@ -38,10 +38,13 @@
 {
     text-align: center;
 }
-// .login-container, .register-container
-// {
-    
-// }
+
+.login-container .content, .register-container .content
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 // .login-container .content .form, .register-container .content .form 
 // {

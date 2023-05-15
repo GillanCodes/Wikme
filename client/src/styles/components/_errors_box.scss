@@ -1,0 +1,16 @@
+.errors
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+    min-height: 50px;
+    border-radius: 10px;
+    
+    background-color: $danger;
+    
+    p
+    {
+        color: $white;
+    }
+}
