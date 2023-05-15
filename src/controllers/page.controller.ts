@@ -1,6 +1,6 @@
 import * as express from 'express';
 import pageModel from '../../models/page.model';
-import { createPageErrors } from '../utils/errors.utils';
+import { createPageErrors, updatePageErrors } from '../utils/errors.utils';
 
 export const getPages = async (req: express.Request, res: express.Response) => {
     try {
@@ -67,14 +67,19 @@ export const pageUpdate = (req: express.Request, res: express.Response) => {
     try {
         const { id } = req.params;
         const { name } : {name:string} = req.body;
-        pageModel.findByIdAndUpdate(id, {
-            $set: {
-                name
-            }
-        }, {new:true, upsert: true}).then((data) => {
-            return res.status(201).send(data);
-        }).catch(err => console.log(err));
-    } catch (error) {
+        if (name.length < 255) {
+            pageModel.findByIdAndUpdate(id, {
+                $set: {
+                    name
+                }
+            }, {new:true, upsert: true}).then((data) => {
+                return res.status(201).send(data);
+            });
+        } else {
+            var errors = updatePageErrors('too_long');
+            console.log(errors);
+        }
+   } catch (error) {
         console.log(error);
     }
 }

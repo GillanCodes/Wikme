@@ -73,3 +73,14 @@ export const createPageErrors = (error:any) => {
 
     return errors;
 }
+
+export const updatePageErrors = (error:any) => {
+    let errors = {name: ""}
+
+    if (error === "too_long")
+    {
+        errors.name = "Name page is too long";
+    }
+
+    return errors;   
+};
