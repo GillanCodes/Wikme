@@ -1,3 +1,4 @@
+import { GET_IMAGE_ERRORS } from "../actions/image.actions";
 import { GET_PAGE_ERRORS } from "../actions/page.actions";
 import { GET_WIKI_ERRORS } from "../actions/wiki.actions";
 
@@ -22,6 +23,12 @@ export default function errorsReducer(state = initialState, action)
                 pageErrors: [],
                 imageErrors: [],
                 wikiErrors: action.payload
+            }
+        case GET_IMAGE_ERRORS:
+            return {
+                pageErrors: [],
+                imageErrors: action.payload,
+                wikiErrors: []
             }
         default:
             return state;

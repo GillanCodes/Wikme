@@ -10,6 +10,7 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
   const [picture, setPicture] = useState();
 
   const imagesData = useSelector(state => state.imagesReducer);
+  const errorsData = useSelector(state => state.errorsReducer);
 
   const dispatch = useDispatch();
 
@@ -61,12 +62,20 @@ export default function UploadModal({setModal, currentBlock, pageId, imageKey}) 
             <div className="image-manager-content">
                 <div className="head">
                     <h1>Image Manager</h1>
+                    
                 </div>
                 <div className="body">
+                    {!isEmpty(errorsData) && !isEmpty(errorsData.imageErrors) && (
+                      <div className="errors">
+                        {!isEmpty(errorsData.imageErrors.size) && (<p>{errorsData.imageErrors.size}</p>)}
+                        {!isEmpty(errorsData.imageErrors.type) && (<p>{errorsData.imageErrors.type}</p>)}
+                      </div>
+                    )}
                     <div className="items">
                       <div className="image-box">
                         <input type="file" name="picture" id="picture" onChange={(e) => setPicture(e.target.files[0])} />
                         <button className='button is-info' onClick={imageAddHandle}>Add</button>
+                        
                       </div>
                       {load && (
                         <>

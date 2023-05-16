@@ -4,6 +4,8 @@ export const GET_IMAGES = "GET_IMAGES";
 export const UPLOAD_IMAGE = "UPLOAD_IMAGE";
 export const DELETE_IMAGE = "DELETE_IMAGE";
 
+export const GET_IMAGE_ERRORS = "GET_IMAGE_ERRORS";
+
 export const getImages = () => {
     return(dispatch) => {
         return axios({
@@ -24,7 +26,13 @@ export const postImage = (file) => {
             url: `${process.env.REACT_APP_API_URL}/image/`,
             data: file
         }).then((res) => {
-            dispatch({type: UPLOAD_IMAGE, payload: res.data});
+            if (res.data.errors) 
+            {
+                dispatch({type: GET_IMAGE_ERRORS, payload: res.data.errors});
+            } else {
+                dispatch({type: UPLOAD_IMAGE, payload: res.data});
+                dispatch({type: GET_IMAGE_ERRORS, payload: ""})
+            }
         })
     }
 }
