@@ -30,7 +30,7 @@ export const createPage = (req: express.Request, res: express.Response) => {
                 return res.status(201).send(data);
             }).catch((error) => {
                 const errors = createPageErrors(error);
-                return console.log(errors);
+                res.status(200).send({errors});
             })
         } else {
             return res.status(403).send("Forbidden : Not Logged");
