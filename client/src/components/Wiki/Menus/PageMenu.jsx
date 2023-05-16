@@ -3,6 +3,7 @@ import Modal from '../../Modules/Modal';
 import PageModal from '../Modals/PageModal';
 import { isEmpty } from '../../../utils';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function PageMenu({pages, wiki, createPageHandle, setNewPage, newPage, setPageKey, pageKey, editable, isOwner}) {
 
@@ -11,9 +12,16 @@ export default function PageMenu({pages, wiki, createPageHandle, setNewPage, new
         page: null
     });
 
+    const errorsData = useSelector(state => state.errorsReducer);
+
     return (
         <>
             <div className='page-menu'>
+                {!isEmpty(errorsData) && !isEmpty(errorsData.pageErrors) && (
+                    <div className="errors">
+                        <p>{errorsData.pageErrors.name}</p>
+                    </div>
+                )}
                 <div className="container">
                     <div className="content">
                         <div className="head">

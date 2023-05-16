@@ -6,6 +6,8 @@ export const DELETE_PAGE = "DELETE_PAGE";
 export const UPDATE_PAGE = "UPDATE_PAGE";
 export const UPDATE_CONTENT = "UPDATE_CONTENT";
 
+export const GET_PAGE_ERRORS = "GET_PAGE_ERRORS";
+
 export const getPages = (wikiId) => {
     return(dispatch) => {
         return axios({
@@ -55,7 +57,14 @@ export const updatePage = ({id, name}) => {
                 name
             }
         }).then((res) => {
-            dispatch({type: UPDATE_PAGE, payload: res.data})
+            if (res.data.errors) 
+            {
+                dispatch({type: GET_PAGE_ERRORS, payload: res.data.errors});
+            } else 
+            {
+                dispatch({type: UPDATE_PAGE, payload: res.data})
+                dispatch({type: GET_PAGE_ERRORS, payload: ""})
+            }
         }).catch(err => console.log(err));
     }
 }
