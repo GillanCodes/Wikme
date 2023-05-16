@@ -24,7 +24,6 @@ export default function MyWikis() {
     if (!isEmpty(wikis))
     { 
       setLoad(true);
-      console.log(wikis)
     }
   }, [wikis]);
 
