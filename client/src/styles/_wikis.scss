@@ -20,3 +20,17 @@
     overflow: scroll;
     height: calc(100vh - 50px);
 }
+
+
+.wikis-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wikis-container .errors-content
+{
+    width: 350px;
+    margin-top: 10px;
+}

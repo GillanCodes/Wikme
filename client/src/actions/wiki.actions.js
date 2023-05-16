@@ -53,7 +53,13 @@ export const updateWiki = ({id, name, desc, isPublic}) =>  {
                 isPublic
             }
         }).then((res) => {
-            dispatch({type: UPDATE_WIKI, payload: res.data});
+            if (res.data.errors)
+            {
+                dispatch({type: GET_WIKI_ERRORS, payload: res.data.errors});   
+            } else {
+                dispatch({type: UPDATE_WIKI, payload: res.data});
+                dispatch({type: GET_WIKI_ERRORS, payload: ""});
+            }
         }).catch(err => console.log(err));
     }
 }

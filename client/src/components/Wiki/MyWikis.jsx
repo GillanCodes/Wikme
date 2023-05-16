@@ -35,6 +35,14 @@ export default function MyWikis() {
   return (
     <div className='wikis-container container'>
       <h1 className='title'>My Wikis</h1>
+      <div className="errors-content">
+        {!isEmpty(errorsData) && !isEmpty(errorsData.wikiErrors) && (
+            <div className="errors">
+              {!isEmpty(errorsData.wikiErrors.name) && (<p>{errorsData.wikiErrors.name}</p>)}
+              {!isEmpty(errorsData.wikiErrors.desc) && (<p>{errorsData.wikiErrors.desc}</p>)}
+          </div>
+        )}  
+      </div> 
       <div className="wikis">
         <div className='article-module'>
           <div className="article-module-container">
@@ -47,12 +55,7 @@ export default function MyWikis() {
                       <input type="text" className="input" placeholder="Wiki's name" value={state.name} onChange={(e) => setState({...state, name: e.target.value})} />
                       <input type="text" className="input" placeholder="Wiki's Description" value={state.description} onChange={(e) => setState({...state, description: e.target.value})} />
                     </div>
-                    {!isEmpty(errorsData) && !isEmpty(errorsData.wikiErrors) && (
-                      <div className="errors">
-                        {!isEmpty(errorsData.wikiErrors.name) && (<p>{errorsData.wikiErrors.name}</p>)}
-                        {!isEmpty(errorsData.wikiErrors.desc) && (<p>{errorsData.wikiErrors.desc}</p>)}
-                      </div>
-                    )}
+                    
                   </div>
                   <div className="article-module-footer">
                       <p className='button' onClick={() => createWikiHandle()}>Create</p> 
