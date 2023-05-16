@@ -30,7 +30,14 @@ export const createPage = ({name, id}) => {
                 name
             }
         }).then((res) => {
-            dispatch({type: CREATE_PAGE, payload: res.data});
+            console.log(res.data.errors)
+            if (res.data.errors) 
+            {
+                dispatch({type: GET_PAGE_ERRORS, payload: res.data.errors});
+            } else {
+                dispatch({type: CREATE_PAGE, payload: res.data});
+                dispatch({type: GET_PAGE_ERRORS, payload: ""})
+            }
         }).catch(err => console.log(err));
     }
 }
