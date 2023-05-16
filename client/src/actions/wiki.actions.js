@@ -5,6 +5,8 @@ export const CREATE_WIKI = "CREATE_WIKI";
 export const UPDATE_WIKI = "UPDATE_WIKI";
 export const DELETE_WIKI = "DELETE_WIKI";
 
+export const GET_WIKI_ERRORS = "GET_WIKI_ERRORS";
+
 export const getWikis = () => {
     return(dispatch) => {
         return axios({
@@ -28,7 +30,13 @@ export const createWiki = ({name, desc}) => {
                 description: desc
             }
         }).then((res) => {
-            dispatch({type: CREATE_WIKI, payload: res.data});
+            if (res.data.errors)
+            {
+                dispatch({type: GET_WIKI_ERRORS, payload: res.data.errors});   
+            } else {
+                dispatch({type: CREATE_WIKI, payload: res.data});
+                dispatch({type: GET_WIKI_ERRORS, payload: ""});
+            }
         }).catch(err => console.log(err));
     }
 }

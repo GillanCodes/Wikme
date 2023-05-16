@@ -10,6 +10,7 @@ import { UIdContext } from '../../App.context';
 export default function MyWikis() {
   
   const wikis = useSelector((state) => state.wikiReducer);
+  const errorsData = useSelector(state => state.errorsReducer);
   const [load, setLoad] = useState(false);
   const [state, setState] = useState({name: "", description: ""})
 
@@ -46,6 +47,12 @@ export default function MyWikis() {
                       <input type="text" className="input" placeholder="Wiki's name" value={state.name} onChange={(e) => setState({...state, name: e.target.value})} />
                       <input type="text" className="input" placeholder="Wiki's Description" value={state.description} onChange={(e) => setState({...state, description: e.target.value})} />
                     </div>
+                    {!isEmpty(errorsData) && !isEmpty(errorsData.wikiErrors) && (
+                      <div className="errors">
+                        {!isEmpty(errorsData.wikiErrors.name) && (<p>{errorsData.wikiErrors.name}</p>)}
+                        {!isEmpty(errorsData.wikiErrors.desc) && (<p>{errorsData.wikiErrors.desc}</p>)}
+                      </div>
+                    )}
                   </div>
                   <div className="article-module-footer">
                       <p className='button' onClick={() => createWikiHandle()}>Create</p> 
