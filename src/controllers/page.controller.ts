@@ -77,7 +77,7 @@ export const pageUpdate = (req: express.Request, res: express.Response) => {
             });
         } else {
             var errors = updatePageErrors('too_long');
-            console.log(errors);
+            return res.status(200).send({errors});
         }
    } catch (error) {
         console.log(error);
