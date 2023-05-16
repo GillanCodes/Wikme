@@ -30,23 +30,23 @@ export default function Login() {
   return (
     <div className='login-container'>
       <div className="content">
-        {!isEmpty(errors) && (
-          <div className="errors">
-            {!isEmpty(errors.password) && ( <p>{errors.password}</p> )}
-            {!isEmpty(errors.logs) && ( <p>{errors.logs}</p> )}
-          </div>
-        )}
         <form className='form' onSubmit={(e) => loginHandle(e)}>
           <div className="field">
             <label className="label">Username / Email</label>
+            {!isEmpty(errors) && !isEmpty(errors.logs) && (
+              <p>{errors.logs}</p>
+            )}
             <div className="control">
-              <input className='input' type="text" name="unsername" id="username" onChange={(e) => setUsername(e.target.value)} />
+              <input className={!isEmpty(errors) && !isEmpty(errors.logs) ? "input is-danger" : "input is-info"} type="text" name="unsername" id="username" onChange={(e) => setUsername(e.target.value)} />
             </div>
           </div>
           <div className="field">
             <label className="label">Password</label>
+            {!isEmpty(errors) && !isEmpty(errors.password) && (
+              <p>{errors.password}</p>
+            )}
             <div className="control">
-              <input className='input' type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
+              <input className={!isEmpty(errors) && !isEmpty(errors.logs) ? "input is-danger" : "input is-info"} type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
             </div>
           </div>
           <div className="field">
