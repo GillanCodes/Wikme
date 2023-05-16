@@ -29,7 +29,7 @@ export const registerErrors = (error:any) => {
         errors.password = "Password is too short";
     }
     
-    if (error.message.includes('username') && error.message.includes('shorter'))
+    if (error.message.includes('email') && error.message.includes('Validator'))
     {
         errors.email = "Email is not a valid email";
     }
