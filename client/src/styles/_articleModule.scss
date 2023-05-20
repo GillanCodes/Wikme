@@ -59,9 +59,14 @@ $article-hf-size: 50px;
     border-radius: 0px 0px 10px 10px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
-    font-size: 1em;
-    font-weight: 600;
+   
+    .footer-btn
+    {
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }

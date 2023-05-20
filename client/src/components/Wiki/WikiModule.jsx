@@ -14,9 +14,9 @@ export default function WikiModule({wiki, setModal, setCurrentWiki, isOwned}) {
                   <p>{wiki.description}</p>
                 </div>
                 <div className="article-module-footer">
-                    <NavLink to={`/wiki/${wiki._id}`}>View</NavLink>
+                    <NavLink to={`/wiki/${wiki._id}`} className="footer-btn">View</NavLink>
                     {!isEmpty(setModal) && !isEmpty(setCurrentWiki) && (
-                      <p onClick={() => {setCurrentWiki(wiki); setModal(1)}}>Edit</p>
+                      <p onClick={() => {setCurrentWiki(wiki); setModal(1)}} className='footer-btn'>Edit</p>
                     )}
                 </div>
             </div>
