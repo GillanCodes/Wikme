@@ -46,7 +46,7 @@ export default function Login() {
               <p>{errors.password}</p>
             )}
             <div className="control">
-              <input className={!isEmpty(errors) && !isEmpty(errors.logs) ? "input is-danger" : "input is-info"} type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
+              <input className={!isEmpty(errors) && !isEmpty(errors.password) ? "input is-danger" : "input is-info"} type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
             </div>
           </div>
           <div className="field">
