@@ -43,7 +43,7 @@ export default function MyWikis() {
           </div>
         )}  
       </div> 
-      <div className="wikis">
+      <div className="wikis-content">
         <div className='article-module'>
           <div className="article-module-container">
               <div className="article-module-content">

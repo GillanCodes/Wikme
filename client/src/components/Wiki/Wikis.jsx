@@ -21,16 +21,31 @@ export default function Wikis() {
 
   return (
     <div className='wikis-container container'>
-        <h1 className='title'>Public Wikis</h1>
+        <h1 className='title'>All Wikis</h1>
         <div className="wikis">
         
         {load && (
             <>
-            {wikis.map((wiki) => {
-                if (wiki.isPublic){
-                return ( <WikiModule wiki={wiki} isOwned={wiki.ownerId === UId} /> )
-                }
-            })}
+              {!isEmpty(UId) && (
+                <>
+                  <h2>My Public Wikis</h2>
+                  <div className='wikis-content my-public-wiki'>
+                    {wikis.map((wiki) => {
+                      if (wiki.isPublic && wiki.ownerId === UId){
+                        return ( <WikiModule wiki={wiki} isOwned={wiki.ownerId === UId} /> )
+                      }
+                    })}
+                  </div>
+                  <h2>Public Wikis</h2>
+                  <div className="wikis-content public-wikis">
+                    {wikis.map((wiki) => {
+                      if (wiki.isPublic && wiki.ownerId !== UId){
+                        return ( <WikiModule wiki={wiki} isOwned={wiki.ownerId === UId} /> )
+                      }
+                    })}
+                  </div>
+                </>
+              )} 
             </>
         )} 
         </div>
