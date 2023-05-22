@@ -1,15 +1,17 @@
-export const getCategories = () => {
+import { Request, Response } from "express";
+
+export const getCategories = (req:Request, res:Response) => {
 
 };
 
-export const createCategories = () => {
+export const createCategories = (req:Request, res:Response) => {
 
 };
 
-export const updatCategories = () => {
+export const updateCategories = (req:Request, res:Response) => {
 
 };
 
-export const deleteCategories = () => {
+export const deleteCategories = (req:Request, res:Response) => {
 
 };

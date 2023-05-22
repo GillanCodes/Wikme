@@ -2,9 +2,16 @@ import { Router } from "express";
 
 let router:Router = Router();
 
-router.get('/');
-router.post('/');
-router.patch('/:id');
-router.delete('/:id');
+import {
+    getCategories,
+    createCategories,
+    updateCategories,
+    deleteCategories,
+} from "../controllers/categories.controller"
+
+router.get('/', getCategories);
+router.post('/', createCategories);
+router.patch('/:id', updateCategories);
+router.delete('/:id', deleteCategories);
 
 export default router;
