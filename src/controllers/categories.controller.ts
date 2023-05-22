@@ -66,8 +66,13 @@ export const updateCategories = (req:Request, res:Response) => {
 
 export const deleteCategories = (req:Request, res:Response) => {
     try {
-        
+       const { catId } = req.params;
+       if (!isValidObjectId(catId)) throw Error("invalid_format : catId");
+       if (isEmpty(catId)) throw Error('empty_field : catId');
+       
+       categoryModel.findByIdAndDelete(catId).then(() => res.status(200).send({id: catId}));
     } catch (error) {
-        
-    }
+        console.log(error);
+        res.send(403).send(error);
+    };
 };
